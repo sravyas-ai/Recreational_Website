@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        /* General Styling */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #ffe5d9, #fff2eb); /* Peach pastel gradient */
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Header Styling */
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background-color: #ffc2a1; /* Peach pastel for header */
+            color: white;
+            text-align: center;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%; /* Circular user icon */
+            background-color: white; /* White background for icon */
+            margin-bottom: 10px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        header p {
+            margin: 5px 0 0 0;
+            font-size: 16px;
+            color: #ffe5d9; /* Lighter text for description */
+        }
+
+        /* Main Content Styling */
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .description {
+            max-width: 600px;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #555;
+            font-size: 18px;
+        }
+
+        /* Button Styling */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        a.button {
+            text-decoration: none;
+            padding: 15px 25px;
+            font-size: 16px;
+            background-color: #ffb07c; /* Soft peach color for buttons */
+            color: white;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        a.button:hover {
+            background-color: #ff9867; /* Darker peach on hover */
+            transform: scale(1.05); /* Slight zoom effect on hover */
+        }
+
+        .wishlist-btn {
+            background-color: #ffc2a1; /* Light pastel peach */
+        }
+
+        .wishlist-btn:hover {
+            background-color: #ffb492; /* Peach hover for wishlist */
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: #ffe5d9; /* Light peach footer */
+            color: #555;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="abc.jpg" alt="abc">
+        <h1>XYZ</h1>
+        <p>A short description of the user, such as their interests or current status. This can be 2 to 3 lines long.</p>
+    </header>
+    <main>
+        <p class="description">Welcome to our profile page! Here you can manage your personal Wishlist and view or add your Bookings.</p>
+       <div class="button-container">
+    <!-- Updated Wishlist Button -->
+    <a href="wishlist.htm" class="button wishlist-btn">Wishlist</a>
+    <!-- Updated My Bookings Button -->
+    <a href="bookings.htm" class="button">My Bookings</a>
+</div>
+    </main>
+    <footer>
+        xyz.gmail.com
+    </footer>
+</body>
+</html>

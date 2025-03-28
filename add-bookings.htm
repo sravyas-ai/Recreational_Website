@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Additional Bookings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        table {
+            margin: auto;
+            border-collapse: collapse;
+            width: 80%;
+            border: 1px solid white;
+        }
+        th, td {
+            border: 1px solid white;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let bookedSeats = JSON.parse(localStorage.getItem("bookedSeats")) || [];
+            let table = document.getElementById("bookingsTable");
+
+            if (bookedSeats.length > 0) {
+                bookedSeats.forEach(seat => {
+                    let row = table.insertRow();
+                    let cell = row.insertCell(0);
+                    cell.textContent = seat;
+                });
+            } else {
+                let row = table.insertRow();
+                let cell = row.insertCell(0);
+                cell.textContent = "No seats have been booked.";
+            }
+        });
+    </script>
+</head>
+<body>
+    <h1>Booked Seats Summary</h1>
+    <table id="bookingsTable">
+        <thead>
+            <tr>
+                <th>Seat</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</body>
+</html>

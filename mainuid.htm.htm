@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Page with Buttons</title>
+    <style>
+        /* General Styling */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #ffadc6, #ffe7a9);
+            color: #333;
+        }
+
+        /* Header Styling */
+        header {
+            position: relative;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .button-container {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+
+        /* Buttons Styling */
+        a.button {
+            text-decoration: none;
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+            color: white;
+        }
+
+        .login-btn {
+            background-color: #84c5e6;
+        }
+
+        .login-btn:hover {
+            background-color: #65b3d6;
+        }
+
+        .signin-btn {
+            background-color: #f67280;
+        }
+
+        .signin-btn:hover {
+            background-color: #e76070;
+        }
+
+        /* Main Content Styling */
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: calc(100vh - 50px);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Container for buttons at the top right -->
+        <div class="button-container">
+            <a href="register2.htm" class="button login-btn">Login</a>
+            <a href="registerformp.htm" class="button signin-btn">Sign In</a>
+        </div>
+    </header>
+    <main>
+        <h1>Welcome to the Vibrant World!</h1>
+        <p>Please sign in or log in to know more about the upcoming interesting events</p>
+    </main>
+</body>
+</html>
