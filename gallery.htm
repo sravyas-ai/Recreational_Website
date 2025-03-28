@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap');
+
+        body {
+            font-family: 'Cinzel Decorative', cursive;
+            background: linear-gradient(to right, #E96443, #904E95);
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2 images per row */
+            gap: 10px;
+            max-width: 80%;
+            margin: auto;
+        }
+
+        .gallery-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .gallery-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Gallery Showcase</h1>
+    <div class="gallery">
+    <!-- Images 1 to 32 -->
+    <div class="gallery-item"><img src="img1.jpeg" alt="Image 1"></div>
+    <div class="gallery-item"><img src="img2.jpeg" alt="Image 2"></div>
+    <div class="gallery-item"><img src="img3.jpeg" alt="Image 3"></div>
+    <div class="gallery-item"><img src="img4.jpeg" alt="Image 4"></div>
+    <div class="gallery-item"><img src="img5.jpeg" alt="Image 5"></div>
+    <div class="gallery-item"><img src="img6.jpeg" alt="Image 6"></div>
+    <div class="gallery-item"><img src="img7.jpeg" alt="Image 7"></div>
+    <div class="gallery-item"><img src="img8.jpeg" alt="Image 8"></div>
+    <div class="gallery-item"><img src="img9.jpeg" alt="Image 9"></div>
+    <div class="gallery-item"><img src="img10.jpeg" alt="Image 10"></div>
+    <div class="gallery-item"><img src="img11.jpeg" alt="Image 11"></div>
+    <div class="gallery-item"><img src="img12.jpeg" alt="Image 12"></div>
+    <div class="gallery-item"><img src="img13.jpeg" alt="Image 13"></div>
+    <div class="gallery-item"><img src="img14.jpeg" alt="Image 14"></div>
+    <div class="gallery-item"><img src="img15.jpeg" alt="Image 15"></div>
+    <div class="gallery-item"><img src="img16.jpeg" alt="Image 16"></div>
+    <div class="gallery-item"><img src="img17.jpeg" alt="Image 17"></div>
+    <div class="gallery-item"><img src="img18.jpeg" alt="Image 18"></div>
+    <div class="gallery-item"><img src="img19.jpeg" alt="Image 19"></div>
+    <div class="gallery-item"><img src="img20.jpeg" alt="Image 20"></div>
+    <div class="gallery-item"><img src="img21.jpeg" alt="Image 21"></div>
+    <div class="gallery-item"><img src="img22.jpeg" alt="Image 22"></div>
+    <div class="gallery-item"><img src="img23.jpeg" alt="Image 23"></div>
+    <div class="gallery-item"><img src="img24.jpeg" alt="Image 24"></div>
+    <div class="gallery-item"><img src="img25.jpeg" alt="Image 25"></div>
+    <div class="gallery-item"><img src="img26.jpeg" alt="Image 26"></div>
+    <div class="gallery-item"><img src="img27.jpeg" alt="Image 27"></div>
+    <div class="gallery-item"><img src="img28.jpeg" alt="Image 28"></div>
+    <div class="gallery-item"><img src="img29.jpeg" alt="Image 29"></div>
+    <div class="gallery-item"><img src="img30.jpeg" alt="Image 30"></div>
+    <div class="gallery-item"><img src="img31.jpeg" alt="Image 31"></div>
+    <div class="gallery-item"><img src="img32.jpeg" alt="Image 32"></div>
+</div>
+</body>
+</html>

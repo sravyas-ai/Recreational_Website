@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+table {
+    width: 60%;
+    margin: auto;
+    border-collapse: separate;
+    border-spacing: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+}
+td {
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    background: white;
+    color: #333;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+button:hover {
+    background: #222;
+    color: white;
+}
+</style>
+    <title>Seat Booking</title>
+    <script>
+        function loadBookedSeats() {
+            return JSON.parse(localStorage.getItem("bookedSeats")) || [];
+        }
+
+        function saveBookedSeats(seats) {
+            localStorage.setItem("bookedSeats", JSON.stringify(seats));
+        }
+
+        function bookSeat(seatId) {
+            let bookedSeats = loadBookedSeats();
+            let userData = JSON.parse(localStorage.getItem("userData")) || {};
+            let maxSeats = parseInt(userData.seats) || 0;
+
+            if (bookedSeats.length < maxSeats && !bookedSeats.includes(seatId)) {
+                bookedSeats.push(seatId);
+                saveBookedSeats(bookedSeats);
+                alert(`Seat ${seatId} has been booked.`);
+                loadSeats();
+            } else {
+                alert("You have reached your seat limit or this seat is already booked.");
+            }
+        }
+
+        function generateSeats(section, rows, cols, className, bookedSeats) {
+            let html = "";
+            for (let i = 1; i <= rows; i++) {
+                html += "<tr>";
+                for (let j = 1; j <= cols; j++) {
+                    let seatId = `${section}-R${i}C${j}`;
+                    let isBooked = bookedSeats.includes(seatId);
+                    html += `<td class='${className}'>
+                        <button ${isBooked ? "class='booked' disabled" : ""} onclick="bookSeat('${seatId}')">
+                            ${isBooked ? "Booked" : `R${i}C${j}`}
+                        </button>
+                    </td>`;
+                }
+                html += "</tr>";
+            }
+            return html;
+        }
+
+        function loadSeats() {
+            let bookedSeats = loadBookedSeats();
+            document.getElementById("vipSection").innerHTML = generateSeats("VIP", 3, 10, "vip", bookedSeats);
+            document.getElementById("balconySection").innerHTML = generateSeats("Balcony", 5, 10, "balcony", bookedSeats);
+            document.getElementById("economySection").innerHTML = generateSeats("Economy", 7, 10, "economy", bookedSeats);
+        }
+
+        function navigateToConfirmation() {
+            let bookedSeats = loadBookedSeats();
+            let userData = JSON.parse(localStorage.getItem("userData")) || {};
+            
+            if (bookedSeats.length < parseInt(userData.seats)) {
+                alert(`Please book all ${userData.seats} seats before proceeding.`);
+            } else {
+                window.location.href = "bookedlist.htm";
+            }
+        }
+    </script>
+</head>
+<body onload="loadSeats()">
+    <h1>Book Your Seats</h1>
+    
+    <h2>VIP Section</h2>
+    <table><tbody id="vipSection"></tbody></table>
+    
+    <h2>Balcony Section</h2>
+    <table><tbody id="balconySection"></tbody></table>
+    
+    <h2>Economy Section</h2>
+    <table><tbody id="economySection"></tbody></table>
+
+    <button onclick="navigateToConfirmation()">Next</button>
+</body>
+</html>
