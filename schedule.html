@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weekly Schedule</title>
+    <style>
+        body {
+            font-family: Papyrus;
+            background: linear-gradient(to right, #6A5ACD, #483D8B);
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            color: white;
+        }
+        .container {
+            width: 95%;
+            margin: auto;
+            padding: 20px;
+        }
+        .schedule {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .week {
+            margin-bottom: 40px;
+        }
+        .day {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            transition: transform 0.3s;
+            width: 250px;
+        }
+        .day:hover {
+            transform: scale(1.05);
+        }
+        h2, h3 {
+            margin-bottom: 10px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            background: rgba(0, 0, 0, 0.2);
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+	.popup {
+            display: none;
+            position: absolute;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            z-index: 10;
+        }
+	li {
+    background: rgba(0, 0, 0, 0.2);
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+    position: relative; 
+    cursor: pointer;
+}
+
+.popup {
+    display: none;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    top: 100%; 
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    z-index: 10;
+}
+
+li:hover .popup {
+    display: block; 
+    color:white;
+}
+
+.popup a {
+    color: white; 
+    text-decoration: none;
+    display: block;
+    margin: 5px 0;
+}
+
+body {
+    background: radial-gradient(circle, #280137, #6A5ACD, #483D8B, #301934, #1A0F1D, #4B0082, #9400D3);
+    background-size: 300% 300%;
+    animation: swirlGradient 10s ease-in-out infinite;
+    font-family: Papyrus;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    color: white;
+}
+
+@keyframes swirlGradient {
+    0% { background-position: 0% 0%; }
+    25% { background-position: 100% 0%; }
+    50% { background-position: 100% 100%; }
+    75% { background-position: 0% 100%; }
+    100% { background-position: 0% 0%; }
+}
+
+.popup1 {
+            display: none;
+            position: fixed;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            border-radius: 5px;
+        }
+
+        .popup1.show {
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="font-size:100px;">Weekly Schedule</h1>
+        
+        <div class="week">
+            <h2 style="font-size:50px;">This Week</h2>
+            <div class="schedule">
+                <div class="day">
+                    <h3>Monday</h3>
+                    <ul>
+                        <li>7:00 PM - Entertainment News Hour</li>
+                        <li>8:00 PM - Prove the point!
+			<div class="popup">
+                                <a href="#">🔍 To Know More</a>
+                                <a class="show-link" href="javascript:void(0);" onclick="addToWishlist('Prove the point!','show1')">❤️ Add to Wishlist</a>
+					
+				<div id="show1" class="popup1">
+        <p>Added to your wishlist!</p>
+    </div>				
+                                <a href="#">🎟️ Book Seats</a>
+                            </div></li>
+                        <li>10:00 PM - Nocturnal Music</li>
+                    </ul>
+                </div>
+                <div class="day">
+                    <h3>Wednesday</h3>
+                    <ul>
+                        <li>10:00 AM - Morning Beats</li>
+                        <li>9:00 PM - The Greatest Show Ever! with Tom & Jerry
+			<div class="popup">
+                                <a href="#">🔍 To Know More</a>
+                                <a class="show-link" href="javascript:void(0);" onclick="addToWishlist('The Greatest Show Ever! with Tom & Jerry','show2')">❤️ Add to Wishlist</a>
+				<div id="show2" class="popup1">
+        <p>Added to your wishlist!</p>
+    </div>
+                                <a href="#">🎟️ Book Seats</a>
+
+                            </div></li>
+                        <li>11:00 PM - Nocturnal Music</li>
+                    </ul>
+                </div>
+                <div class="day">
+                    <h3>Thursday</h3>
+                    <ul>
+                        <li>8:00 PM - Devil's Kitchen - GRAND FINALE (Recap)</li>
+                        <li>11:00 PM - Woo Yeonwoo's Latest Hits [Live from Concert]</li>
+                    </ul>
+                </div>
+                <div class="day">
+                    <h3>Friday</h3>
+                    <ul>
+                        <li>7:00 PM - Campfire Cooking in Another World</li>
+                        <li>9:00 PM - Know your World!!</li>
+                    </ul>
+                </div>
+                <div class="day">
+                    <h3>Saturday</h3>
+                    <ul>
+                        <li>10:00 PM - Saturday Night with Gru!!
+			<div class="popup">
+                                <a href="#">🔍 To Know More</a>
+                                <a class="show-link" href="javascript:void(0);" onclick="addToWishlist('Saturday Night with Gru','show3')">❤️ Add to Wishlist</a>
+				<div id="show3" class="popup1">
+        <p>Added to your wishlist!</p>
+    </div>
+
+                                <a href="#">🎟️ Book Seats</a>
+                            </div></li>
+                        <li>12:00 PM - Nocturnal Music</li>
+                    </ul>
+                </div>
+                <div class="day">
+                    <h3>Sunday</h3>
+                    <ul>
+                        <li>8:30 PM - Rant of the Fired- 3 Ex-employess go candid!
+			<div class="popup">
+                                <a href="#">🔍 To Know More</a>
+                                <a class="show-link" href="javascript:void(0);" onclick="addToWishlist('Rant of the Fired - 3 Ex-employess go candid!','show4')">❤️ Add to Wishlist</a>
+				<div id="show4" class="popup1">
+        <p>Added to your wishlist!</p>
+    </div>
+
+
+                                <a href="#">🎟️ Book Seats</a>
+                            </div></li>
+                        <li>9:45 PM - Yours, Friendly Neighbourhood Spider-Man - Scientists Go Wild!!
+			<div class="popup">
+                                <a href="#">🔍 To Know More</a>
+                                <a class="show-link" href="javascript:void(0);" onclick="addToWishlist('Yours, Friendly Neighbourhood Spider-Man - Scientists Go Wild!!','show5')">❤️ Add to Wishlist</a>
+				<div id="show5" class="popup1">
+        <p>Added to your wishlist!</p>
+    </div>
+
+                                <a href="#">🎟️ Book Seats</a>
+                            </div></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="week">
+            <h2 style="font-size:50px;">Next Week</h2>
+            <div class="schedule">
+                <div class="day">
+                    <h3>Tuesday</h3>
+                    <ul>
+                        <li>9:30 PM - Get Candid with Spike Speigal!!!
+			<div class="popup">
+                                <a href="#">🔍 To Know More</a>
+                                <a class="show-link" href="javascript:void(0);" onclick="addToWishlist('Get Candid with Spike Speigal!!!','show6')">❤️ Add to Wishlist</a>
+			<div id="show6" class="popup1">
+        <p>Added to your wishlist!</p>
+    </div>	
+                              <a href="#">🎟️ Book Seats</a>
+                            </div></li>
+                        <li>11:00 PM - Industrial Talks with Kageyama!!!!
+			<div class="popup">
+                                <a href="#">🔍 To Know More</a>
+                                <a class="show-link" href="javascript:void(0);" onclick="addToWishlist('Industrial Talks with Kageyama!!!!','show7')">❤️ Add to Wishlist</a>❤️ Add to Wishlist</a>
+				<div id="show7" class="popup1">
+        <p>Added to your wishlist!</p>
+    </div>	
+                                <a href="#">🎟️ Book Seats</a>
+                            </div></li>
+                    </ul>
+                </div>
+                <div class="day">
+                    <h3>Friday</h3>
+                    <ul>
+                        <li>7:00 PM - Campfire Cooking in Another World</li>
+                    </ul>
+                </div>
+                <div class="day">
+                    <h3>Saturday</h3>
+                    <ul>
+                        <li>8:30 PM - Hera and Zeus' Divorce [Live Coverage]</li>
+                    </ul>
+                </div>
+                <div class="day">
+                    <h3>Sunday</h3>
+                    <ul>
+                        <li>8:00 PM - [New Show] - Movie Nights - Jurassic Park (1993)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+ <script>
+      function addToWishlist(ShowName, popupId) {
+    // Get existing wishlist from localStorage (if any)
+    let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+    // Add the new show to the wishlist (avoid duplicates)
+    if (!wishlist.includes(ShowName)) {
+        wishlist.push(ShowName);
+        localStorage.setItem('wishlist', JSON.stringify(wishlist));
+    }
+
+    // Show the respective pop-up message
+    const popup = document.getElementById(popupId);
+    if (popup) {
+        popup.classList.add('show');
+
+        // Hide the pop-up message after 2 seconds
+        setTimeout(() => {
+            popup.classList.remove('show');
+        }, 2000);
+    }
+}
+
+    </script>
+
+
+
+
+
+</body>
+</html>
