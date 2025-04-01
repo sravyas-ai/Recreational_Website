@@ -8,12 +8,12 @@ document.addEventListener("DOMContentLoaded", function () {
             { name: "Gian- infamous for his singing in both real life and acting", url: "articles.html#article3" }
         ],
         hera: [
-            { name: "Leaked Video: Hera Confronts Zeus Over His Scandalous Affairs", url: "video3" },
+            { name: "Leaked Video: Hera Confronts Zeus Over His Scandalous Affairs", url: "Trending.html#video3" },
             { name: "Hera Confronts Zeus Over Scandalous Affairs", url: "articles.html#article7" }
         ],
         zeus: [
             { name: "Hera Confronts Zeus Over Scandalous Affairs", url: "articles.html#article7" },
-            { name: "Leaked Video: Hera Confronts Zeus Over His Scandalous Affairs", url: "video3" }
+            { name: "Leaked Video: Hera Confronts Zeus Over His Scandalous Affairs", url: "Trending.html#video3" }
         ],
         bean: [
             { name: "Mr.Bean thinks that electrical cars are more harmful?? ", url: "articles.html#article8" },
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
             { name: "Sirius Black and Severus Snape talk it out", url: "articles.html#article2"}
         ],
         tom: [
-            { name: "Shocking Truth: Tom and Jerry Are Actually Best Friends!", url: "video1" },
+            { name: "Shocking Truth: Tom and Jerry Are Actually Best Friends!", url: "Trending.html#video1" },
             { name: "Tom's Post", url: "post.html#post8" }
         ]
     };
