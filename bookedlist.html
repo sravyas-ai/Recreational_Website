@@ -2,8 +2,6 @@
 <html>
 <head>
 <style>
-
-     <link rel="stylesheet" href="navbar.css"> 
 body {
     font-family: Arial, sans-serif;
      background-image: url('https://wallpapercave.com/wp/wp2165086.jpg');
@@ -100,75 +98,6 @@ button:hover {
     </script>
 </head>
 <body onload="loadPreviousData()">
-
- <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
-    
-    <div class="menu" id="menu">
-        <ul>
-            <li><a href="Home_Page.html" style="text-decoration: none; color: white;">🏠 Home Page</a></li>
-            <li><a href="latestnews.html" style="text-decoration: none; color: white;">📰 Latest News</a></li>
-
-            <li onclick="toggleSubmenu('topic3')">🎨 Artists ▼
-                <ul class="submenu" id="topic3">
-                    <li><a href="artistic.html">Artistic Page</a></li>
-                    <li><a href="Chefs.html">Chef</a></li>
-                    <li><a href="music.html">Music</a></li>
-                    <li><a href="comedy.html">Comedy</a></li>
-                    <li><a href="other.html">Others</a></li>
-                </ul>
-            </li>
-
-            <li><a href="schedule.html" style="text-decoration: none; color: white;">📅 Schedule</a></li>
-
-            <li onclick="toggleSubmenu('topic5')">🌟 Highlights ▼
-                <ul class="submenu" id="topic5">
-                    <li><a href="Highlight.html">Highlights Page</a></li>
-                    <li><a href="gallery.html">Gallery</a></li>
-                    <li><a href="articles.html">Articles</a></li>
-                    <li><a href="interview.html">Interviews</a></li>
-                    <li><a href="trending.html">Trending</a></li>
-                    <li><a href="post.html">Media Post</a></li>
-                    <li><a href="polls.html">Aurora Polls</a></li>
-                </ul>
-            </li>
-
-            <li onclick="toggleSubmenu('topic6')">👤 User Profile ▼
-                <ul class="submenu" id="topic6">
-                    <li><a href="userprofileuid.html">User Profile</a></li>
-                    <li><a href="bookedlist.html">BookList</a></li>
-                    <li><a href="wishlist.html">WishList</a></li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-
-    <script>
-        function toggleMenu() {
-            const menu = document.getElementById('menu');
-            const hamburger = document.querySelector('.hamburger');
-
-            if (menu.classList.contains('active')) {
-                menu.classList.remove('active');
-                hamburger.classList.remove('active');
-            } else {
-                menu.classList.add('active');
-                hamburger.classList.add('active');
-            }
-        }
-
-        function toggleSubmenu(id) {
-            const submenu = document.getElementById(id);
-            if (submenu.style.display === "block") {
-                submenu.style.display = "none";
-            } else {
-                submenu.style.display = "block";
-            }
-        }
-    </script>
-
-
-
-    
     <h1>Your Booking</h1>
     <table id="dataTable" border="1">
         <tr>
