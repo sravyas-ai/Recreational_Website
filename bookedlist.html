@@ -1,173 +1,114 @@
 <!DOCTYPE html>
- <html>
- <head>
- <style>
- body {
-     font-family: Arial, sans-serif;
-     background: linear-gradient(135deg, #ff7e5f, #feb47b);
-     color: white;
-     text-align: center;
-     padding: 20px;
- }
- h1 {
-     font-size: 36px;
-     margin-bottom: 20px;
- }
- table {
-     width: 60%;
-     margin: auto;
-     border-collapse: separate;
-     border-spacing: 10px;
-     background: rgba(255, 255, 255, 0.1);
-     border-radius: 15px;
- }
- td, th {
-     padding: 10px;
-     border-radius: 10px;
-     text-align: center;
-     border: 1px solid rgba(255, 255, 255, 0.3);
- }
- button {
-     padding: 10px 15px;
-     border: none;
-     border-radius: 5px;
-     background: white;
-     color: #333;
-     font-weight: bold;
-     cursor: pointer;
-     transition: 0.3s;
-     margin-top: 20px;
-     margin-right: 10px;
- }
- button:hover {
-     background: #222;
-     color: white;
- }
- </style>
- 
-     <title>Booking Confirmation</title>
-     <script>
-         function loadPreviousData() {
-             let previousData = JSON.parse(localStorage.getItem("allUserData")) || [];
-             let userData = JSON.parse(localStorage.getItem("userData")) || {};
-             let bookedSeats = JSON.parse(localStorage.getItem("bookedSeats")) || [];
- <title>Booking Confirmation</title>
- <script>
-     async function loadPreviousData() {
-         let previousData = JSON.parse(localStorage.getItem("allUserData")) || [];
-         let userData = JSON.parse(localStorage.getItem("userData")) || {};
-         let bookedSeats = JSON.parse(localStorage.getItem("bookedSeats")) || [];
- 
-             if (userData.name) {
-                 previousData.push({ ...userData, seats: bookedSeats });
-                 localStorage.setItem("allUserData", JSON.stringify(previousData));
-             }
- 
-             displayData(previousData);
-         if (userData.name) {
-             previousData.push({ ...userData, seats: bookedSeats });
-             localStorage.setItem("allUserData", JSON.stringify(previousData));
-         }
-         
-         let events = await fetchEvents();
-         displayData(previousData, events);
-     }
- 
-         function displayData(data) {
-             let table = document.getElementById("dataTable");
-             table.innerHTML = `<tr>
-                 <th>Name</th>
-                 <th>Age</th>
-                 <th>Address</th>
-                 <th>Email</th>
-                 <th>Booked Seats</th>
-             </tr>`;
- 
-             data.forEach(user => {
-                 let row = `<tr>
-                     <td>${user.name}</td>
-                     <td>${user.age}</td>
-                     <td>${user.address}</td>
-                     <td>${user.email}</td>
-                     <td>${user.seats.join(", ")}</td>
-                 </tr>`;
-                 table.innerHTML += row;
-     async function fetchEvents() {
-         try {
-             let response = await fetch('schedule.html');
-             let text = await response.text();
-             let parser = new DOMParser();
-             let doc = parser.parseFromString(text, 'text/html');
-             let eventElements = doc.querySelectorAll('.event');
-             let events = [];
-             
-             eventElements.forEach(event => {
-                 events.push(event.textContent.trim());
-             });
-             return events;
-         } catch (error) {
-             console.error("Error loading events:", error);
-             return [];
-         }
-     }
- 
-         function clearData() {
-             localStorage.removeItem("allUserData");
-             localStorage.removeItem("userData");
-             localStorage.removeItem("bookedSeats");
-             displayData([]);
-         }
-     function displayData(data, events) {
-         let table = document.getElementById("dataTable");
-         table.innerHTML = `<tr>
-             <th>Name</th>
-             <th>Age</th>
-             <th>Address</th>
-             <th>Email</th>
-             <th>Booked Seats</th>
-             <th>Event</th>
-         </tr>`;
- 
-         function redirectToProfile() {
-             window.location.href = "userprofileuid.html";
-         }
-     </script>
-         data.forEach((user, index) => {
-             let event = events[index] || "N/A";
-             let row = `<tr>
-                 <td>${user.name}</td>
-                 <td>${user.age}</td>
-                 <td>${user.address}</td>
-                 <td>${user.email}</td>
-                 <td>${user.seats.join(", ")}</td>
-                 <td>${event}</td>
-             </tr>`;
-             table.innerHTML += row;
-         });
-     }
- 
-     function clearData() {
-         localStorage.removeItem("allUserData");
-         localStorage.removeItem("userData");
-         localStorage.removeItem("bookedSeats");
-         displayData([], []);
-     }
- 
-     function redirectToProfile() {
-         window.location.href = "userprofile.htm";
-     }
- </script>
- </head>
- <body onload="loadPreviousData()">
-     <h1>Booking Confirmation</h1>
- @@ -103,9 +126,10 @@
-             <th>Address</th>
-             <th>Email</th>
-             <th>Booked Seats</th>
-             <th>Event</th>
-         </tr>
-     </table>
-     <button onclick="clearData()">Clear All Data</button>
-     <button onclick="redirectToProfile()">Go to Profile</button>
- </body>
- </html>
+<html>
+<head>
+<style>
+body {
+    font-family: Arial, sans-serif;
+     background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20220216/pngtree-blue-technology-stage-background-image_973932.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+table {
+    width: 60%;
+    margin: auto;
+    border-collapse: separate;
+    border-spacing: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+}
+td, th {
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background: white;
+    color: #333;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 20px;
+    margin-right: 10px;
+}
+button:hover {
+    background: #222;
+    color: white;
+}
+</style>
+
+    <title>Booking Confirmation</title>
+    <script>
+        function loadPreviousData() {
+            let previousData = JSON.parse(localStorage.getItem("allUserData")) || [];
+            let userData = JSON.parse(localStorage.getItem("userData")) || {};
+            let bookedSeats = JSON.parse(localStorage.getItem("bookedSeats")) || [];
+
+            if (userData.name) {
+                previousData.push({ ...userData, seats: bookedSeats });
+                localStorage.setItem("allUserData", JSON.stringify(previousData));
+            }
+
+            displayData(previousData);
+        }
+
+        function displayData(data) {
+            let table = document.getElementById("dataTable");
+            table.innerHTML = `<tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Address</th>
+                <th>Email</th>
+                <th>Booked Seats</th>
+            </tr>`;
+
+            data.forEach(user => {
+                let row = `<tr>
+                    <td>${user.name}</td>
+                    <td>${user.age}</td>
+                    <td>${user.address}</td>
+                    <td>${user.email}</td>
+                    <td>${user.seats.join(", ")}</td>
+                </tr>`;
+                table.innerHTML += row;
+            });
+        }
+
+        function clearData() {
+            localStorage.removeItem("allUserData");
+            localStorage.removeItem("userData");
+            localStorage.removeItem("bookedSeats");
+            displayData([]);
+        }
+
+        function redirectToProfile() {
+            window.location.href = "userprofile.htm";
+        }
+    </script>
+</head>
+<body onload="loadPreviousData()">
+    <h1>Booking Confirmation</h1>
+    <table id="dataTable" border="1">
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Address</th>
+            <th>Email</th>
+            <th>Booked Seats</th>
+        </tr>
+    </table>
+    <button onclick="clearData()">Clear All Data</button>
+    <button onclick="redirectToProfile()">Go to Profile</button>
+</body>
+</html>   
