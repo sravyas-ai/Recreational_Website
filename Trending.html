@@ -18,17 +18,26 @@ background-position: center;
             color: white;
             text-align: center;
         }
-        .container {
-            padding: 20px;
-        }
-        .video, .article {
-            display: inline-block;
-            width: 30%;
-            margin: 15px;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-        }
+       .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; /* Distribute items evenly */
+}
+
+.video, .article {
+    flex: 1 1 30%; /* Grow and shrink, base width 30% */
+    max-width: 30%;
+    margin: 15px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    box-sizing: border-box; /* Ensures padding doesn't increase width */
+}
+.video, .article {
+    flex: 1 1 28%;
+    max-width: 28%;
+}
+
         iframe {
             width: 100%;
             height: 315px;
