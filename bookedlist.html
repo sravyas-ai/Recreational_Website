@@ -47,74 +47,60 @@ button:hover {
 
 <title>Booking Confirmation</title>
 <script>
-    async function loadPreviousData() {
-        let previousData = JSON.parse(localStorage.getItem("allUserData")) || [];
-        let userData = JSON.parse(localStorage.getItem("userData")) || {};
-        let bookedSeats = JSON.parse(localStorage.getItem("bookedSeats")) || [];
+document.addEventListener("DOMContentLoaded", async function () {
+    await loadPreviousData();
+});
 
-        if (userData.name) {
-            previousData.push({ ...userData, seats: bookedSeats });
-            localStorage.setItem("allUserData", JSON.stringify(previousData));
-        }
-        
-        let events = await fetchEvents();
-        displayData(previousData, events);
+async function loadPreviousData() {
+    let previousData = JSON.parse(localStorage.getItem("allUserData")) || [];
+    let userData = JSON.parse(localStorage.getItem("userData")) || {};
+    let bookedSeats = JSON.parse(localStorage.getItem("bookedSeats")) || [];
+    let bookedEvents = JSON.parse(localStorage.getItem("bookedEvents")) || [];
+
+    if (userData.name) {
+        previousData.push({ ...userData, seats: bookedSeats, event: bookedEvents });
+        localStorage.setItem("allUserData", JSON.stringify(previousData));
     }
+    
+    displayData(previousData);
+}
 
-    async function fetchEvents() {
-        try {
-            let response = await fetch('schedule.html');
-            let text = await response.text();
-            let parser = new DOMParser();
-            let doc = parser.parseFromString(text, 'text/html');
-            let eventElements = doc.querySelectorAll('.event');
-            let events = [];
-            
-            eventElements.forEach(event => {
-                events.push(event.textContent.trim());
-            });
-            return events;
-        } catch (error) {
-            console.error("Error loading events:", error);
-            return [];
-        }
-    }
+function displayData(data) {
+    let table = document.getElementById("dataTable");
+    table.innerHTML = `<tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Address</th>
+        <th>Email</th>
+        <th>Booked Seats</th>
+        <th>Event</th>
+    </tr>`;
 
-    function displayData(data, events) {
-        let table = document.getElementById("dataTable");
-        table.innerHTML = `<tr>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Address</th>
-            <th>Email</th>
-            <th>Booked Seats</th>
-            <th>Event</th>
+    data.forEach(user => {
+        let row = `<tr>
+            <td>${user.name}</td>
+            <td>${user.age}</td>
+            <td>${user.address}</td>
+            <td>${user.email}</td>
+            <td>${user.seats ? user.seats.join(", ") : "N/A"}</td>
+            <td>${user.event ? user.event : "N/A"}</td>
         </tr>`;
+        table.innerHTML += row;
+    });
+}
 
-        data.forEach((user, index) => {
-            let event = events[index] || "N/A";
-            let row = `<tr>
-                <td>${user.name}</td>
-                <td>${user.age}</td>
-                <td>${user.address}</td>
-                <td>${user.email}</td>
-                <td>${user.seats.join(", ")}</td>
-                <td>${event}</td>
-            </tr>`;
-            table.innerHTML += row;
-        });
-    }
+function clearData() {
+    localStorage.removeItem("allUserData");
+    localStorage.removeItem("userData");
+    localStorage.removeItem("bookedSeats");
+    localStorage.removeItem("bookedEvents");
+    displayData([]);
+}
 
-    function clearData() {
-        localStorage.removeItem("allUserData");
-        localStorage.removeItem("userData");
-        localStorage.removeItem("bookedSeats");
-        displayData([], []);
-    }
+function redirectToProfile() {
+    window.location.href = "userprofile.htm";
+}
 
-    function redirectToProfile() {
-        window.location.href = "userprofile.htm";
-    }
 </script>
 </head>
 <body onload="loadPreviousData()">
