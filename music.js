@@ -5,20 +5,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const chefLinks = {
         wooYeonwoo: [
-            { name: "Profile", url: "https://example.com/sanji-profile" },
-            { name: "Recipes", url: "https://example.com/sanji-recipes" }
+            { name: "Woo Yeonwoo's Post", url: "post.html#post1" }
         ],
         spikeSpiegel: [
-            { name: "Profile", url: "https://example.com/sukuna-profile" },
-            { name: "Dishes", url: "https://example.com/sukuna-dishes" }
+            { name: "Spike Spigels's Post", url: "post.html#post11" }
         ],
         mitsuki: [
-            { name: "Profile", url: "https://example.com/mukouda-profile" },
-            { name: "Secret Ingredients", url: "https://example.com/mukouda-ingredients" }
+            { name: "Mitsuki's Post", url: "post.html#post7" }
         ],
         JigglyPuff: [
-            { name: "Profile", url: "https://example.com/soma-profile" },
-            { name: "Competitions", url: "https://example.com/soma-competitions" }
+            { name: "Jiggly Puff's Post", url: "post.html#post2" }
         ]
     };
 
