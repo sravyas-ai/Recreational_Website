@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
             { name: "First Time in Corporate History! Three Employees Fired After Their Very First Lunch Break!", url: "articles.html#article11" }
         ],
         spiderMan: [
-            { name: "The Alchemy of Minds!", url: "interviews.html#interview3" },
+            { name: "The Alchemy of Minds!", url: "interview.html#int3" },
             { name: "Spiderman's Post", url: "post.html#post4" }
         ],
         TobioKageyama: [
@@ -17,13 +17,13 @@ document.addEventListener("DOMContentLoaded", function () {
         ],
         research: [
             { name: "The Alchemy of Minds: When Oppenheimer, Walter White, and Sherlock Holmes Redefined Reality", url: "articles.html#article12" },
-            { name: "Conspiracy theories from the pokemon world", url: "video8" },
-            { name: "The secret of scooby doo", url: "video9" },
-            { name: "The Simpsons: Predicting the Future would be like!This is one of the  Conspiracy theories.", url: "video11" },
-            { name: "The Alchemy of Minds!", url: "interview3" }
+            { name: "Conspiracy theories from the pokemon world", url: "Trending.html#video8" },
+            { name: "The secret of scooby doo", url: "Trending.html#video9" },
+            { name: "The Simpsons: Predicting the Future would be like!This is one of the  Conspiracy theories.", url: "Trending.html#video11" },
+            { name: "The Alchemy of Minds!", url: "interview.html#int3" }
         ],
         Gru: [
-            { name: "World’s favourite villain and comedian", url: "interviews.html#interview1" },
+            { name: "World’s favourite villain and comedian", url: "interview.html#int1" },
             { name: "Gru's Post", url: "post.html#post3" }
         ]
     };
