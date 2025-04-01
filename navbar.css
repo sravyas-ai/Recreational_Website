@@ -1,0 +1,77 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: white; /* Set default text color to white */
+    min-height: 100vh;
+    background-color: #f0f0f0; /* Background color for the whole page */
+}
+
+/* Side Menu Styling */
+.menu {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background-image: url('https://images4.alphacoders.com/134/1348896.jpeg'); /* Set the background image */
+    background-size: cover; /* Make the image cover the whole nav bar */
+    background-position: center; /* Center the image */
+    color: white; /* All text will be white */
+    padding-top: 60px;
+    border-radius: 10px 0 0 10px;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto; /* Make the menu scrollable */
+    max-height: 100%; /* Ensures the menu doesn't exceed the page height */
+}
+
+/* List Items */
+.menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+.menu ul li {
+    padding: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover Effect */
+.menu ul li:hover {
+    background: #d483d4;
+    color: white;
+    border-radius: 5px;
+}
+
+/* Submenu styling */
+.submenu {
+    display: none;
+    padding-left: 20px;
+    border-radius: 5px;
+}
+
+.submenu a {
+    display: block;
+    color: White; 
+    text-decoration: none;
+    padding: 10px 0;
+    transition: background-color 0.3s ease;
+}
+
+/* Hamburger Button Styling */
+.hamburger {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    color: violet;
+    z-index: 1000;
+}
+
+/* When there is only one submenu item, make it like a normal link */
+.single-submenu {
+    background: #fff;
+    padding-left: 20px;
+}
