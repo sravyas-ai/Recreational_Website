@@ -5,32 +5,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const chefLinks = {
         gian: [
-            { name: "Profile", url: "https://example.com/gian-profile" },
-            { name: "Movies", url: "https://example.com/gian-movies" }
+            { name: "Gian- infamous for his singing in both real life and acting", url: "articles.html#article3" }
         ],
         hera: [
-            { name: "Profile", url: "https://example.com/hera-profile" },
-            { name: "Dramas", url: "https://example.com/hera-dramas" }
+            { name: "Leaked Video: Hera Confronts Zeus Over His Scandalous Affairs", url: "video3" },
+            { name: "Hera Confronts Zeus Over Scandalous Affairs", url: "articles.html#article7" }
         ],
         zeus: [
-            { name: "Profile", url: "https://example.com/zeus-profile" },
-            { name: "Mythological Roles", url: "https://example.com/zeus-roles" }
+            { name: "Hera Confronts Zeus Over Scandalous Affairs", url: "articles.html#article7" },
+            { name: "Leaked Video: Hera Confronts Zeus Over His Scandalous Affairs", url: "video3" }
         ],
         bean: [
-            { name: "Profile", url: "https://example.com/bean-profile" },
-            { name: "Comedy Shows", url: "https://example.com/bean-comedy" }
+            { name: "Mr.Bean thinks that electrical cars are more harmful?? ", url: "articles.html#article8" },
+            { name: "Mr.Bean Posts", url: "post.html#post9" }
         ],
         sirius: [
-            { name: "Profile", url: "https://example.com/sirius-profile" },
-            { name: "Marauders Movie", url: "https://example.com/sirius-movie" }
+            { name: "Sirius Black and Severus Snape talk it out", url: "articles.html#article2" }
         ],
         snape: [
-            { name: "Profile", url: "https://example.com/snape-profile" },
-            { name: "Movie Roles", url: "https://example.com/snape-roles" }
+            { name: "Sirius Black and Severus Snape talk it out", url: "articles.html#article2"}
         ],
         tom: [
-            { name: "Profile", url: "https://example.com/tom-profile" },
-            { name: "Cartoon Series", url: "https://example.com/tom-jerry" }
+            { name: "Shocking Truth: Tom and Jerry Are Actually Best Friends!", url: "video1" },
+            { name: "Tom's Post", url: "post.html#post8" }
         ]
     };
 
