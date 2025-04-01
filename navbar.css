@@ -1,77 +1,81 @@
-body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    color: white; /* Set default text color to white */
-    min-height: 100vh;
-    background-color: #f0f0f0; /* Background color for the whole page */
-}
+ .menu {
+            position: fixed;
+            top: 0;
+            left: -280px;
+            width: 280px;
+            height: 100%;
+              background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/41e2c129-7165-4160-812c-8f03079a4b87/dfkr6bh-f9af810b-b540-4b95-a026-7d59e5d4837e.png/v1/fill/w_1095,h_730,q_70,strp/a_more_colorful_aurora_borealis__northern_lights__by_aiartbysurya_dfkr6bh-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9ODU0IiwicGF0aCI6IlwvZlwvNDFlMmMxMjktNzE2NS00MTYwLTgxMmMtOGYwMzA3OWE0Yjg3XC9kZmtyNmJoLWY5YWY4MTBiLWI1NDAtNGI5NS1hMDI2LTdkNTllNWQ0ODM3ZS5wbmciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.ncdWiUK8VGbWaPMUwG8BL2jjWG8ZFGMtWad72effHWQ');
+            color: white;
+            padding-top: 60px;
+            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.2);
+            transition: left 0.4s ease-in-out;
+            overflow-y: auto;
+            border-top-right-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
 
-/* Side Menu Styling */
-.menu {
-    position: fixed;
-    top: 0;
-    left: -250px;
-    width: 250px;
-    height: 100%;
-    background-image: url('https://images4.alphacoders.com/134/1348896.jpeg'); /* Set the background image */
-    background-size: cover; /* Make the image cover the whole nav bar */
-    background-position: center; /* Center the image */
-    color: white; /* All text will be white */
-    padding-top: 60px;
-    border-radius: 10px 0 0 10px;
-    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
-    overflow-y: auto; /* Make the menu scrollable */
-    max-height: 100%; /* Ensures the menu doesn't exceed the page height */
-}
+        /* List Items */
+        .menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
 
-/* List Items */
-.menu ul {
-    list-style: none;
-    padding: 0;
-}
+        .menu ul li {
+            padding: 15px 20px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background 0.3s, padding-left 0.3s;
+            border-radius: 5px;
+        }
 
-.menu ul li {
-    padding: 15px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
+        .menu ul li:hover {
+            background: rgba(255, 255, 255, 0.2);
+            padding-left: 25px;
+        }
 
-/* Hover Effect */
-.menu ul li:hover {
-    background: #d483d4;
-    color: white;
-    border-radius: 5px;
-}
+        /* Submenu Styling */
+        .submenu {
+            display: none;
+            padding-left: 20px;
+            transition: max-height 0.3s ease-out;
+        }
 
-/* Submenu styling */
-.submenu {
-    display: none;
-    padding-left: 20px;
-    border-radius: 5px;
-}
+        .submenu a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 8px 0;
+            font-size: 16px;
+            transition: color 0.3s, padding-left 0.3s;
+        }
 
-.submenu a {
-    display: block;
-    color: White; 
-    text-decoration: none;
-    padding: 10px 0;
-    transition: background-color 0.3s ease;
-}
+        .submenu a:hover {
+            color: #FFD700;
+            padding-left: 10px;
+        }
 
-/* Hamburger Button Styling */
-.hamburger {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    font-size: 30px;
-    cursor: pointer;
-    color: violet;
-    z-index: 1000;
-}
+        /* Hamburger Button */
+        .hamburger {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 35px;
+            cursor: pointer;
+            color: white;
+            transition: transform 0.3s ease-in-out;
+        }
 
-/* When there is only one submenu item, make it like a normal link */
-.single-submenu {
-    background: #fff;
-    padding-left: 20px;
-}
+        .hamburger:hover {
+            transform: scale(1.1);
+        }
+
+        /* Active menu state */
+        .menu.active {
+            left: 0;
+        }
+
+        /* Rotate hamburger when menu is open */
+        .hamburger.active {
+            transform: rotate(90deg);
+        }
