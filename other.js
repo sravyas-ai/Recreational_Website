@@ -5,24 +5,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const chefLinks = {
         nami: [
-            { name: "Profile", url: "https://example.com/gian-profile" },
-            { name: "Movies", url: "https://example.com/gian-movies" }
+            { name: "Nami's Post", url: "post.html#post10" },
+            { name: "First Time in Corporate History! Three Employees Fired After Their Very First Lunch Break!", url: "articles.html#article11" }
         ],
         spiderMan: [
-            { name: "Profile", url: "https://example.com/hera-profile" },
-            { name: "Dramas", url: "https://example.com/hera-dramas" }
+            { name: "The Alchemy of Minds!", url: "interviews.html#interview3" },
+            { name: "Spiderman's Post", url: "post.html#post4" }
         ],
         TobioKageyama: [
-            { name: "Profile", url: "https://example.com/zeus-profile" },
-            { name: "Mythological Roles", url: "https://example.com/zeus-roles" }
+            { name: "Kageyama Tobio: Volleyball Prodigy or Locker Room Nightmare?", url: "articles.html#article10" }
         ],
         research: [
-            { name: "Profile", url: "https://example.com/bean-profile" },
-            { name: "Comedy Shows", url: "https://example.com/bean-comedy" }
+            { name: "The Alchemy of Minds: When Oppenheimer, Walter White, and Sherlock Holmes Redefined Reality", url: "articles.html#article12" },
+            { name: "Conspiracy theories from the pokemon world", url: "video8" },
+            { name: "The secret of scooby doo", url: "video9" },
+            { name: "The Simpsons: Predicting the Future would be like!This is one of the  Conspiracy theories.", url: "video11" },
+            { name: "The Alchemy of Minds!", url: "interview3" }
         ],
         Gru: [
-            { name: "Profile", url: "https://example.com/tom-profile" },
-            { name: "Cartoon Series", url: "https://example.com/tom-jerry" }
+            { name: "World’s favourite villain and comedian", url: "interviews.html#interview1" },
+            { name: "Gru's Post", url: "post.html#post3" }
         ]
     };
 
@@ -49,3 +51,4 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
