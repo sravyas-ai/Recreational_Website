@@ -48,7 +48,7 @@ button:hover {
 }
 </style>
 
-    <title>Booking Confirmation</title>
+    <title>Booked List</title>
     <script>
         function loadPreviousData() {
             let previousData = JSON.parse(localStorage.getItem("allUserData")) || [];
@@ -98,7 +98,7 @@ button:hover {
     </script>
 </head>
 <body onload="loadPreviousData()">
-    <h1>Booking Confirmation</h1>
+    <h1>Your Booking</h1>
     <table id="dataTable" border="1">
         <tr>
             <th>Name</th>
