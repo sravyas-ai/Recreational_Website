@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Fantasy Character Voting Polls</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
+        body {
+            font-family: 'Quicksand', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            background-color: #e6e6fa;
+        }
+        h1 {
+            color: #800080;
+            font-size: 2.5em;
+        }
+        .poll {
+            margin: 20px;
+            background-color: #f5f5f5;
+            padding: 20px;
+            border: 2px solid #d8bfd8;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(128, 0, 128, 0.2);
+        }
+        h3 {
+            color: #4b0082;
+            font-size: 1.5em;
+        }
+        .poll-options label {
+            display: block;
+            margin: 5px 0;
+            font-size: 1em;
+            color: #333;
+        }
+        .results {
+            margin-top: 15px;
+            font-size: 1em;
+            color: #4b0082;
+            font-weight: bold;
+            display: none;
+        }
+        .submit-btn {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #dda0dd;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+        }
+        .submit-btn:hover {
+            background-color: #ba55d3;
+        }
+    </style>
+    <script>
+        function submitVote(pollId) {
+            document.getElementById("results-" + pollId).style.display = "block";
+        }
+    </script>
+</head>
+<body>
+    <h1>Fantasy Character Voting Polls</h1>
+    <p>Cast your votes for these exciting scenarios and see what others think!</p>
+
+    <!-- Poll 1 -->
+    <div class="poll" id="poll-1">
+        <h3>Who would win in the ultimate cooking battle?</h3>
+        <form onsubmit="event.preventDefault(); submitVote('poll-1')">
+            <div class="poll-options">
+                <label><input type="radio" name="poll-1" value="Mukouda Tsuyoshi"> Mukouda Tsuyoshi</label>
+                <label><input type="radio" name="poll-1" value="Fenrir"> Fenrir</label>
+                <label><input type="radio" name="poll-1" value="Sui"> Sui</label>
+            </div>
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+        <div class="results" id="results-poll-1">Mukouda Tsuyoshi (14), Fenrir (20), Sui (15) <br> Most votes: Fenrir (20)</div>
+    </div>
+
+    <!-- Poll 2 -->
+    <div class="poll" id="poll-2">
+        <h3>If the world depended on a genius, who would save us?</h3>
+        <form onsubmit="event.preventDefault(); submitVote('poll-2')">
+            <div class="poll-options">
+                <label><input type="radio" name="poll-2" value="Walter White"> Walter White</label>
+                <label><input type="radio" name="poll-2" value="Robert Oppenheimer"> Robert Oppenheimer</label>
+                <label><input type="radio" name="poll-2" value="Sherlock Holmes"> Sherlock Holmes</label>
+            </div>
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+        <div class="results" id="results-poll-2">Walter White (25), Robert Oppenheimer (12), Sherlock Holmes (18) <br> Most votes: Walter White (25)</div>
+    </div>
+
+    <!-- Poll 3 -->
+    <div class="poll" id="poll-3">
+        <h3>Who would win in a mischievous competition?</h3>
+        <form onsubmit="event.preventDefault(); submitVote('poll-3')">
+            <div class="poll-options">
+                <label><input type="radio" name="poll-3" value="Mr. Bean"> Mr. Bean</label>
+                <label><input type="radio" name="poll-3" value="Tom and Jerry"> Tom and Jerry</label>
+                <label><input type="radio" name="poll-3" value="Gru"> Gru</label>
+            </div>
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+        <div class="results" id="results-poll-3">Mr. Bean (22), Tom and Jerry (30), Gru (17) <br> Most votes: Tom and Jerry (30)</div>
+    </div>
+
+    <!-- Poll 4 -->
+    <div class="poll" id="poll-4">
+        <h3>If you could pick the ultimate adventurer, who would it be?</h3>
+        <form onsubmit="event.preventDefault(); submitVote('poll-4')">
+            <div class="poll-options">
+                <label><input type="radio" name="poll-4" value="Goku"> Goku</label>
+                <label><input type="radio" name="poll-4" value="Luffy"> Luffy</label>
+                <label><input type="radio" name="poll-4" value="Nami"> Nami</label>
+            </div>
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+        <div class="results" id="results-poll-4">Goku (34), Luffy (26), Nami (12) <br> Most votes: Goku (34)</div>
+    </div>
+
+    <!-- Poll 5 -->
+    <div class="poll" id="poll-5">
+        <h3>If the world needed saving with magical power, who would be the best choice?</h3>
+        <form onsubmit="event.preventDefault(); submitVote('poll-5')">
+            <div class="poll-options">
+                <label><input type="radio" name="poll-5" value="Dr. Strange"> Dr. Strange</label>
+                <label><input type="radio" name="poll-5" value="Shazam"> Shazam</label>
+                <label><input type="radio" name="poll-5" value="Zeus"> Zeus</label>
+            </div>
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+        <div class="results" id="results-poll-5">Dr. Strange (28), Shazam (15), Zeus (22) <br> Most votes: Dr. Strange (28)</div>
+    </div>
+
+    <!-- Poll 6 -->
+    <div class="poll" id="poll-6">
+        <h3>Who would be the best partner in crime?</h3>
+        <form onsubmit="event.preventDefault(); submitVote('poll-6')">
+            <div class="poll-options">
+                <label><input type="radio" name="poll-6" value="Joker"> Joker</label>
+                <label><input type="radio" name="poll-6" value="Harley Quinn"> Harley Quinn</label>
+                <label><input type="radio" name="poll-6" value="Catwoman"> Catwoman</label>
+            </div>
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+        <div class="results" id="results-poll-6">Joker (33), Harley Quinn (24), Catwoman (18) <br> Most votes: Joker (33)</div>
+    </div>
+
+    <!-- Poll 7 -->
+    <div class="poll" id="poll-7">
+        <h3>Who would lead the perfect heist?</h3>
+        <form onsubmit="event.preventDefault(); submitVote('poll-7')">
+            <div class="poll-options">
+                <label><input type="radio" name="poll-7" value="Gru"> Gru</label>
+                <label><input type="radio" name="poll-7" value="Sherlock Holmes"> Sherlock Holmes</label>
+                <label><input type="radio" name="poll-7" value="Tom"> Tom</label>
+            </div>
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+        <div class="results" id="results-poll-7">Gru (19), Sherlock Holmes (30), Tom (23) <br> Most votes: Sherlock Holmes (30)</div>
+    </div>
+
+</body>
+</html>
