@@ -306,6 +306,22 @@ body {
     }
 }
 
+	 function bookSeats(eventName) {
+    // Get existing bookings from localStorage (if any)
+    let bookings = JSON.parse(localStorage.getItem('bookings')) || [];
+
+    // Add the new booking to the list (avoid duplicates)
+    if (!bookings.includes(eventName)) {
+        bookings.push(eventName);
+        localStorage.setItem('bookings', JSON.stringify(bookings));
+    }
+
+    // Show confirmation message
+    alert(`${eventName} has been booked successfully!`);
+}
+
+	 
+
     </script>
 
 
