@@ -5,20 +5,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const chefLinks = {
         sanji: [
-            { name: "Profile", url: "https://example.com/sanji-profile" },
-            { name: "Recipes", url: "https://example.com/sanji-recipes" }
+            { name: "World’s favourite villain and comedian", url: "articles.html#article1" },
+            { name: "Sanji's Post", url: "post.html#post6" }
         ],
         sukuna: [
-            { name: "Profile", url: "https://example.com/sukuna-profile" },
-            { name: "Dishes", url: "https://example.com/sukuna-dishes" }
+            { name: "World’s favourite villain and comedian", url: "articles.html#article1" }
         ],
         mukouda: [
-            { name: "Profile", url: "https://example.com/mukouda-profile" },
-            { name: "Secret Ingredients", url: "https://example.com/mukouda-ingredients" }
+            { name: "Mukouda's Post", url: "post.html#post5" },
+            { name: "The Legendary Cook with a Fenrir Companion", url: "articles.html#article5" }
         ],
         soma: [
-            { name: "Profile", url: "https://example.com/soma-profile" },
-            { name: "Competitions", url: "https://example.com/soma-competitions" }
+            { name: " The Scandals of Sōma Yukihira ", url: "articles.html#article9" }
         ]
     };
 
