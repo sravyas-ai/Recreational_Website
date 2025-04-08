@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Character</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 20px;
+            font-size: 3em;
+            color: #6a0572;
+        }
+
+        .question-container {
+            background: #fff;
+            margin: 20px auto;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+        }
+
+        .question {
+            margin-bottom: 20px;
+            font-size: 1.2em;
+        }
+
+        input[type="text"], button {
+            padding: 10px;
+            font-size: 1em;
+            margin: 5px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+        }
+
+        input[type="text"] {
+            border: 1px solid #ccc;
+            width: 80%;
+        }
+
+        button {
+            background-color: #6a0572;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #520b57;
+        }
+
+        .result {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .correct {
+            color: green;
+        }
+
+        .wrong {
+            color: red;
+        }
+
+        .answer-reveal {
+            color: #6a0572;
+        }
+    </style>
+</head>
+<body>
+    <h1>Guess the Character</h1>
+    
+    <div class="question-container">
+        <p class="question">1. Which Demon Slayer character carries a sword and fights for his sister, Nezuko?</p>
+        <input type="text" id="answer1" placeholder="Your Answer...">
+        <button onclick="checkAnswer(1, 'Tanjiro')">Submit</button>
+        <p class="result" id="result1"></p>
+    </div>
+    
+    <div class="question-container">
+        <p class="question">2. Which character from "Harry Potter" is known for being a brave yet enigmatic potions master?</p>
+        <input type="text" id="answer2" placeholder="Your Answer...">
+        <button onclick="checkAnswer(2, 'Snape')">Submit</button>
+        <p class="result" id="result2"></p>
+    </div>
+    
+    <div class="question-container">
+        <p class="question">3. Who is a Saiyan warrior known for his iconic yellow hair transformation?</p>
+        <input type="text" id="answer3" placeholder="Your Answer...">
+        <button onclick="checkAnswer(3, 'Goku')">Submit</button>
+        <p class="result" id="result3"></p>
+    </div>
+    
+    <div class="question-container">
+        <p class="question">4. Who is the mischievous Japanese boy known for his antics and funny personality?</p>
+        <input type="text" id="answer4" placeholder="Your Answer...">
+        <button onclick="checkAnswer(4, 'Shin Chan')">Submit</button>
+        <p class="result" id="result4"></p>
+    </div>
+    
+    <div class="question-container">
+        <p class="question">5. Which Marvel character is a sorcerer wielding the Eye of Agamotto?</p>
+        <input type="text" id="answer5" placeholder="Your Answer...">
+        <button onclick="checkAnswer(5, 'Doctor Strange')">Submit</button>
+        <p class="result" id="result5"></p>
+    </div>
+
+    <script>
+        let attempts = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+
+        function checkAnswer(questionNumber, correctAnswer) {
+            const userAnswer = document.getElementById(`answer${questionNumber}`).value.trim();
+            const result = document.getElementById(`result${questionNumber}`);
+
+            if (attempts[questionNumber] < 2) {
+                if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+                    result.textContent = "Correct!";
+                    result.className = "result correct";
+                } else {
+                    attempts[questionNumber]++;
+                    result.textContent = `Wrong answer. You have ${2 - attempts[questionNumber]} attempt(s) left.`;
+                    result.className = "result wrong";
+                }
+            } else {
+                result.textContent = `Correct answer is: "${correctAnswer}"`;
+                result.className = "result answer-reveal";
+            }
+        }
+    </script>
+</body>
+</html>
