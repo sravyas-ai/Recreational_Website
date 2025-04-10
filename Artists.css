@@ -4,7 +4,7 @@ body {
             font-family: 'Arial', sans-serif;
             background: #f8d7da; 
             display: flex;
-            min-height: 100vh;
+            height: 100vh;
         }
         .sidebar {
             width: 500px;
