@@ -25,7 +25,7 @@ body {
     font-weight: bold;
     color: black;
     padding: 20px;
-    height: calc(100vh - 60px); /* Adjusted for footer height */
+    height: calc(100vh - 60px); 
     position: fixed;
 }
 
@@ -44,7 +44,7 @@ body {
     position: relative;
     border-radius: 10px;
     cursor: pointer;
-    overflow: hidden; /* Prevents image from overflowing on hover */
+    overflow: hidden; 
 }
 
 .card img {
