@@ -1,101 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Page with Buttons</title>
-    <style>
-        /* General Styling */
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to bottom, #ffadc6, #ffe7a9);
-            color: #333;
-        }
-.footer {
-  background: transparent;
-  color: white;
-  text-align: center;
-  padding: 20px;
-}
-        /* Header Styling */
-        header {
-            position: relative;
-            padding: 10px 20px;
-            background: rgba(255, 255, 255, 0.8);
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web Page with Buttons</title>
+  <style>
+    /* General Styling */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom right, #6a11cb, #2575fc); /* Purple to Blue */
+      color: #f0f0f0;
+	background-image: url('https://i.pinimg.com/736x/64/14/f1/6414f10a103fc71f18578580b3f7a118.jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+ 	background-size: 100% 100%;
+	
+    }
 
-        .button-container {
-            position: absolute;
-            top: 10px;
-            right: 20px;
-        }
+    .footer {
+      background: transparent;
+      color: #e0e0e0;
+      text-align: center;
+      padding: 20px;
+    }
 
-        /* Buttons Styling */
-        a.button {
-            text-decoration: none;
-            display: inline-block;
-            padding: 10px 20px;
-            font-size: 16px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-left: 10px;
-            color: white;
-        }
+    /* Header Styling */
+    header {
+      position: relative;
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
 
-        .login-btn {
-            background-color: #84c5e6;
-        }
+    .button-container {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+    }
 
-        .login-btn:hover {
-            background-color: #65b3d6;
-        }
+    /* Buttons Styling */
+    a.button {
+      text-decoration: none;
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-left: 10px;
+      color: white;
+      transition: background-color 0.3s ease;
+    }
 
-        .signin-btn {
-            background-color: #f67280;
-        }
+    .login-btn {
+      background-color: #5b86e5;
+    }
 
-        .signin-btn:hover {
-            background-color: #e76070;
-        }
+    .login-btn:hover {
+      background-color: #4a70d1;
+    }
 
-        /* Main Content Styling */
-        main {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: calc(100vh - 50px);
-            text-align: center;
-        }
+    .signin-btn {
+      background-color: #8e54e9;
+    }
 
-        h1 {
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
+    .signin-btn:hover {
+      background-color: #7a3fdc;
+    }
 
-        p {
-            font-size: 18px;
-            color: #555;
-        }
-    </style>
+    /* Main Content Styling */
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: calc(100vh - 50px);
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: #ffffff;
+    }
+
+    p {
+      font-size: 18px;
+      color: #dddddd;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <!-- Container for buttons at the top right -->
-        <div class="button-container">
-            <a href="register2.htm" class="button login-btn">Login</a>
-            <a href="registration.html" class="button signin-btn">Sign In</a>
-        </div>
-    </header>
-    <main>
-        <h1>Welcome to the Vibrant World!</h1>
-        <p>Please sign in or log in to know more about the upcoming interesting events</p>
-    </main>
-    <footer class="footer">
+  <header>
+    <div class="button-container">
+      <a href="register2.htm" class="button login-btn">Login</a>
+      <a href="registration.html" class="button signin-btn">Sign In</a>
+    </div>
+  </header>
+  <main>
+    <h1>Welcome to Aurora World!</h1>
+    <p>Please sign in or log in to know more about the upcoming interesting events</p>
+  </main>
+  <footer class="footer">
     <p>&copy; 2025 Recreational Channel | All Rights Reserved</p>
-</footer>
+  </footer>
 </body>
 </html>
