@@ -3,41 +3,58 @@
 <head>
 <style>
 body {
-       font-family: Papyrus;
-     background-image: url('https://wallpapercave.com/wp/wp2165086.jpg');
-            background-size: cover;
-            background-attachment: fixed;
-           display: flex;
+    font-family: Papyrus;
+    background-image: url('https://wallpapercave.com/wp/wp2165086.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
     flex-direction: column;
-min-height: 100vh;
+    min-height: 100vh;
     color: white;
     text-align: center;
     padding: 20px;
+    margin: 0;
 }
-       .footer {
-  background: transparent;
-  color: white;
-  text-align: center;
-  padding: 20px;
+
+.container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
 }
+
+.footer {
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    margin-top: auto;
+}
+
 h1 {
     font-size: 36px;
     margin-bottom: 20px;
 }
+
 table {
     width: 60%;
-    margin: auto;
+    margin: 20px auto;
     border-collapse: separate;
     border-spacing: 10px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 15px;
 }
+
 td, th {
     padding: 10px;
     border-radius: 10px;
     text-align: center;
     border: 1px solid rgba(255, 255, 255, 0.3);
 }
+
 button {
     padding: 10px 15px;
     border: none;
@@ -47,15 +64,67 @@ button {
     font-weight: bold;
     cursor: pointer;
     transition: 0.3s;
-    margin-top: 20px;
-    margin-right: 10px;
+    margin: 20px 10px 0 0;
 }
+
 button:hover {
     background: #222;
     color: white;
 }
+
+/* Navbar styles */
+.hamburger {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 1000;
+    color: white;
+}
+
+.menu {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    transition: left 0.3s;
+    z-index: 999;
+    padding-top: 60px;
+}
+
+.menu.active {
+    left: 0;
+}
+
+.menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+.menu li {
+    padding: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+.submenu {
+    display: none;
+    padding-left: 20px;
+}
+
+.submenu li {
+    padding: 10px;
+    border-bottom: none;
+}
 </style>
- <link rel="stylesheet" href="navbar.css">
     <title>Booked List</title>
     <script>
         function loadPreviousData() {
@@ -103,57 +172,7 @@ button:hover {
         function redirectToProfile() {
             window.location.href = "userprofile.htm";
         }
-    </script>
-  <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
-    <div class="menu" id="menu">
-        <ul>
-            <!-- Topic with no submenu -->
-            <li onclick="toggleSubmenu('topic1')">
-                
-                    <a href="Home_Page.html"  style="color: white; text-decoration: none;" onmouseover="this.style.textDecoration='none';" onmouseout="this.style.textDecoration='none';" onfocus="this.style.textDecoration='none';" onblur="this.style.textDecoration='none';">Home Page</a>            </li>
-            <!-- Topic with submenu -->
-            <li onclick="toggleSubmenu('topic2')">
-                    <a href="latestnews.html" style="color: white; text-decoration: none;" onmouseover="this.style.textDecoration='none';" onmouseout="this.style.textDecoration='none';" onfocus="this.style.textDecoration='none';" onblur="this.style.textDecoration='none';">Latest News</a> 
-            </li>
 
-            <li onclick="toggleSubmenu('topic3')">Artists ▼
-                <ul class="submenu" id="topic3">
-                    <li><a href="artistic.html">Artistic Page</a></li>
-                    <li><a href="Chefs.html">Chef</a></li>
-                    <li><a href="music.html">Music</a></li>
-                    <li><a href="comedy.html">Comedy</a></li>
-                    <li><a href="other.html">Others</a></li>
-                </ul>
-            </li>
-
-            <li onclick="toggleSubmenu('topic4')">
-                   <a href="schedule.html" style="color: white; text-decoration: none;" onmouseover="this.style.textDecoration='none';" onmouseout="this.style.textDecoration='none';" onfocus="this.style.textDecoration='none';" onblur="this.style.textDecoration='none';">Schedule</a>               
-            </li>
-
-            <li onclick="toggleSubmenu('topic5')">Highlights▼
-                <ul class="submenu" id="topic5">
-                    <li><a href="Highlight.html">Highlights Page</a></li>
-                    <li><a href="gallery.html">Gallery</a></li>
-                    <li><a href="articles.html">Articles</a></li>
-                    <li><a href="interview.html">Interviews</a></li>
-                    <li><a href="Trending.html">Trending</a></li>
-                    <li><a href="post.html">Media Post</a></li>
-                    <li><a href="polls.html">Aurora Polls</a></li>
-                      <li><a href="cookingchefs.htm">Aurora chefs</a></li>
-                     <li><a href="guesschar.htm">Aurora quest</a></li>
-                </ul>
-            </li>
-
-            <li onclick="toggleSubmenu('topic6')">User Profile ▼
-                <ul class="submenu" id="topic6">
-                    <li><a href="userprofileuid.html">User Profile</a></li>
-                    <li><a href="bookedlist.html">BookList</a></li>
-                    <li><a href="wishlist.html">WishList</a></li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-  <script>
         function toggleMenu() {
             const menu = document.getElementById('menu');
             const hamburger = document.querySelector('.hamburger');
@@ -176,28 +195,71 @@ button:hover {
             }
         }
     </script>
-
-    
 </head>
 <body onload="loadPreviousData()">
-    <h1>Your Booking</h1>
-    <table id="dataTable" border="1">
-        <tr>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Address</th>
-            <th>Email</th>
-            <th>Booked Seats</th>
-        </tr>
-    </table>
-    <button onclick="clearData()">Clear All Data</button>
-    <button onclick="redirectToProfile()">Go to Profile</button>
+    <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+    <div class="menu" id="menu">
+        <ul>
+            <li onclick="toggleSubmenu('topic1')">
+                <a href="Home_Page.html" style="color: white; text-decoration: none;">Home Page</a>
+            </li>
+            <li onclick="toggleSubmenu('topic2')">
+                <a href="latestnews.html" style="color: white; text-decoration: none;">Latest News</a> 
+            </li>
+            <li onclick="toggleSubmenu('topic3')">Artists ▼
+                <ul class="submenu" id="topic3">
+                    <li><a href="artistic.html">Artistic Page</a></li>
+                    <li><a href="Chefs.html">Chef</a></li>
+                    <li><a href="music.html">Music</a></li>
+                    <li><a href="comedy.html">Comedy</a></li>
+                    <li><a href="other.html">Others</a></li>
+                </ul>
+            </li>
+            <li onclick="toggleSubmenu('topic4')">
+                <a href="schedule.html" style="color: white; text-decoration: none;">Schedule</a>               
+            </li>
+            <li onclick="toggleSubmenu('topic5')">Highlights▼
+                <ul class="submenu" id="topic5">
+                    <li><a href="Highlight.html">Highlights Page</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="articles.html">Articles</a></li>
+                    <li><a href="interview.html">Interviews</a></li>
+                    <li><a href="Trending.html">Trending</a></li>
+                    <li><a href="post.html">Media Post</a></li>
+                    <li><a href="polls.html">Aurora Polls</a></li>
+                    <li><a href="cookingchefs.htm">Aurora chefs</a></li>
+                    <li><a href="guesschar.htm">Aurora quest</a></li>
+                </ul>
+            </li>
+            <li onclick="toggleSubmenu('topic6')">User Profile ▼
+                <ul class="submenu" id="topic6">
+                    <li><a href="userprofileuid.html">User Profile</a></li>
+                    <li><a href="bookedlist.html">BookList</a></li>
+                    <li><a href="wishlist.html">WishList</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
 
+    <div class="container">
+        <h1>Your Booking</h1>
+        <table id="dataTable" border="1">
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Address</th>
+                <th>Email</th>
+                <th>Booked Seats</th>
+            </tr>
+        </table>
+        <div>
+            <button onclick="clearData()">Clear All Data</button>
+            <button onclick="redirectToProfile()">Go to Profile</button>
+        </div>
+    </div>
 
-<footer class="footer">
-    <p>&copy; 2025 Recreational Channel | All Rights Reserved</p>
-</footer>
-    
-    
+    <footer class="footer">
+        <p>&copy; 2025 Recreational Channel | All Rights Reserved</p>
+    </footer>
 </body>
-</html>   
+</html>
