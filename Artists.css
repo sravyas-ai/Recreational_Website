@@ -1,58 +1,46 @@
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Papyrus;
-    background: #f8d7da;
-    min-height: 100vh;
-    position: relative;
-    padding-bottom: 60px; 
-}
-.container-wrapper {
-    flex: 1;
-    display: flex;
-    position: relative; 
-    margin-bottom: 60px; 
-}       
-.footer {
-    background: #f8d7da;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    position: fixed;
-    bottom: -100px;
-    width: 100%;
-    z-index: 10;
-    transition: bottom 0.3s ease-in-out;
-    border-top: 1px solid #d1a7aa;
-}
-body.scrolled-to-bottom .footer {
-    bottom: 0;
-}
+            margin: 0;
+            padding: 0;
+               font-family: Papyrus;
+            background: #f8d7da; 
+            display: flex;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
         
-       .sidebar {
-    width: 500px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    writing-mode: horizontal-rl; 
-    text-orientation: mixed;
-    font-size: 36px;
-    font-weight: bold;
-    color: black;
-    padding: 20px;
-    position: fixed;
-    height: 100vh;
-    top: 0;
-}
-.container {
-    flex-grow: 1;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    padding: 50px;
-    margin-left: 500px; 
-    width: calc(100% - 500px);
-}:calc(100% - 500px);
+        .container-wrapper {
+            flex: 1;
+        }
+        
+        .footer {
+            margin-top: auto;
+        }
+        
+        .sidebar {
+            width: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            writing-mode: horizontal-rl; 
+            text-orientation: mixed;
+            font-size: 36px;
+            font-weight: bold;
+            color: black;
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+        }
+        .container {
+            flex-grow: 1;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            padding: 50px;
+            margin-left: 700px; 
+            width: calc(100% - 500px);
         }
         .card {
             position: relative;
