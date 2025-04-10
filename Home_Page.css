@@ -7,6 +7,7 @@ body {
     background-size: 400% 400%;
     animation: auroraMove 12s infinite linear;
     color: white;
+    min-height: 100vh;
     text-align: center;
 }
 h1 {
