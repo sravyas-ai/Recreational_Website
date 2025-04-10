@@ -1,117 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-    <style>
-        /* Your CSS remains the same */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #e4f2f7;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-.footer {
-  background: transparent;
-  color: white;
-  text-align: center;
-  padding: 20px;
-}
-        .form-container {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            text-align: center;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e4f2f7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-image: url('https://i.pinimg.com/736x/05/ed/b2/05edb2fbdd5db2713f76e239bb77d4f5.jpg');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: 100% 100%;
+    }
 
-        h1 {
-            margin-bottom: 20px;
-            font-size: 24px;
-        }
+    .form-container {
+      background: #e0e7ef; /* soft grey-blue */
+      padding: 30px 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      width: 320px;
+      text-align: center;
+      border: 1px solid #c1d0dd;
+    }
 
-        label {
-            display: block;
-            margin: 10px 0 5px;
-            text-align: left;
-        }
+    h1 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: #2c3e50;
+    }
 
-        input {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
+    label {
+      display: block;
+      margin: 12px 0 6px;
+      text-align: left;
+      color: #2c3e50;
+      font-weight: bold;
+    }
 
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #ffb3b3;
-            border: none;
-            color: white;
-            font-size: 16px;
-            border-radius: 4px;
-            cursor: pointer;
-        }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #a5b8c8;
+      border-radius: 6px;
+      background-color: #f5f9fc;
+      box-sizing: border-box;
+    }
 
-        button:hover {
-            background-color: #ff9999;
-        }
-        footer {
-          background: rgba(255, 255, 255, 0.2);
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.3);
-    margin-top: 20px;  
-   text-align: center;
-        }
-    </style>
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #6c93c4;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #577aa8;
+    }
+  </style>
 </head>
 <body>
-    <div class="form-container">
-        <h1>Login</h1>
-        <form id="loginForm">
-            <label for="loginUsername">Username:</label>
-            <input type="text" id="loginUsername" name="loginUsername" required>
-            
-            <label for="loginPassword">Password:</label>
-            <input type="password" id="loginPassword" name="loginPassword" required>
-            
-            <button type="submit">Login</button>
-        </form>
-    </div>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Retrieve stored credentials
-            const savedUsername = localStorage.getItem('username');
-            const savedPassword = localStorage.getItem('password');
+  <div class="form-container">
+    <h1>Login</h1>
+    <form id="loginForm">
+      <label for="loginUsername">Username:</label>
+      <input type="text" id="loginUsername" name="loginUsername" required />
 
-            // Auto-fill inputs if credentials are available
-            if (savedUsername && savedPassword) {
-                document.getElementById('loginUsername').value = savedUsername;
-                document.getElementById('loginPassword').value = savedPassword;
-            }
+      <label for="loginPassword">Password:</label>
+      <input type="password" id="loginPassword" name="loginPassword" required />
 
-            // Handle login submission and redirect
-            document.getElementById('loginForm').addEventListener('submit', function(event) {
-                event.preventDefault(); // Prevent form submission
+      <button type="submit">Login</button>
+    </form>
+  </div>
 
-                // Display success message (optional)
-                alert('Login Successful!');
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const savedUsername = localStorage.getItem('username');
+      const savedPassword = localStorage.getItem('password');
 
-                // Redirect to another page
-                window.location.href = 'Home_Page.html'; 
-            });
-        });
-    </script>
-<footer class="footer">
-    <p>&copy; 2025 Recreational Channel | All Rights Reserved</p>
-</footer>
+      if (savedUsername && savedPassword) {
+        document.getElementById('loginUsername').value = savedUsername;
+        document.getElementById('loginPassword').value = savedPassword;
+      }
+
+      document.getElementById('loginForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+        alert('Login Successful!');
+        window.location.href = 'welcome.html';
+      });
+    });
+  </script>
 </body>
 </html>
