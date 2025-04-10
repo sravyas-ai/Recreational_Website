@@ -1,4 +1,153 @@
-<!DOCTYPE html>
+body {
+            margin: 0;
+            padding: 0;
+               font-family: Papyrus;
+            background: #f8d7da; 
+            display: flex;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+        
+        .container-wrapper {
+            flex: 1;
+        }
+        
+        .footer {
+            margin-top: auto;
+        }
+        
+        .sidebar {
+            width: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            writing-mode: horizontal-rl; 
+            text-orientation: mixed;
+            font-size: 36px;
+            font-weight: bold;
+            color: black;
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+        }
+        .container {
+            flex-grow: 1;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            padding: 50px;
+            margin-left: 700px; 
+            width: calc(100% - 500px);
+        }
+        .card {
+            position: relative;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .card img {
+              width: 300px;   
+              object-fit: cover;
+              border-radius: 10px;
+              transition: transform 0.3s ease-in-out;
+        }
+        .card:hover img {
+            transform: scale(1.1);
+        }
+        .description {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            font-size: 16px;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            border-radius: 0 0 10px 10px;
+        }
+        .card:hover .description {
+            opacity: 1;
+        }
+
+
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    max-width: 500px;
+    background: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    z-index: 1000;
+    border-radius: 10px;
+}
+
+.popup-content {
+    position: relative;
+    text-align: center;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.popup::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); 
+    backdrop-filter: blur(5px); 
+    z-index: 1000;
+}
+
+.popup-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    max-width: 500px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1001; 
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+}---this is the css page and <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,6 +155,9 @@
     <title>Chefs</title>
     <link rel="stylesheet" href="Artists.css">
     <link rel="stylesheet" href="navbar.css">
+    <style>
+
+    </style>
 </head>
 <body>
 
@@ -13,11 +165,13 @@
     <div class="menu" id="menu">
         <ul>
             <li onclick="toggleSubmenu('topic1')">
-                <a href="Home_Page.html" style="color: white; text-decoration: none;">Home Page</a>
-            </li>
+                
+                    <a href="Home_Page.html"  style="color: white; text-decoration: none;" onmouseover="this.style.textDecoration='none';" onmouseout="this.style.textDecoration='none';" onfocus="this.style.textDecoration='none';" onblur="this.style.textDecoration='none';">Home Page</a>            </li>
+            <!-- Topic with submenu -->
             <li onclick="toggleSubmenu('topic2')">
-                <a href="latestnews.html" style="color: white; text-decoration: none;">Latest News</a> 
+                    <a href="latestnews.html" style="color: white; text-decoration: none;" onmouseover="this.style.textDecoration='none';" onmouseout="this.style.textDecoration='none';" onfocus="this.style.textDecoration='none';" onblur="this.style.textDecoration='none';">Latest News</a> 
             </li>
+
             <li onclick="toggleSubmenu('topic3')">Artists ▼
                 <ul class="submenu" id="topic3">
                     <li><a href="artistic.html">Artistic Page</a></li>
@@ -27,9 +181,11 @@
                     <li><a href="other.html">Others</a></li>
                 </ul>
             </li>
+
             <li onclick="toggleSubmenu('topic4')">
-                <a href="schedule.html" style="color: white; text-decoration: none;">Schedule</a>               
+                   <a href="schedule.html" style="color: white; text-decoration: none;" onmouseover="this.style.textDecoration='none';" onmouseout="this.style.textDecoration='none';" onfocus="this.style.textDecoration='none';" onblur="this.style.textDecoration='none';">Schedule</a>               
             </li>
+
             <li onclick="toggleSubmenu('topic5')">Highlights▼
                 <ul class="submenu" id="topic5">
                     <li><a href="Highlight.html">Highlights Page</a></li>
@@ -39,10 +195,11 @@
                     <li><a href="trending.html">Trending</a></li>
                     <li><a href="post.html">Media Post</a></li>
                     <li><a href="polls.html">Aurora Polls</a></li>
-                    <li><a href="cookingchefs.html">Aurora chefs</a></li>
-                    <li><a href="guesschar.html">Aurora quest</a></li>
+                      <li><a href="cookingchefs.html">Aurora chefs</a></li>
+                     <li><a href="guesschar.html">Aurora quest</a></li>
                 </ul>
             </li>
+
             <li onclick="toggleSubmenu('topic6')">User Profile ▼
                 <ul class="submenu" id="topic6">
                     <li><a href="userprofileuid.html">User Profile</a></li>
@@ -52,8 +209,32 @@
             </li>
         </ul>
     </div>
+  <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            const hamburger = document.querySelector('.hamburger');
 
-    <div class="main-content">
+            if (menu.classList.contains('active')) {
+                menu.classList.remove('active');
+                hamburger.classList.remove('active');
+            } else {
+                menu.classList.add('active');
+                hamburger.classList.add('active');
+            }
+        }
+
+        function toggleSubmenu(id) {
+            const submenu = document.getElementById(id);
+            if (submenu.style.display === "block") {
+                submenu.style.display = "none";
+            } else {
+                submenu.style.display = "block";
+            }
+        }
+    </script>
+
+
+    <div class="container-wrapper">
         <div class="sidebar">Chefs</div>
         <div class="container">
             <div class="card">
