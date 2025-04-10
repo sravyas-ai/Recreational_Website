@@ -5,7 +5,20 @@ body {
             background: #f8d7da; 
             display: flex;
             height: 100vh;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
         }
+        
+        .container-wrapper {
+            flex: 1;
+        }
+        
+        .footer {
+            margin-top: auto;
+        }
+        
         .sidebar {
             width: 500px;
             display: flex;
