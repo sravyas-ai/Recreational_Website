@@ -5,14 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chefs</title>
     <link rel="stylesheet" href="Artists.css">
-     <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="navbar.css">
+    <style>
+
+    </style>
 </head>
 <body>
 
   <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
     <div class="menu" id="menu">
         <ul>
-            <!-- Topic with no submenu -->
             <li onclick="toggleSubmenu('topic1')">
                 
                     <a href="Home_Page.html"  style="color: white; text-decoration: none;" onmouseover="this.style.textDecoration='none';" onmouseout="this.style.textDecoration='none';" onfocus="this.style.textDecoration='none';" onblur="this.style.textDecoration='none';">Home Page</a>            </li>
@@ -83,48 +85,50 @@
     </script>
 
 
-    
-    <div class="sidebar">Chefs</div>
-    <div class="container">
-        <div class="card">
-            <img src="chef1.jpg" alt="Sanji">
-            <div class="description">
-                Sanji Vinsmoke is also known as the "Black Foot" in the world of culinary foods...
-                <span class="read-more" data-chef="sanji">read more</span>
+    <div class="container-wrapper">
+        <div class="sidebar">Chefs</div>
+        <div class="container">
+            <div class="card">
+                <img src="chef1.jpg" alt="Sanji">
+                <div class="description">
+                    Sanji Vinsmoke is also known as the "Black Foot" in the world of culinary foods...
+                    <span class="read-more" data-chef="sanji">read more</span>
+                </div>
+            </div>
+            <div class="card">
+                <img src="chef2.jpg" alt="Sukuna">
+                <div class="description">
+                    Sukuna Ryoumrn, who is known as the "King of Curses"...
+                    <span class="read-more" data-chef="sukuna">read more</span>
+                </div>
+            </div>
+            <div class="card">
+                <img src="chef3.jpg" alt="Mukouda Tsuyoshi">
+                <div class="description">
+                    Mukouda Tsuyoshi is known for his legendary cooking skills...
+                    <span class="read-more" data-chef="mukouda">read more</span>
+                </div>
+            </div>
+            <div class="card">
+                <img src="chef4.jpg" alt="Soma Yukihara">
+                <div class="description">
+                    Soma Yukihara is recently being known for his culinary skills despite being a student...
+                    <span class="read-more" data-chef="soma">read more</span>
+                </div>
             </div>
         </div>
-        <div class="card">
-            <img src="chef2.jpg" alt="Sukuna">
-            <div class="description">
-                Sukuna Ryoumrn, who is known as the "King of Curses"...
-                <span class="read-more" data-chef="sukuna">read more</span>
-            </div>
-        </div>
-        <div class="card">
-            <img src="chef3.jpg" alt="Mukouda Tsuyoshi">
-            <div class="description">
-                Mukouda Tsuyoshi is known for his legendary cooking skills...
-                <span class="read-more" data-chef="mukouda">read more</span>
-            </div>
-        </div>
-        <div class="card">
-            <img src="chef4.jpg" alt="Soma Yukihara">
-            <div class="description">
-                Soma Yukihara is recently being known for his culinary skills despite being a student...
-                <span class="read-more" data-chef="soma">read more</span>
+
+        <div id="popup-overlay" class="popup-overlay">
+            <div id="popup-box" class="popup-box">
+                <span class="close-btn">&times;</span>
+                <div id="popup-content"></div>
             </div>
         </div>
     </div>
 
-    <div id="popup-overlay" class="popup-overlay">
-        <div id="popup-box" class="popup-box">
-            <span class="close-btn">&times;</span>
-            <div id="popup-content"></div>
-        </div>
-    </div>
-<footer class="footer">
-    <p>&copy; 2025 Recreational Channel | All Rights Reserved</p>
-</footer>
+    <footer class="footer">
+        <p>&copy; 2025 Recreational Channel | All Rights Reserved</p>
+    </footer>
     <script src="chef.js"></script>
 </body>
 </html>
