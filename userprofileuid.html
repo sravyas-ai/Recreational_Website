@@ -6,100 +6,98 @@
     <title>User Profile</title>
     <style>
         /* General Styling */
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to bottom, #ffe5d9, #fff2eb); /* Peach pastel gradient */
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-.footer {
-  background: transparent;
-  color: white;
-  text-align: center;
-  padding: 20px;
-}
-        /* Header Styling */
-        header {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-            background-color: #ffc2a1; /* Peach pastel for header */
-            color: white;
-            text-align: center;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        }
+       body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #e0e7ff, #f3f4ff);
+      color: #2c3e50;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+	background-image: url('https://i.pinimg.com/736x/64/63/39/6463399ebadc3ed8401c1325ac6dfe35.jpg');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: 100% 100%;
+    }
 
-        header img {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%; /* Circular user icon */
-            background-color: white; /* White background for icon */
-            margin-bottom: 10px;
-        }
+    header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      background-color: #8e9ae3;
+      color: white;
+      text-align: center;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
 
-        header h1 {
-            margin: 0;
-            font-size: 24px;
-        }
+    header img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background-color: white;
+      margin-bottom: 10px;
+    }
 
-        header p {
-            margin: 5px 0 0 0;
-            font-size: 16px;
-            color: #ffe5d9; /* Lighter text for description */
-        }
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
 
-        /* Main Content Styling */
-        main {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
+    header p {
+      margin: 5px 0 0 0;
+      font-size: 16px;
+      color: #e8eaff;
+    }
 
-        .description {
-            max-width: 600px;
-            text-align: center;
-            margin-bottom: 30px;
-            color: #555;
-            font-size: 18px;
-        }
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
 
-        /* Button Styling */
-        .button-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
+    .description {
+      max-width: 600px;
+      text-align: center;
+      margin-bottom: 30px;
+      color: #444;
+      font-size: 18px;
+    }
 
-        a.button {
-            text-decoration: none;
-            padding: 15px 25px;
-            font-size: 16px;
-            background-color: #ffb07c; /* Soft peach color for buttons */
-            color: white;
-            border-radius: 5px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s, transform 0.2s;
-        }
+    .button-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
 
-        a.button:hover {
-            background-color: #ff9867; /* Darker peach on hover */
-            transform: scale(1.05); /* Slight zoom effect on hover */
-        }
+    a.button {
+      text-decoration: none;
+      padding: 15px 25px;
+      font-size: 16px;
+      background-color: #7f8ce2;
+      color: white;
+      border-radius: 5px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s, transform 0.2s;
+    }
 
-        .wishlist-btn {
-            background-color: #ffc2a1; /* Light pastel peach */
-        }
+    a.button:hover {
+      background-color: #6d7ad6;
+      transform: scale(1.05);
+    }
 
-        .wishlist-btn:hover {
-            background-color: #ffb492; /* Peach hover for wishlist */
-        }
+    .wishlist-btn {
+      background-color: #a0aee8;
+    }
+
+    .wishlist-btn:hover {
+      background-color: #8d9fe0;
+    }
+
+
 
         /* Footer Styling */
         footer {
