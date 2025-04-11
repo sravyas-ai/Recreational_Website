@@ -86,10 +86,10 @@
 
         .footer {
             background: transparent;
-            color: #333; /* Changed to dark color for visibility */
+            color: #333;
             text-align: center;
             padding: 20px;
-            margin-top: auto; /* This pushes the footer to the bottom */
+            margin-top: auto; 
         }
     </style>
 </head>
@@ -116,23 +116,22 @@
 
     <script>
         function saveCredentials(event) {
-            event.preventDefault(); // Prevent form submission
-
-            // Retrieve user inputs
+            event.preventDefault(); 
+            
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
 
-            // Save credentials to local storage
+            
             localStorage.setItem('username', username);
             localStorage.setItem('password', password);
 
-            // Show popup
+           
             const popup = document.getElementById('popup');
             popup.style.display = 'block';
 
             setTimeout(() => {
                 popup.style.display = 'none';
-                // Redirect to login page
+               
                 window.location.href = 'Home_Page.html';
             }, 2000);
         }
