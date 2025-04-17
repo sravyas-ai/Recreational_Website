@@ -5,34 +5,52 @@
     <style>
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Papyrus', Arial, sans-serif; /* Changed font to Papyrus */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full viewport height */
+            background: linear-gradient(to bottom right, #7f8cff, #d1c4e9); /* Gradient background */
+            color: #333; /* Text color */
+        }
+
+        .content {
             text-align: center;
             padding: 20px;
-            background-color: #ffe5d9;
-            min-height: 100vh;
+            background-color: #C7CDFC; /* Light blue background for better harmony */
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Box shadow for a floating card effect */
+            color: #333; /* Text color for readability */
         }
-.footer {
-  background: transparent;
-  color: white;
-  text-align: center;
-  padding: 20px;
-}
+
         h1 {
-            color: #84c5e6;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #4A90E2; /* Blue text to stand out on light background */
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
         }
 
         a {
             text-decoration: none;
             padding: 15px 25px;
             color: white;
-            background-color: #f67280;
-            border-radius: 5px;
-            margin-top: 20px;
+            background-color: #8E24AA; /* Vibrant button color */
+            border-radius: 25px; /* Rounded buttons */
+            margin: 15px;
+            font-size: 1em;
+            font-weight: bold;
             display: inline-block;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); /* Button shadow for depth */
+            transition: all 0.3s ease;
         }
 
         a:hover {
-            background-color: #e76070;
+            background-color: #5E35B1; /* Darker shade on hover */
+            transform: scale(1.1); /* Subtle zoom effect */
         }
     </style>
 </head>
