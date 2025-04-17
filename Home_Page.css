@@ -3,9 +3,9 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #1e3c72, #2a5298, #6b73ff, #a18cd1, #ffddff);
-    background-size: 400% 400%;
-    animation: auroraMove 12s infinite linear;
+
+    background-size: 100% 100%;
+
     color: white;
     min-height: 100vh;
     text-align: center;
@@ -23,11 +23,7 @@ h1 {
     color: white;
     text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8);
 }
-@keyframes auroraMove {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
+
 .header {
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(8px);
