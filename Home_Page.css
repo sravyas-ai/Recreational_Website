@@ -9,6 +9,10 @@ body {
     color: white;
     min-height: 100vh;
     text-align: center;
+    background-image: url('https://i.pinimg.com/736x/cc/78/6c/cc786c50378d3eff8dcfb0884a4994f6.jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+ 	background-size: 100% 100%;
 }
 h1 {
     position: absolute;
