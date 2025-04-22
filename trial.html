@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aurora Chatbot</title>
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue&family=Quicksand&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(to right, #8e44ad, #3b5998);
+      font-family: 'Quicksand', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .chat-container {
+  width: 900px;
+  height: 650px;
+  background-color: #f4f4f4;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+
+    .chat-box {
+      flex-grow: 1;
+      overflow-y: auto;
+      padding-right: 5px;
+      height: 100%;
+    }
+
+    .message {
+      max-width: 70%;
+      margin: 10px 0;
+      padding: 12px 16px;
+      border-radius: 20px;
+      line-height: 1.4;
+      font-size: 24px;
+      word-wrap: break-word;
+    }
+
+    .bot {
+      background-color: #d3c5f7;
+      align-self: flex-start;
+      border-top-left-radius: 0;
+    }
+
+    .user {
+      background-color: #a7c7ff;
+      align-self: flex-end;
+      border-top-right-radius: 0;
+      margin-left: auto;
+    }
+
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .option, .answer-btn {
+      background-color: #f0e1ff;
+      border: none;
+      border-radius: 20px;
+      padding: 10px 15px;
+      text-align: left;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      font-family: 'Quicksand', sans-serif;
+      font-size:18px;
+    }
+
+    .option:hover, .answer-btn:hover {
+      background-color: #e2c9ff;
+    }
+
+    .input-box {
+      margin: 10px 0;
+      display: flex;
+      gap: 10px;
+    }
+
+    .answer-input {
+      flex-grow: 1;
+      padding: 10px;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+      font-family: 'Comic Neue', cursive;
+    }
+
+    .typing {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin: 10px 0;
+    }
+
+    .typing span {
+      width: 8px;
+      height: 8px;
+      background-color: #8e44ad;
+      border-radius: 50%;
+      animation: bounce 1.2s infinite ease-in-out both;
+    }
+
+    .typing span:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .typing span:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    .error {
+      color: #ff4444;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+
+    .website-btn {
+      background-color: #e1f5fe;
+      border-left: 4px solid #039be5;
+    }
+
+    @keyframes bounce {
+      0%, 80%, 100% {
+        transform: scale(0.8);
+        opacity: 0.5;
+      }
+      40% {
+        transform: scale(1.2);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-box" id="chatBox"></div>
+    <div class="options" id="optionsBox"></div>
+  </div>
+
+  <script>
+    const chatBox = document.getElementById('chatBox');
+    const optionsBox = document.getElementById('optionsBox');
+
+    const popularWebsites = [
+      { name: "Google", url: "google.com" },
+      { name: "YouTube", url: "youtube.com" },
+      { name: "Facebook", url: "facebook.com" },
+      { name: "Wikipedia", url: "wikipedia.org" },
+      { name: "Amazon", url: "amazon.com" },
+      { name: "Netflix", url: "netflix.com" },
+      { name: "GitHub", url: "github.com" }
+    ];
+
+    const conversation = {
+      start: {
+        bot: "Hey hey! 👋 I'm Aurora. What's the vibe today?",
+        options: [
+          { text: "Tell me a joke", next: "joke" },
+          { text: "I'm bored", next: "bored" },
+          { text: "Motivate me", next: "motivate" },
+          { text: "Open a website", next: "website" },
+          { text: "Exit", next: "exit" }
+        ]
+      },
+      motivate: {
+        bot: "You're not just good — you're unstoppable! 💥 Keep slaying, one step at a time.",
+        options: [
+          { text: "Aww thanks", next: "start" },
+          { text: "One more quote", next: "quote2" }
+        ]
+      },
+      quote2: {
+        bot: "Believe in yourself, even when no one else does. You've got this 💪",
+        options: [
+          { text: "Thanks!", next: "start" }
+        ]
+      },
+      joke: {
+        bot: "Why don't scientists trust atoms? Because they make up everything! 😆",
+        options: [
+          { text: "Another one!", next: "joke2" },
+          { text: "Go back", next: "start" }
+        ]
+      },
+      joke2: {
+        bot: "Why did the math book look sad? Because it had too many problems. 📘💔",
+        options: [
+          { text: "LOL", next: "start" },
+          { text: "One more!", next: "joke" }
+        ]
+      },
+      bored: {
+        bot: "Boredom? Challenge accepted! Pick your flavor of fun 🎲",
+        options: [
+          { text: "Rock, Paper, Scissors", next: "game" },
+          { text: "Riddles", next: "riddle1" },
+          { text: "Tongue Twisters", next: "twister1" },
+          { text: "Back", next: "start" }
+        ]
+      },
+      riddle1: {
+        bot: "What has to be broken before you can use it?",
+        answer: "egg",
+        nextRiddle: "riddle2",
+        backOption: "bored"
+      },
+      riddle2: {
+        bot: "I speak without a mouth and hear without ears. I have no body, but I come alive with wind. What am I?",
+        answer: "echo",
+        nextRiddle: "riddle3",
+        backOption: "bored"
+      },
+      riddle3: {
+        bot: "I'm tall when I'm young, and I'm short when I'm old. What am I?",
+        answer: "candle",
+        nextRiddle: "riddle4",
+        backOption: "bored"
+      },
+      riddle4: {
+        bot: "What has a neck but no head?",
+        answer: "bottle",
+        nextRiddle: "riddle1",
+        backOption: "bored"
+      },
+      game: {
+        bot: "Choose your weapon!",
+        options: [
+          { text: "Rock", action: () => playGame("rock") },
+          { text: "Paper", action: () => playGame("paper") },
+          { text: "Scissors", action: () => playGame("scissors") },
+          { text: "Back", next: "bored" }
+        ]
+      },
+      twister1: {
+        bot: "She sells seashells by the seashore.",
+        nextTwister: "twister2",
+        backOption: "bored"
+      },
+      twister2: {
+        bot: "Peter Piper picked a peck of pickled peppers.",
+        nextTwister: "twister3",
+        backOption: "bored"
+      },
+      twister3: {
+        bot: "How can a clam cram in a clean cream can?",
+        nextTwister: "twister4",
+        backOption: "bored"
+      },
+      twister4: {
+        bot: "I saw Susie sitting in a shoeshine shop.",
+        nextTwister: "twister5",
+        backOption: "bored"
+      },
+      twister5: {
+        bot: "Six slippery snails slid slowly seaward.",
+        nextTwister: "twister6",
+        backOption: "bored"
+      },
+      twister6: {
+        bot: "Betty Botter bought a bit of butter.",
+        nextTwister: "twister1",
+        backOption: "bored"
+      },
+      website: {
+        bot: "Sure! What website would you like to visit? You can enter a URL or choose from popular sites below:",
+        backOption: "start"
+      },
+      exit: {
+        bot: "Catch you later! 🌈 Don't forget to sparkle offline too ✨",
+        options: []
+      }
+    };
+
+    function playGame(userChoice) {
+      const choices = ["rock", "paper", "scissors"];
+      const botChoice = choices[Math.floor(Math.random() * choices.length)];
+
+      let result = "";
+      if (userChoice === botChoice) {
+        result = "It's a tie! 🤝 We both chose " + botChoice + "!";
+      } else if (
+        (userChoice === "rock" && botChoice === "scissors") ||
+        (userChoice === "paper" && botChoice === "rock") ||
+        (userChoice === "scissors" && botChoice === "paper")
+      ) {
+        result = "You win! 🎉 I chose " + botChoice + "!";
+      } else {
+        result = "I win! 🏆 I chose " + botChoice + "!";
+      }
+
+      addMessage(result, "bot");
+      showOptions([
+        { text: "Play Again", next: "game" },
+        { text: "Back", next: "bored" }
+      ]);
+    }
+
+    function addMessage(content, type) {
+      const msg = document.createElement('div');
+      msg.classList.add('message', type);
+      msg.textContent = content;
+      chatBox.appendChild(msg);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function showTyping(callback) {
+      const typing = document.createElement('div');
+      typing.className = 'message bot typing';
+      typing.innerHTML = '<span></span><span></span><span></span>';
+      chatBox.appendChild(typing);
+      chatBox.scrollTop = chatBox.scrollHeight;
+
+      setTimeout(() => {
+        typing.remove();
+        callback();
+      }, 1200);
+    }
+
+    function showOptions(options) {
+      optionsBox.innerHTML = '';
+      options.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.classList.add('option');
+        if (opt.isWebsite) btn.classList.add('website-btn');
+        btn.textContent = opt.text;
+        btn.onclick = () => {
+          addMessage(opt.text, "user");
+          if (opt.next) runConversation(opt.next);
+          if (opt.action) opt.action();
+        };
+        optionsBox.appendChild(btn);
+      });
+    }
+
+    function redirectToWebsite(url) {
+      try {
+        // Add https:// if not present
+        if (!url.match(/^https?:\/\//)) {
+          url = 'https://' + url;
+        }
+        
+        // Validate URL
+        new URL(url); // This will throw if invalid
+        
+        // Confirm with user before redirecting
+        addMessage(`Opening ${url}...`, "bot");
+        showOptions([
+          { 
+            text: "Yes, take me there", 
+            action: () => {
+              setTimeout(() => window.open(url, '_blank'), 500);
+              runConversation("start");
+            }
+          },
+          { text: "Nevermind", next: "start" }
+        ]);
+      } catch (e) {
+        addMessage("Hmm, that doesn't look like a valid website address. Try something like 'google.com'", "bot");
+        showWebsiteOptions();
+      }
+    }
+
+    function showWebsiteOptions() {
+      optionsBox.innerHTML = '';
+      
+      // Add input for custom website
+      const inputDiv = document.createElement('div');
+      inputDiv.className = 'input-box';
+
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.placeholder = 'Enter website (e.g. google.com)';
+      input.className = 'answer-input';
+
+      const submitBtn = document.createElement('button');
+      submitBtn.textContent = 'Go';
+      submitBtn.className = 'answer-btn';
+      submitBtn.onclick = () => {
+        const userInput = input.value.trim();
+        if (userInput) {
+          addMessage(userInput, "user");
+          redirectToWebsite(userInput);
+        }
+      };
+
+      inputDiv.appendChild(input);
+      inputDiv.appendChild(submitBtn);
+      optionsBox.appendChild(inputDiv);
+
+      // Add popular websites
+      const popularLabel = document.createElement('div');
+      popularLabel.textContent = 'Popular sites:';
+      popularLabel.style.margin = '10px 0 5px 0';
+      popularLabel.style.fontWeight = 'bold';
+      optionsBox.appendChild(popularLabel);
+
+      popularWebsites.forEach(site => {
+        const btn = document.createElement('button');
+        btn.classList.add('option', 'website-btn');
+        btn.textContent = site.name;
+        btn.onclick = () => {
+          addMessage(`Open ${site.name} (${site.url})`, "user");
+          redirectToWebsite(site.url);
+        };
+        optionsBox.appendChild(btn);
+      });
+
+      // Add back button
+      const backBtn = document.createElement('button');
+      backBtn.classList.add('option');
+      backBtn.textContent = 'Back';
+      backBtn.onclick = () => runConversation("start");
+      optionsBox.appendChild(backBtn);
+    }
+
+    function showRiddle(node, key) {
+      optionsBox.innerHTML = '';
+
+      const inputDiv = document.createElement('div');
+      inputDiv.className = 'input-box';
+
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.placeholder = 'Your answer...';
+      input.className = 'answer-input';
+
+      const submitBtn = document.createElement('button');
+      submitBtn.textContent = 'Submit';
+      submitBtn.className = 'answer-btn';
+      submitBtn.onclick = () => {
+        const userInput = input.value.trim();
+        addMessage(userInput, "user");
+        
+        if (userInput.toLowerCase() === node.answer) {
+          addMessage("Correct! 🎉", "bot");
+        } else {
+          addMessage(`Oops! The correct answer was "${node.answer}".`, "bot");
+        }
+        showOptions([
+          { text: "Next Riddle", next: node.nextRiddle },
+          { text: "Back", next: node.backOption }
+        ]);
+      };
+
+      inputDiv.appendChild(input);
+      inputDiv.appendChild(submitBtn);
+      optionsBox.appendChild(inputDiv);
+    }
+
+    function runConversation(key) {
+      const node = conversation[key];
+      showTyping(() => {
+        addMessage(node.bot, "bot");
+
+        if (node.answer) {
+          showRiddle(node, key);
+        } else if (node.options) {
+          showOptions(node.options);
+        } else if (node.nextTwister) {
+          showOptions([
+            { text: "Next", next: node.nextTwister },
+            { text: "Back", next: node.backOption }
+          ]);
+        } else if (key === 'website') {
+          showWebsiteOptions();
+        }
+      });
+    }
+
+    runConversation("start");
+  </script>
+</body>
+</html>
