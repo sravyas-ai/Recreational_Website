@@ -74,7 +74,7 @@
       text-align: left;
       cursor: pointer;
       transition: background 0.3s ease;
-      font-family: 'Quicksand', sans-serif;
+      font-family: Papyrus;
       font-size:18px;
     }
 
@@ -93,7 +93,7 @@
       padding: 10px;
       border-radius: 20px;
       border: 1px solid #ccc;
-      font-family: 'Comic Neue', cursive;
+      font-family: Papyrus;
     }
 
     .typing {
@@ -142,7 +142,57 @@
     }
   </style>
 </head>
-<body>
+<body style="font-family:Papyrus;">
+  <h1 style="font-size:100px;">Aurora Chatbot</h1>
+  <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+    <div class="menu" id="menu">
+        <ul>
+            <!-- Topic with no submenu -->
+            <li onclick="toggleSubmenu('topic1')">
+                
+                    <a href="Home_Page.html"  style="color: white; text-decoration: none;" onmouseover="this.style.textDecoration='none';" onmouseout="this.style.textDecoration='none';" onfocus="this.style.textDecoration='none';" onblur="this.style.textDecoration='none';">Home Page</a>            </li>
+            <!-- Topic with submenu -->
+            <li onclick="toggleSubmenu('topic2')">
+                    <a href="latestnews.html" style="color: white; text-decoration: none;" onmouseover="this.style.textDecoration='none';" onmouseout="this.style.textDecoration='none';" onfocus="this.style.textDecoration='none';" onblur="this.style.textDecoration='none';">Latest News</a> 
+            </li>
+
+            <li onclick="toggleSubmenu('topic3')">Artists ▼
+                <ul class="submenu" id="topic3">
+                    <li><a href="artistic.html">Artistic Page</a></li>
+                    <li><a href="Chefs.html">Chef</a></li>
+                    <li><a href="music.html">Music</a></li>
+                    <li><a href="comedy.html">Comedy</a></li>
+                    <li><a href="other.html">Others</a></li>
+                </ul>
+            </li>
+
+            <li onclick="toggleSubmenu('topic4')">
+                   <a href="schedule.html" style="color: white; text-decoration: none;" onmouseover="this.style.textDecoration='none';" onmouseout="this.style.textDecoration='none';" onfocus="this.style.textDecoration='none';" onblur="this.style.textDecoration='none';">Schedule</a>               
+            </li>
+
+            <li onclick="toggleSubmenu('topic5')">Highlights▼
+                <ul class="submenu" id="topic5">
+                    <li><a href="Highlight.html">Highlights Page</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="articles.html">Articles</a></li>
+                    <li><a href="interview.html">Interviews</a></li>
+                    <li><a href="Trending.html">Trending</a></li>
+                    <li><a href="post.html">Media Post</a></li>
+                    <li><a href="polls.html">Aurora Polls</a></li>
+                      <li><a href="cookingchefs.htm">Aurora chefs</a></li>
+                     <li><a href="guesschar.htm">Aurora quest</a></li>
+                </ul>
+            </li>
+
+            <li onclick="toggleSubmenu('topic6')">User Profile ▼
+                <ul class="submenu" id="topic6">
+                    <li><a href="userprofileuid.html">User Profile</a></li>
+                    <li><a href="bookedlist.html">BookList</a></li>
+                    <li><a href="wishlist.html">WishList</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
   <div class="chat-container">
     <div class="chat-box" id="chatBox"></div>
     <div class="options" id="optionsBox"></div>
