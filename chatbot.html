@@ -4,30 +4,44 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Aurora Chatbot</title>
-  <h1 style="font-size:100px; font-family:Papyrus;color:black;">Aurora Chatbot</h1>
   <style>
     body {
       background: linear-gradient(to right, #8e44ad, #3b5998);
       font-family: Papyrus;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 90vh;
       margin: 0;
+      padding: 15px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+
+    .header h1 {
+      font-size: 60px;
+      color: #f0e1ff;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+      margin: 0;
+      padding: 10px 0;
     }
 
     .chat-container {
-  width: 900px;
-  height: 650px;
-  background-color: #f4f4f4;
-  border-radius: 20px;
-  padding: 25px;
-  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
+      width: 700px;
+      height: 500px;
+      background-color: #f4f4f4;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
 
     .chat-box {
       flex-grow: 1;
@@ -38,11 +52,11 @@
 
     .message {
       max-width: 70%;
-      margin: 10px 0;
-      padding: 12px 16px;
+      margin: 8px 0;
+      padding: 10px 14px;
       border-radius: 20px;
       line-height: 1.4;
-      font-size: 24px;
+      font-size: 20px;
       word-wrap: break-word;
     }
 
@@ -62,20 +76,20 @@
     .options {
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      margin-top: 10px;
+      gap: 8px;
+      margin-top: 8px;
     }
 
     .option, .answer-btn {
       background-color: #f0e1ff;
       border: none;
       border-radius: 20px;
-      padding: 10px 15px;
+      padding: 8px 12px;
       text-align: left;
       cursor: pointer;
       transition: background 0.3s ease;
       font-family: Papyrus;
-      font-size:18px;
+      font-size: 16px;
     }
 
     .option:hover, .answer-btn:hover {
@@ -83,14 +97,14 @@
     }
 
     .input-box {
-      margin: 10px 0;
+      margin: 8px 0;
       display: flex;
-      gap: 10px;
+      gap: 8px;
     }
 
     .answer-input {
       flex-grow: 1;
-      padding: 10px;
+      padding: 8px;
       border-radius: 20px;
       border: 1px solid #ccc;
       font-family: Papyrus;
@@ -100,12 +114,12 @@
       display: flex;
       align-items: center;
       gap: 4px;
-      margin: 10px 0;
+      margin: 8px 0;
     }
 
     .typing span {
-      width: 8px;
-      height: 8px;
+      width: 6px;
+      height: 6px;
       background-color: #8e44ad;
       border-radius: 50%;
       animation: bounce 1.2s infinite ease-in-out both;
@@ -130,6 +144,122 @@
       border-left: 4px solid #039be5;
     }
 
+    /* Navigation Styles */
+    .hamburger {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      font-size: 40px;
+      cursor: pointer;
+      color: #f0e1ff;
+      z-index: 1001;
+      display: block;
+      font-family: Papyrus;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s ease;
+    }
+
+    .hamburger:hover {
+      transform: scale(1.1);
+      color: #d3c5f7;
+    }
+
+    .menu {
+      position: fixed;
+      top: 0;
+      left: -300px;
+      width: 280px;
+      height: 100%;
+      background: linear-gradient(to bottom, #6a3093, #3b5998);
+      z-index: 1000;
+      transition: left 0.3s ease;
+      padding-top: 80px;
+      overflow-y: auto;
+      box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
+      border-right: 2px solid #d3c5f7;
+    }
+
+    .menu ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .menu ul li {
+      padding: 18px 25px;
+      color: #f0e1ff;
+      cursor: pointer;
+      border-bottom: 1px solid rgba(210, 197, 247, 0.3);
+      font-size: 20px;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+    }
+
+    .menu ul li:hover {
+      background-color: rgba(210, 197, 247, 0.2);
+      padding-left: 30px;
+    }
+
+    .menu ul li a {
+      color: #f0e1ff;
+      text-decoration: none;
+      display: block;
+      transition: color 0.3s ease;
+    }
+
+    .menu ul li a:hover {
+      color: #ffffff;
+    }
+
+    .submenu {
+      display: none;
+      background: linear-gradient(to right, rgba(107, 48, 147, 0.8), rgba(59, 89, 152, 0.8));
+      padding-left: 20px;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .submenu li {
+      border-bottom: none !important;
+      padding: 15px 20px !important;
+      font-size: 18px !important;
+    }
+
+    .submenu li a {
+      color: #d3c5f7 !important;
+    }
+
+    .submenu li:hover a {
+      color: #ffffff !important;
+    }
+
+    .menu.active {
+      left: 0;
+    }
+
+    /* Down arrow only for specific submenus */
+    .menu ul li[onclick="toggleSubmenu('topic3')"]::after,
+    .menu ul li[onclick="toggleSubmenu('topic5')"]::after,
+    .menu ul li[onclick="toggleSubmenu('topic6')"]::after {
+      content: " ▼";
+      font-size: 16px;
+      color: #d3c5f7;
+      float: right;
+      transition: transform 0.3s ease;
+    }
+
+    .menu ul li[onclick]:hover::after {
+      color: #ffffff;
+    }
+
+    .menu ul li[onclick].open::after {
+      transform: rotate(180deg);
+    }
+
     @keyframes bounce {
       0%, 80%, 100% {
         transform: scale(0.8);
@@ -144,73 +274,116 @@
 </head>
 <body>
   
-  <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
-    <div class="menu" id="menu">
-        <ul>
-            <!-- Topic with no submenu -->
-            <li onclick="toggleSubmenu('topic1')">
-                
-                    <a href="Home_Page.html"  style="color: white; text-decoration: none;" onmouseover="this.style.textDecoration='none';" onmouseout="this.style.textDecoration='none';" onfocus="this.style.textDecoration='none';" onblur="this.style.textDecoration='none';">Home Page</a>            </li>
-            <!-- Topic with submenu -->
-            <li onclick="toggleSubmenu('topic2')">
-                    <a href="latestnews.html" style="color: white; text-decoration: none;" onmouseover="this.style.textDecoration='none';" onmouseout="this.style.textDecoration='none';" onfocus="this.style.textDecoration='none';" onblur="this.style.textDecoration='none';">Latest News</a> 
-            </li>
+  <div class="hamburger" onclick="toggleMenu()">☰</div>
+  <div class="menu" id="menu">
+    <ul>
+      <li>
+        <a href="Home_Page.html">Home Page</a>
+      </li>
+      <li>
+        <a href="latestnews.html">Latest News</a>
+      </li>
 
-            <li onclick="toggleSubmenu('topic3')">Artists ▼
-                <ul class="submenu" id="topic3">
-                    <li><a href="artistic.html">Artistic Page</a></li>
-                    <li><a href="Chefs.html">Chef</a></li>
-                    <li><a href="music.html">Music</a></li>
-                    <li><a href="comedy.html">Comedy</a></li>
-                    <li><a href="other.html">Others</a></li>
-                </ul>
-            </li>
-
-            <li onclick="toggleSubmenu('topic4')">
-                   <a href="schedule.html" style="color: white; text-decoration: none;" onmouseover="this.style.textDecoration='none';" onmouseout="this.style.textDecoration='none';" onfocus="this.style.textDecoration='none';" onblur="this.style.textDecoration='none';">Schedule</a>               
-            </li>
-
-            <li onclick="toggleSubmenu('topic5')">Highlights▼
-                <ul class="submenu" id="topic5">
-                    <li><a href="Highlight.html">Highlights Page</a></li>
-                    <li><a href="gallery.html">Gallery</a></li>
-                    <li><a href="articles.html">Articles</a></li>
-                    <li><a href="interview.html">Interviews</a></li>
-                    <li><a href="Trending.html">Trending</a></li>
-                    <li><a href="post.html">Media Post</a></li>
-                    <li><a href="polls.html">Aurora Polls</a></li>
-                      <li><a href="cookingchefs.htm">Aurora chefs</a></li>
-                     <li><a href="guesschar.htm">Aurora quest</a></li>
-                </ul>
-            </li>
-
-            <li onclick="toggleSubmenu('topic6')">User Profile ▼
-                <ul class="submenu" id="topic6">
-                    <li><a href="userprofileuid.html">User Profile</a></li>
-                    <li><a href="bookedlist.html">BookList</a></li>
-                    <li><a href="wishlist.html">WishList</a></li>
-                </ul>
-            </li>
+      <li onclick="toggleSubmenu('topic3')">Artists
+        <ul class="submenu" id="topic3">
+          <li><a href="artistic.html">Artistic Page</a></li>
+          <li><a href="Chefs.html">Chef</a></li>
+          <li><a href="music.html">Music</a></li>
+          <li><a href="comedy.html">Comedy</a></li>
+          <li><a href="other.html">Others</a></li>
         </ul>
-    </div>
+      </li>
+
+      <li>
+        <a href="schedule.html">Schedule</a>               
+      </li>
+
+      <li onclick="toggleSubmenu('topic5')">Highlights
+        <ul class="submenu" id="topic5">
+          <li><a href="Highlight.html">Highlights Page</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="articles.html">Articles</a></li>
+          <li><a href="interview.html">Interviews</a></li>
+          <li><a href="Trending.html">Trending</a></li>
+          <li><a href="post.html">Media Post</a></li>
+          <li><a href="polls.html">Aurora Polls</a></li>
+          <li><a href="cookingchefs.htm">Aurora chefs</a></li>
+          <li><a href="guesschar.htm">Aurora quest</a></li>
+        </ul>
+      </li>
+
+      <li onclick="toggleSubmenu('topic6')">User Profile
+        <ul class="submenu" id="topic6">
+          <li><a href="userprofileuid.html">User Profile</a></li>
+          <li><a href="bookedlist.html">BookList</a></li>
+          <li><a href="wishlist.html">WishList</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  
+  <div class="header">
+    <h1>Aurora Chatbot</h1>
+  </div>
   
   <div class="chat-container">
     <div class="chat-box" id="chatBox"></div>
     <div class="options" id="optionsBox"></div>
   </div>
-
+ <footer class="footer">
+    <p style="font-family:Papyrus;">&copy; 2025 Recreational Channel | All Rights Reserved</p>
+  </footer>
   <script>
+    // Navigation functions
+    function toggleMenu() {
+      const menu = document.getElementById('menu');
+      menu.classList.toggle('active');
+    }
+
+    function toggleSubmenu(id) {
+      const submenu = document.getElementById(id);
+      const parentLi = submenu.parentElement;
+      
+      // Toggle the 'open' class on the parent li
+      parentLi.classList.toggle('open');
+      
+      // Toggle the submenu display
+      if (submenu.style.display === 'block') {
+        submenu.style.display = 'none';
+      } else {
+        // Close any open submenus first
+        document.querySelectorAll('.submenu').forEach(menu => {
+          if (menu.id !== id) {
+            menu.style.display = 'none';
+            menu.parentElement.classList.remove('open');
+          }
+        });
+        submenu.style.display = 'block';
+      }
+    }
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+      const menu = document.getElementById('menu');
+      const hamburger = document.querySelector('.hamburger');
+      
+      if (!menu.contains(event.target) && event.target !== hamburger) {
+        menu.classList.remove('active');
+      }
+    });
+
+    // Chatbot functionality
     const chatBox = document.getElementById('chatBox');
     const optionsBox = document.getElementById('optionsBox');
 
     const popularWebsites = [
       { name: "Google", url: "google.com" },
       { name: "YouTube", url: "youtube.com" },
-      { name: "Facebook", url: "facebook.com" },
+      { name: "Aurora - Artists", url: "https://sravyas-ai.github.io/Recreational_Website/Artists1.html" },
       { name: "Wikipedia", url: "wikipedia.org" },
-      { name: "Amazon", url: "amazon.com" },
+      { name: "Aurora - Trending", url: "https://sravyas-ai.github.io/Recreational_Website/Trending.html" },
       { name: "Netflix", url: "netflix.com" },
-      { name: "GitHub", url: "github.com" }
+      { name: "Aurora - Highlights", url: "https://sravyas-ai.github.io/Recreational_Website/Highlight.html" }
     ];
 
     const conversation = {
