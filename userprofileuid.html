@@ -204,5 +204,13 @@
 <footer class="footer">
     <p>&copy; 2025 Recreational Channel | All Rights Reserved</p>
 </footer>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        let storedUsername = localStorage.getItem("username"); 
+        if (storedUsername) {
+            document.querySelector("header h1").textContent = storedUsername; 
+        }
+    });
+</script>	
 </body>
 </html>
