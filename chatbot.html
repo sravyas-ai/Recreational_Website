@@ -2,23 +2,22 @@
 <html lang="en">
 <head>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
   <title>Aurora Chatbot</title>
   <style>
     body {
-      background: linear-gradient(to right, #8e44ad, #3b5998);
-      font-family: 'Playfair Display',serif;
+      background: linear-gradient(rgba(30, 30, 100, 0.8), rgba(10, 10, 60, 0.8)), 
+                  url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?w=1000&auto=format&fit=crop') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Playfair Display', serif;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      min-height: 80vh;
+      min-height: 100vh;
       margin: 0;
       padding: 15px;
-      background-image: url('https://in.pinterest.com/pin/985231161966248/');
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      background-size: 100% 100%;
+      color: #f8f8ff; /* Light color for contrast */
     }
 
     .header {
@@ -29,20 +28,20 @@
 
     .header h1 {
       font-size: 60px;
-      color: #f0e1ff;
-      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+      color: #ffffff;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
       margin: 0;
       padding: 10px 0;
-      font-family:'Dancing Script',cursive;
+      font-family: 'Dancing Script', cursive;
     }
 
     .chat-container {
       width: 700px;
       height: 350px;
-      background-color: #f4f4f4;
+      background-color: rgba(255, 255, 255, 0.9);
       border-radius: 20px;
       padding: 20px;
-      box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
       display: flex;
       flex-direction: column;
       overflow: hidden;
@@ -63,17 +62,19 @@
       line-height: 1.4;
       font-size: 16px;
       word-wrap: break-word;
-      font-family:'Playfair Display',serif;
+      font-family: 'Playfair Display', serif;
     }
 
     .bot {
-      background-color: #d3c5f7;
+      background-color: #6a5acd; /* Light purple */
+      color: white;
       align-self: flex-start;
       border-top-left-radius: 0;
     }
 
     .user {
-      background-color: #a7c7ff;
+      background-color: #4682b4; /* Steel blue */
+      color: white;
       align-self: flex-end;
       border-top-right-radius: 0;
       margin-left: auto;
@@ -87,19 +88,21 @@
     }
 
     .option, .answer-btn {
-      background-color: #f0e1ff;
+      background-color: rgba(255, 255, 255, 0.9);
       border: none;
       border-radius: 20px;
       padding: 8px 12px;
       text-align: left;
       cursor: pointer;
-      transition: background 0.3s ease;
-      font-family: 'Playfair Display',serif;
+      transition: all 0.3s ease;
+      font-family: 'Playfair Display', serif;
       font-size: 14px;
+      color: #333;
     }
 
     .option:hover, .answer-btn:hover {
-      background-color: #e2c9ff;
+      background-color: #e6e6fa;
+      transform: translateY(-2px);
     }
 
     .input-box {
@@ -113,7 +116,7 @@
       padding: 8px;
       border-radius: 20px;
       border: 1px solid #ccc;
-      font-family:'Playfair Display',serif;
+      font-family: 'Playfair Display', serif;
     }
 
     .typing {
@@ -126,7 +129,7 @@
     .typing span {
       width: 6px;
       height: 6px;
-      background-color: #8e44ad;
+      background-color: #ffffff;
       border-radius: 50%;
       animation: bounce 1.2s infinite ease-in-out both;
     }
@@ -157,17 +160,17 @@
       left: 20px;
       font-size: 40px;
       cursor: pointer;
-      color: #f0e1ff;
+      color: #ffffff;
       z-index: 1001;
       display: block;
-      font-family: 'Playfair Display',serif;
+      font-family: 'Playfair Display', serif;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
       transition: transform 0.3s ease;
     }
 
     .hamburger:hover {
       transform: scale(1.1);
-      color: #d3c5f7;
+      color: #e6e6fa;
     }
 
     .menu {
@@ -176,7 +179,7 @@
       left: -300px;
       width: 280px;
       height: 100%;
-      background: linear-gradient(to bottom, #6a3093, #3b5998);
+      background: linear-gradient(to bottom, rgba(106, 48, 147, 0.9), rgba(59, 89, 152, 0.9));
       z-index: 1000;
       transition: left 0.3s ease;
       padding-top: 80px;
@@ -276,6 +279,14 @@
         opacity: 1;
       }
     }
+    
+    .footer {
+      margin-top: 20px;
+      color: white;
+      text-align: center;
+      font-family: 'Dancing Script', cursive;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+    }
   </style>
 </head>
 <body>
@@ -336,9 +347,11 @@
     <div class="chat-box" id="chatBox"></div>
     <div class="options" id="optionsBox"></div>
   </div>
- <footer class="footer">
-    <p style="font-family: 'Dancing Script',cursive;">&copy; 2025 Recreational Channel | All Rights Reserved</p>
-</footer>
+  
+  <footer class="footer">
+    <p>&copy; 2025 Recreational Channel | All Rights Reserved</p>
+  </footer>
+
   <script>
     // Navigation functions
     function toggleMenu() {
@@ -633,6 +646,7 @@
       popularLabel.textContent = 'Popular sites:';
       popularLabel.style.margin = '10px 0 5px 0';
       popularLabel.style.fontWeight = 'bold';
+      popularLabel.style.color = '#333';
       optionsBox.appendChild(popularLabel);
 
       popularWebsites.forEach(site => {
