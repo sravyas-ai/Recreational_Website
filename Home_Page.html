@@ -3,56 +3,363 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet" href="Home_Page.css">
     <title>Aurora</title>
-    </head>
-<body>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
 
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Playfair Display', serif;
+            min-height: 100vh;
+            text-align: center;
+            background-image: url('https://i.pinimg.com/736x/65/94/b2/6594b2d478246610def7f2dc443feda0.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        h1 {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Dancing Script', cursive;
+            font-size: 60px;
+            color: #ff1493;
+            text-shadow: 0px 0px 10px rgba(255, 20, 147, 0.5);
+            margin: 0;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
+            position: relative;
+        }
+
+        .search-container {
+            position: relative;
+        }
+
+        .search-input {
+            width: 0;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 20px;
+            outline: none;
+            transition: width 0.3s ease-in-out, background 0.3s ease-in-out;
+            opacity: 0;
+            color: #333;
+        }
+
+        .search-container.expanded .search-input {
+            width: 200px;
+            opacity: 1;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        .search-icon {
+            cursor: pointer;
+            font-size: 20px;
+            background: white;
+            padding: 8px 12px;
+            border-radius: 50%;
+            display: inline-block;
+            color: #ff1493;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.95);
+            width: 220px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            text-align: left;
+            top: 40px;
+            right: 0;
+            z-index: 10;
+            padding: 10px 0;
+        }
+
+        .dropdown-content.show {
+            display: block;
+        }
+
+        .dropdown-content ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .dropdown-content li {
+            position: relative;
+        }
+
+        .dropdown-content .submenu {
+            display: none;
+            padding-left: 15px;
+        }
+
+        .dropdown-content .submenu.show {
+            display: block;
+        }
+
+        .dropdown-content li.has-submenu > a {
+            position: relative;
+            padding-right: 20px;
+        }
+
+        .dropdown-content li.has-submenu > a:after {
+            content: "▼";
+            font-size: 0.7em;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .dropdown-content li.has-submenu.open > a:after {
+            content: "▲";
+        }
+
+        .dropdown-content a {
+            display: block;
+            color: #333;
+            padding: 8px 15px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .dropdown-content a:hover {
+            background-color: rgba(255, 20, 147, 0.2);
+            color: #ff1493;
+        }
+
+        .content {
+            padding: 20px;
+            max-width: 800px;
+            margin: 20px auto 0;
+        }
+
+        .about-container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            color: #333;
+            line-height: 1.6;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-container::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 20, 147, 0.1) 10%, transparent 70%);
+            animation: moveGlow 6s infinite linear;
+        }
+
+        @keyframes moveGlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .about-container h2 {
+            font-size: 28px;
+            color: #ff1493;
+            margin-bottom: 15px;
+            text-shadow: 0 0 5px rgba(255, 20, 147, 0.3);
+        }
+
+        .about-container p {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .about-container b {
+            color: #ff1493;
+        }
+
+        footer {
+            background: transparent;
+            padding: 15px;
+            box-shadow:transparent;
+            margin-top: 20px;
+            color: #333;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
     <div class="header">
-    <h1>Aurora</h1>
-    <div class="search-container" id="searchBox">
-        <span class="search-icon" onclick="expandSearch()">🔍</span>
-        <input type="text" class="search-input" id="searchInput" placeholder="Search..." onfocus="showDropdown()" onblur="hideDropdown()">
-        <div id="dropdown-menu" class="dropdown-content">
-                 <a href="Highlight.html">Highlights Page</a>
-                 <a href="gallery.html">Gallery</a>
-                 <a href="articles.html">Articles</a>
-                 <a href="interview.html">Interviews</a>
-                 <a href="Trending.html">Trending</a>
-                 <a href="post.html">Media Post</a>
-                 <a href="polls.html">Aurora Polls</a>
-                 <a href="cookingchefs.htm">Aurora chefs</a>
-                 <a href="guesschar.htm">Aurora quest</a>
-                 <a href="artistic.html">Artist</a>
-                 <a href="Chefs.html">  Chef</a>
-                 <a href="music.html">  Music</a>
-                 <a href="comedy.html"> Comedy</a>
-                 <a href="other.html">  Others</a>
-                 <a href="schedule.html">Schedule</a>
-                 <a href="userprofileuid.html">User Profile</a>       
-                 <a href="bookedlist.html">BookList</a>
-                 <a href="wishlist.html">WishList</a>
+        <h1>Aurora</h1>
+        <div class="search-container" id="searchBox">
+            <span class="search-icon" onclick="expandSearch()">🔍</span>
+            <input type="text" class="search-input" id="searchInput" placeholder="Search..." oninput="filterDropdown()" onfocus="showDropdown()" onblur="hideDropdown()">
+            <div id="dropdown-menu" class="dropdown-content">
+                <ul>
+                    <li><a href="Home_Page.html">Home Page</a></li>
+                    <li><a href="latestnews.html">Latest News</a></li>
+                    
+                    <li class="has-submenu" onclick="toggleSubmenu(event, this)">
+                        <a href="#">Artists</a>
+                        <ul class="submenu">
+                            <li><a href="artistic.html">Artistic Page</a></li>
+                            <li><a href="Chefs.html">Chef</a></li>
+                            <li><a href="music.html">Music</a></li>
+                            <li><a href="comedy.html">Comedy</a></li>
+                            <li><a href="other.html">Others</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li><a href="schedule.html">Schedule</a></li>
+                    
+                    <li class="has-submenu" onclick="toggleSubmenu(event, this)">
+                        <a href="#">Highlights</a>
+                        <ul class="submenu">
+                            <li><a href="Highlight.html">Highlights Page</a></li>
+                            <li><a href="gallery.html">Gallery</a></li>
+                            <li><a href="articles.html">Articles</a></li>
+                            <li><a href="interview.html">Interviews</a></li>
+                            <li><a href="Trending.html">Trending</a></li>
+                            <li><a href="post.html">Media Post</a></li>
+                            <li><a href="polls.html">Aurora Polls</a></li>
+                            <li><a href="cookingchefs.htm">Aurora chefs</a></li>
+                            <li><a href="guesschar.htm">Aurora quest</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="has-submenu" onclick="toggleSubmenu(event, this)">
+                        <a href="#">User Profile</a>
+                        <ul class="submenu">
+                            <li><a href="userprofileuid.html">User Profile</a></li>
+                            <li><a href="bookedlist.html">BookList</a></li>
+                            <li><a href="wishlist.html">WishList</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
-</div>
 
-<div class="content">
-    <div class="about-container">
-        <h2>✨ About Us – The Masters of Fictional Chaos 🎭</h2>
-        <p>Welcome to <b>Entertainment Channel</b>, the ultimate hub where <i>fictional characters</i> take center stage!  
-        Brought to you by four self-proclaimed digital wizards—<b>Ry Priyanka, RS Harini Mahalakshmi, Sahasraa, and Sravya Surya</b>—this website is our <b>brilliant (or slightly chaotic)</b> group project at <b>Amrita Academy</b>.  
-        </p>
-        <p>We figured, why let <i>real people</i> have all the fun? Here, we celebrate <b>fictional legends</b>—from singing superheroes to cooking wizards, and even comedians who exist only in our imagination (but totally deserve their own Netflix special). Whether you want to book front-row seats to an <b>invisible concert</b>, cheer for a <b>cartoon football match</b>, or just laugh at our <i>questionable life choices</i>, you’re in the right place! 🎤🔥</p>
-        <p>We poured <b>sweat, tears, and way too many late-night snacks</b> into this project. So, sit back, explore, and remember—<b>if you see a character you don’t recognize, don’t worry… neither do we! 😆</b></p>
+    <div class="content">
+        <div class="about-container">
+            <h2>✨ About Us – The Masters of Fictional Chaos 🎭</h2>
+            <p>Welcome to <b>Entertainment Channel</b>, the ultimate hub where <i>fictional characters</i> take center stage!  
+            Brought to you by four self-proclaimed digital wizards—<b>Ry Priyanka, RS Harini Mahalakshmi, Sahasraa, and Sravya Surya</b>—this website is our <b>brilliant (or slightly chaotic)</b> group project at <b>Amrita Academy</b>.  
+            </p>
+            <p>We figured, why let <i>real people</i> have all the fun? Here, we celebrate <b>fictional legends</b>—from singing superheroes to cooking wizards, and even comedians who exist only in our imagination (but totally deserve their own Netflix special). Whether you want to book front-row seats to an <b>invisible concert</b>, cheer for a <b>cartoon football match</b>, or just laugh at our <i>questionable life choices</i>, you're in the right place! 🎤🔥</p>
+            <p>We poured <b>sweat, tears, and way too many late-night snacks</b> into this project. So, sit back, explore, and remember—<b>if you see a character you don't recognize, don't worry... neither do we! 😆</b></p>
+        </div>
     </div>
-</div>
 
-<footer>
-    <p>&copy; 2025 Recreational Channel | All Rights Reserved</p>
-</footer>
+    <footer>
+        <p>&copy; 2025 Recreational Channel | All Rights Reserved</p>
+    </footer>
 
+    <script>
+        function expandSearch() {
+            var searchBox = document.getElementById("searchBox");
+            var searchInput = document.getElementById("searchInput");
+            searchBox.classList.toggle("expanded");
+            if (searchBox.classList.contains("expanded")) {
+                searchInput.focus();
+            }
+        }
 
-    <script src="Home_Page.js">
-      </script>
+        function showDropdown() {
+            document.getElementById("dropdown-menu").classList.add("show");
+        }
+
+        function hideDropdown() {
+            setTimeout(() => {
+                if (!document.querySelector(".dropdown-content:hover")) {
+                    document.getElementById("dropdown-menu").classList.remove("show");
+                }
+            }, 200);
+        }
+
+        function filterDropdown() {
+            let input = document.getElementById("searchInput").value.toLowerCase();
+            let dropdown = document.getElementById("dropdown-menu");
+            let items = dropdown.getElementsByTagName("a");
+
+            let found = false;
+            for (let i = 0; i < items.length; i++) {
+                let text = items[i].innerText.toLowerCase();
+                if (text.includes(input)) {
+                    items[i].style.display = "block";
+                    found = true;
+                    // Show parent menus
+                    let parent = items[i].closest('.submenu');
+                    while (parent) {
+                        parent.classList.add('show');
+                        parent.previousElementSibling.classList.add('open');
+                        parent = parent.parentElement.closest('.submenu');
+                    }
+                } else {
+                    items[i].style.display = "none";
+                }
+            }
+
+            if (found) {
+                dropdown.classList.add('show');
+            } else {
+                dropdown.classList.remove('show');
+            }
+        }
+
+        function toggleSubmenu(event, element) {
+            event.preventDefault();
+            event.stopPropagation();
+            
+            // Toggle current submenu
+            const submenu = element.querySelector('.submenu');
+            submenu.classList.toggle('show');
+            element.classList.toggle('open');
+            
+            // Close other submenus at the same level
+            const parentUl = element.parentElement;
+            const siblings = parentUl.querySelectorAll('.has-submenu');
+            siblings.forEach(sib => {
+                if (sib !== element) {
+                    sib.querySelector('.submenu').classList.remove('show');
+                    sib.classList.remove('open');
+                }
+            });
+        }
+
+        // Keep dropdown open when hovering
+        document.querySelector('.dropdown-content').addEventListener('mouseenter', function() {
+            this.classList.add('show');
+        });
+
+        document.querySelector('.dropdown-content').addEventListener('mouseleave', function() {
+            if (!document.getElementById("searchInput").value) {
+                this.classList.remove('show');
+            }
+        });
+    </script>
 </body>
 </html>
