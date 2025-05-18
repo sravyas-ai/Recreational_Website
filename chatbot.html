@@ -17,7 +17,7 @@
       min-height: 100vh;
       margin: 0;
       padding: 15px;
-      color: #f8f8ff; /* Light color for contrast */
+      color: #f8f8ff;
     }
 
     .header {
@@ -66,14 +66,14 @@
     }
 
     .bot {
-      background-color: #6a5acd; /* Light purple */
+      background-color: #6a5acd;
       color: white;
       align-self: flex-start;
       border-top-left-radius: 0;
     }
 
     .user {
-      background-color: #4682b4; /* Steel blue */
+      background-color: #4682b4;
       color: white;
       align-self: flex-end;
       border-top-right-radius: 0;
@@ -153,26 +153,25 @@
       border-left: 4px solid #039be5;
     }
 
-    /* Navigation Styles */
+    /* Updated Navigation Styles */
     .hamburger {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  font-size: 40px;
-  cursor: pointer;
-  color: #a9c1e8; /* light navy blue-ish tone */
-  z-index: 1001;
-  display: block;
-  font-family: 'Playfair Display', serif;
-  text-shadow: 2px 2px 4px rgba(10, 20, 50, 0.5); /* subtle dark blue shadow */
-  transition: transform 0.3s ease, color 0.3s ease;
-}
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      font-size: 40px;
+      cursor: pointer;
+      color: #e6f0ff;
+      z-index: 1001;
+      display: block;
+      font-family: 'Playfair Display', serif;
+      text-shadow: 1px 1px 3px rgba(0, 0, 50, 0.7);
+      transition: all 0.3s ease;
+    }
 
-.hamburger:hover {
-  transform: scale(1.1);
-  color: #d6e4f0; /* even lighter blue for hover effect */
-}
-
+    .hamburger:hover {
+      transform: scale(1.1);
+      color: #ffffff;
+    }
 
     .menu {
       position: fixed;
@@ -180,13 +179,15 @@
       left: -300px;
       width: 280px;
       height: 100%;
-      background: linear-gradient(to bottom, rgba(106, 48, 147, 0.9), rgba(59, 89, 152, 0.9));
+      background: linear-gradient(to bottom, 
+        rgba(20, 40, 80, 0.95), 
+        rgba(10, 25, 60, 0.95));
       z-index: 1000;
       transition: left 0.3s ease;
       padding-top: 80px;
       overflow-y: auto;
-      box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
-      border-right: 2px solid #d3c5f7;
+      box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5);
+      border-right: 2px solid rgba(100, 150, 255, 0.3);
     }
 
     .menu ul {
@@ -197,21 +198,21 @@
 
     .menu ul li {
       padding: 18px 25px;
-      color: #f0e1ff;
+      color: #d6e4ff;
       cursor: pointer;
-      border-bottom: 1px solid rgba(210, 197, 247, 0.3);
+      border-bottom: 1px solid rgba(100, 150, 255, 0.2);
       font-size: 20px;
       letter-spacing: 1px;
       transition: all 0.3s ease;
     }
 
     .menu ul li:hover {
-      background-color: rgba(210, 197, 247, 0.2);
+      background-color: rgba(50, 100, 200, 0.3);
       padding-left: 30px;
     }
 
     .menu ul li a {
-      color: #f0e1ff;
+      color: #d6e4ff;
       text-decoration: none;
       display: block;
       transition: color 0.3s ease;
@@ -223,7 +224,9 @@
 
     .submenu {
       display: none;
-      background: linear-gradient(to right, rgba(107, 48, 147, 0.8), rgba(59, 89, 152, 0.8));
+      background: linear-gradient(to right, 
+        rgba(15, 35, 75, 0.9), 
+        rgba(25, 50, 100, 0.9));
       padding-left: 20px;
       animation: fadeIn 0.3s ease;
     }
@@ -240,7 +243,7 @@
     }
 
     .submenu li a {
-      color: #d3c5f7 !important;
+      color: #b8d0ff !important;
     }
 
     .submenu li:hover a {
@@ -251,15 +254,12 @@
       left: 0;
     }
 
-    /* Down arrow only for specific submenus */
-    .menu ul li[onclick="toggleSubmenu('topic3')"]::after,
-    .menu ul li[onclick="toggleSubmenu('topic5')"]::after,
-    .menu ul li[onclick="toggleSubmenu('topic6')"]::after {
+    .menu ul li[onclick]::after {
       content: " ▼";
       font-size: 16px;
-      color: #d3c5f7;
+      color: #8ab4ff;
       float: right;
-      transition: transform 0.3s ease;
+      transition: all 0.3s ease;
     }
 
     .menu ul li[onclick]:hover::after {
@@ -268,6 +268,7 @@
 
     .menu ul li[onclick].open::after {
       transform: rotate(180deg);
+      color: #ffffff;
     }
 
     @keyframes bounce {
@@ -364,14 +365,11 @@
       const submenu = document.getElementById(id);
       const parentLi = submenu.parentElement;
       
-      // Toggle the 'open' class on the parent li
       parentLi.classList.toggle('open');
       
-      // Toggle the submenu display
       if (submenu.style.display === 'block') {
         submenu.style.display = 'none';
       } else {
-        // Close any open submenus first
         document.querySelectorAll('.submenu').forEach(menu => {
           if (menu.id !== id) {
             menu.style.display = 'none';
@@ -382,7 +380,6 @@
       }
     }
 
-    // Close menu when clicking outside
     document.addEventListener('click', function(event) {
       const menu = document.getElementById('menu');
       const hamburger = document.querySelector('.hamburger');
@@ -589,15 +586,12 @@
 
     function redirectToWebsite(url) {
       try {
-        // Add https:// if not present
         if (!url.match(/^https?:\/\//)) {
           url = 'https://' + url;
         }
         
-        // Validate URL
-        new URL(url); // This will throw if invalid
+        new URL(url);
         
-        // Confirm with user before redirecting
         addMessage(`Opening ${url}...`, "bot");
         showOptions([
           { 
@@ -618,7 +612,6 @@
     function showWebsiteOptions() {
       optionsBox.innerHTML = '';
       
-      // Add input for custom website
       const inputDiv = document.createElement('div');
       inputDiv.className = 'input-box';
 
@@ -642,7 +635,6 @@
       inputDiv.appendChild(submitBtn);
       optionsBox.appendChild(inputDiv);
 
-      // Add popular websites
       const popularLabel = document.createElement('div');
       popularLabel.textContent = 'Popular sites:';
       popularLabel.style.margin = '10px 0 5px 0';
@@ -661,7 +653,6 @@
         optionsBox.appendChild(btn);
       });
 
-      // Add back button
       const backBtn = document.createElement('button');
       backBtn.classList.add('option');
       backBtn.textContent = 'Back';
