@@ -155,23 +155,24 @@
 
     /* Navigation Styles */
     .hamburger {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      font-size: 40px;
-      cursor: pointer;
-      color: #ffffff;
-      z-index: 1001;
-      display: block;
-      font-family: 'Playfair Display', serif;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-      transition: transform 0.3s ease;
-    }
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  font-size: 40px;
+  cursor: pointer;
+  color: #a9c1e8; /* light navy blue-ish tone */
+  z-index: 1001;
+  display: block;
+  font-family: 'Playfair Display', serif;
+  text-shadow: 2px 2px 4px rgba(10, 20, 50, 0.5); /* subtle dark blue shadow */
+  transition: transform 0.3s ease, color 0.3s ease;
+}
 
-    .hamburger:hover {
-      transform: scale(1.1);
-      color: #e6e6fa;
-    }
+.hamburger:hover {
+  transform: scale(1.1);
+  color: #d6e4f0; /* even lighter blue for hover effect */
+}
+
 
     .menu {
       position: fixed;
