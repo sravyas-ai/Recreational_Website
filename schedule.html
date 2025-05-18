@@ -6,14 +6,15 @@
     <title>Weekly Schedule</title>
     <style>
 	  
+
 :root {
     --navy-main: #001f3f;
-    --navy-dark: #001730;
-    --highlight: #FFD700;
-    --white-translucent: rgba(255, 255, 255, 0.08);
+    --navy-dark: #001b35;
+    --hover-bg: rgba(255, 255, 255, 0.1);
+    --text-light: #e0f7ff;
 }
 
-/* Side Menu Styling */
+/* Side Menu */
 .menu {
     position: fixed;
     top: 0;
@@ -23,7 +24,7 @@
     background-color: var(--navy-main);
     color: white;
     padding-top: 60px;
-    box-shadow: 4px 0 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 4px 0 12px rgba(0, 0, 0, 0.3);
     transition: left 0.3s ease;
     overflow-y: auto;
     border-top-right-radius: 12px;
@@ -31,7 +32,7 @@
     z-index: 9999;
 }
 
-/* Menu Items */
+/* Menu List */
 .menu ul {
     list-style: none;
     padding: 0;
@@ -42,17 +43,15 @@
     padding: 14px 20px;
     font-size: 17px;
     cursor: pointer;
-    border-bottom: 1px solid var(--white-translucent);
-    position: relative;
-    background-color: transparent;
     transition: background 0.2s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .menu ul li:hover {
-    background: var(--white-translucent);
+    background: var(--hover-bg);
 }
 
-/* Submenu Styling */
+/* Submenu - Seamless look */
 .submenu {
     display: none;
     background-color: var(--navy-dark);
@@ -60,22 +59,19 @@
 
 .submenu a {
     display: block;
+    color: var(--text-light);
+    text-decoration: none;
     padding: 12px 30px;
     font-size: 15px;
-    color: #d9eaff;
-    text-decoration: none;
-    border-left: 3px solid transparent;
-    transition: background 0.2s ease, padding-left 0.2s ease;
+    transition: background 0.2s ease;
 }
 
 .submenu a:hover {
-    background: rgba(255, 255, 255, 0.06);
-    padding-left: 35px;
-    border-left: 3px solid var(--highlight);
-    color: var(--highlight);
+    background: var(--hover-bg);
+    color: white;
 }
 
-/* Hamburger Button */
+/* Hamburger */
 .hamburger {
     position: fixed;
     top: 20px;
@@ -95,7 +91,7 @@
     transition: transform 0.3s ease;
 }
 
-/* Active states */
+/* Active States */
 .menu.active {
     left: 0;
 }
@@ -105,7 +101,7 @@
     left: 220px;
 }
 
-/* Submenu Toggle Indicator */
+/* Submenu Indicator */
 .menu ul li[onclick]::after {
     content: "›";
     position: absolute;
@@ -127,6 +123,8 @@
         left: 190px;
     }
 }
+
+
 
 
         body {
