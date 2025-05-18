@@ -5,6 +5,115 @@
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
     <title>Weekly Schedule</title>
     <style>
+	  
+/* Side Menu Styling */
+.menu {
+    position: fixed;
+    top: 0;
+    left: -260px;
+    width: 260px;
+    height: 100%;
+    background-color: rgba(0, 49, 83, 0.95);
+    color: white;
+    padding-top: 60px;
+    box-shadow: 4px 0 12px rgba(0, 0, 0, 0.2);
+    transition: left 0.3s ease;
+    overflow-y: auto;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    z-index: 9999;
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* List Items */
+.menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu ul li {
+    padding: 14px 20px;
+    cursor: pointer;
+    font-size: 17px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.menu ul li:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* Submenu Styling */
+.submenu {
+    display: none;
+    padding-left: 15px;
+    background: rgba(0, 35, 65, 0.8);
+}
+
+.submenu a {
+    display: block;
+    color: #e0f7ff;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-size: 15px;
+}
+
+.submenu a:hover {
+    color: #FFD700;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Hamburger Button */
+.hamburger {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+    z-index: 10000;
+    background: rgba(0, 49, 83, 0.85);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Active states */
+.menu.active {
+    left: 0;
+}
+
+.hamburger.active {
+    left: 220px;
+}
+
+/* Menu item with submenu indicator */
+.menu ul li[onclick]::after {
+    content: "›";
+    position: absolute;
+    right: 20px;
+    font-size: 20px;
+}
+
+.menu ul li[onclick].open::after {
+    transform: rotate(90deg);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .menu {
+        width: 220px;
+    }
+    .hamburger.active {
+        left: 190px;
+    }
+}
+
+
         body {
             font-family: 'Playfair Display',serif;
             background: linear-gradient(to right, #6A5ACD, #483D8B);
