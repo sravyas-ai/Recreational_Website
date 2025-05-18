@@ -6,7 +6,6 @@
     <title>Weekly Schedule</title>
     <style>
 	 
-/* Simplified Navy Blue Side Menu */
 .menu {
     position: fixed;
     top: 0;
@@ -35,14 +34,21 @@
     cursor: pointer;
     font-size: 18px;
     color: white;
+    transition: padding-left 0.2s ease, color 0.2s ease;
+}
+
+.menu ul li:hover {
+    color: #a8c7ff;
+    padding-left: 25px;
 }
 
 
-/* Submenu - same color scheme */
+/* Submenu - same color scheme, no box effect */
 .submenu {
     display: none;
     padding-left: 20px;
-    background-color: rgba(0, 0, 51, 0.9); /* Slightly darker navy blue */
+    background-color: transparent; /* Removed darker box */
+    transition: all 0.3s ease-in-out;
 }
 
 .submenu a {
@@ -51,8 +57,13 @@
     text-decoration: none;
     padding: 8px 0;
     font-size: 16px;
+    transition: color 0.2s ease, padding-left 0.2s ease;
 }
 
+.submenu a:hover {
+    color: #a8c7ff;
+    padding-left: 10px;
+}
 
 
 /* Hamburger Button - simple white/navy scheme */
@@ -69,6 +80,9 @@
     z-index: 10000;
 }
 
+.hamburger:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
 
 
 /* Active states */
@@ -80,6 +94,7 @@
     transform: rotate(90deg);
     background-color: rgba(0, 0, 77, 0.9);
 }
+
 
 
 
