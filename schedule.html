@@ -39,10 +39,6 @@
     color: white;
 }
 
-.menu ul li:hover {
-    background-color: rgba(0, 0, 102, 0.9); /* Darker navy blue on hover */
-    padding-left: 25px;
-}
 
 /* Submenu - same color scheme */
 .submenu {
@@ -60,10 +56,7 @@
     transition: padding-left 0.3s;
 }
 
-.submenu a:hover {
-    background-color: rgba(0, 0, 77, 0.9); /* Medium navy blue */
-    padding-left: 10px;
-}
+
 
 /* Hamburger Button - simple white/navy scheme */
 .hamburger {
@@ -72,17 +65,14 @@
     left: 20px;
     font-size: 35px;
     cursor: pointer;
-    color: white;
-    background-color: rgba(0, 0, 51, 0.75); /* Matching navy blue */
+    color: white; 
     padding: 5px 10px;
     border-radius: 5px;
     transition: all 0.3s ease-in-out;
     z-index: 10000;
 }
 
-.hamburger:hover {
-    background-color: rgba(0, 0, 77, 0.9); /* Slightly darker on hover */
-}
+
 
 /* Active states */
 .menu.active {
@@ -94,14 +84,6 @@
     background-color: rgba(0, 0, 77, 0.9);
 }
 
-/* Content push */
-.container {
-    transition: margin-left 0.4s ease-in-out;
-}
-
-.menu.active + .container {
-    margin-left: 280px;
-}
 
 
 
