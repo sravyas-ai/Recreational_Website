@@ -5,34 +5,25 @@
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
     <title>Weekly Schedule</title>
     <style>
-	  
-
-:root {
-    --navy-main: #001f3f;
-    --navy-dark: #001b35;
-    --hover-bg: rgba(255, 255, 255, 0.1);
-    --text-light: #e0f7ff;
-}
-
-/* Side Menu */
+	 
+/* Simplified Navy Blue Side Menu */
 .menu {
     position: fixed;
     top: 0;
-    left: -260px;
-    width: 260px;
+    left: -280px;
+    width: 280px;
     height: 100%;
-    background-color: var(--navy-main);
+    background-color: rgba(0, 0, 51, 0.75); /* Navy blue with 75% opacity */
     color: white;
     padding-top: 60px;
-    box-shadow: 4px 0 12px rgba(0, 0, 0, 0.3);
-    transition: left 0.3s ease;
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.2);
+    transition: left 0.4s ease-in-out;
     overflow-y: auto;
-    border-top-right-radius: 12px;
-    border-bottom-right-radius: 12px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
     z-index: 9999;
 }
 
-/* Menu List */
 .menu ul {
     list-style: none;
     padding: 0;
@@ -40,89 +31,78 @@
 }
 
 .menu ul li {
-    padding: 14px 20px;
-    font-size: 17px;
+    padding: 15px 20px;
     cursor: pointer;
-    transition: background 0.2s ease;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 18px;
+    transition: background 0.3s, padding-left 0.3s;
+    border-radius: 5px;
+    color: white;
 }
 
 .menu ul li:hover {
-    background: var(--hover-bg);
+    background-color: rgba(0, 0, 102, 0.9); /* Darker navy blue on hover */
+    padding-left: 25px;
 }
 
-/* Submenu - Seamless look */
+/* Submenu - same color scheme */
 .submenu {
     display: none;
-    background-color: var(--navy-dark);
+    padding-left: 20px;
+    background-color: rgba(0, 0, 51, 0.9); /* Slightly darker navy blue */
 }
 
 .submenu a {
     display: block;
-    color: var(--text-light);
+    color: white;
     text-decoration: none;
-    padding: 12px 30px;
-    font-size: 15px;
-    transition: background 0.2s ease;
+    padding: 8px 0;
+    font-size: 16px;
+    transition: padding-left 0.3s;
 }
 
 .submenu a:hover {
-    background: var(--hover-bg);
-    color: white;
+    background-color: rgba(0, 0, 77, 0.9); /* Medium navy blue */
+    padding-left: 10px;
 }
 
-/* Hamburger */
+/* Hamburger Button - simple white/navy scheme */
 .hamburger {
     position: fixed;
     top: 20px;
     left: 20px;
-    font-size: 28px;
+    font-size: 35px;
     cursor: pointer;
     color: white;
-    background: var(--navy-main);
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 51, 0.75); /* Matching navy blue */
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
     z-index: 10000;
-    transition: transform 0.3s ease;
 }
 
-/* Active States */
+.hamburger:hover {
+    background-color: rgba(0, 0, 77, 0.9); /* Slightly darker on hover */
+}
+
+/* Active states */
 .menu.active {
     left: 0;
 }
 
 .hamburger.active {
     transform: rotate(90deg);
-    left: 220px;
+    background-color: rgba(0, 0, 77, 0.9);
 }
 
-/* Submenu Indicator */
-.menu ul li[onclick]::after {
-    content: "›";
-    position: absolute;
-    right: 20px;
-    font-size: 20px;
-    transition: transform 0.3s ease;
+/* Content push */
+.container {
+    transition: margin-left 0.4s ease-in-out;
 }
 
-.menu ul li[onclick].open::after {
-    transform: rotate(90deg);
+.menu.active + .container {
+    margin-left: 280px;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .menu {
-        width: 220px;
-    }
-    .hamburger.active {
-        left: 190px;
-    }
-}
 
 
 
