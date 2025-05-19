@@ -80,10 +80,10 @@
     <h1>Login</h1>
     <form id="loginForm">
       <label for="loginUsername">Username:</label>
-      <input type="text" id="loginUsername" name="loginUsername" required />
+      <input type="text" id="loginUsername" name="loginUsername" readonly/>
 
       <label for="loginPassword">Password:</label>
-      <input type="password" id="loginPassword" name="loginPassword" required />
+      <input type="password" id="loginPassword" name="loginPassword" readonly/>
 
       <button type="submit">Login</button>
     </form>
@@ -101,8 +101,17 @@
 
       document.getElementById('loginForm').addEventListener('submit', function (event) {
         event.preventDefault();
+        
+    const enteredUsername = document.getElementById('loginUsername').value;
+    const enteredPassword = document.getElementById('loginPassword').value;
+
+    if (enteredUsername === savedUsername && enteredPassword === savedPassword) {
         alert('Login Successful!');
-        window.location.href = 'Home_Page.html';
+        window.location.href = '.html';
+    } else {
+        alert('Invalid credentials! Please use the correct username and password.');
+    }
+
       });
     });
   </script>
