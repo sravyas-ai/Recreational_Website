@@ -308,53 +308,62 @@
   <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
     <div class="menu" id="menu">
         <ul>
-            
-            <li onclick="toggleSubmenu('topic1')">
+
+
+
+ <li onclick="toggleSubmenu('topic1')" style="color:black;">
                 
-                    <a href="Home_Page.html"  style="color: white; text-decoration: none;" onmouseover="this.style.textDecoration='none';" onmouseout="this.style.textDecoration='none';" onfocus="this.style.textDecoration='none';" onblur="this.style.textDecoration='none';">Home Page</a>            </li>
-            
-            <li onclick="toggleSubmenu('topic2')">
-                    <a href="latestnews.html" style="color: white; text-decoration: none;" onmouseover="this.style.textDecoration='none';" onmouseout="this.style.textDecoration='none';" onfocus="this.style.textDecoration='none';" onblur="this.style.textDecoration='none';">Latest News</a> 
+                    <a href="Home_Page.html"  style="color: black; text-decoration: none;" onmouseover="this.style.textDecoration='none';" onmouseout="this.style.textDecoration='none';" onfocus="this.style.textDecoration='none';" onblur="this.style.textDecoration='none';">Home Page</a>            </li>
+            <!-- Topic with submenu -->
+            <li onclick="toggleSubmenu('topic2')" style="color:black;">
+                    <a href="latestnews.html" style="color: black; text-decoration: none;" onmouseover="this.style.textDecoration='none';" onmouseout="this.style.textDecoration='none';" onfocus="this.style.textDecoration='none';" onblur="this.style.textDecoration='none';">Latest News</a> 
             </li>
 
-            <li onclick="toggleSubmenu('topic3')" style="color: black;" >Artists ▼
-                <ul class="submenu"  id="topic3">
-                    <li><a href="artistic.html"  >Artistic Page</a></li>
-                    <li><a href="Chefs.html">Chef</a></li>
-                    <li><a href="music.html">Music</a></li>
-                    <li><a href="comedy.html">Comedy</a></li>
-                    <li><a href="other.html">Others</a></li>
+            <li onclick="toggleSubmenu('topic3')" style="color:black;">Artists ▼
+                <ul class="submenu" id="topic3" style="color:black;">
+                    <li><a href="artistic.html" style="color:black;">Artistic Page</a></li>
+                    <li><a href="Chefs.html" style="color:black;">Chef</a></li>
+                    <li><a href="music.html" style="color:black;">Music</a></li>
+                    <li><a href="comedy.html" style="color:black;">Comedy</a></li>
+                    <li><a href="other.html" style="color:black;">Others</a></li>
                 </ul>
             </li>
 
-            <li onclick="toggleSubmenu('topic4')">
-                   <a href="schedule.html" style="color: white; text-decoration: none;" onmouseover="this.style.textDecoration='none';" onmouseout="this.style.textDecoration='none';" onfocus="this.style.textDecoration='none';" onblur="this.style.textDecoration='none';">Schedule</a>               
+            <li onclick="toggleSubmenu('topic4')" style="color:black;">
+                   <a href="schedule.html" style="color: black; text-decoration: none;" onmouseover="this.style.textDecoration='none';" onmouseout="this.style.textDecoration='none';" onfocus="this.style.textDecoration='none';" onblur="this.style.textDecoration='none';">Schedule</a>               
             </li>
 
-          <li onclick="toggleSubmenu('topic5')  style="color: black;" >Highlights ▼
-                <ul class="submenu" id="topic5" style="color: black;" >
-                    <li><a href="Highlight.html">Highlights Page</a></li>
-                    <li><a href="gallery.html">Gallery</a></li>
-                    <li><a href="articles.html">Articles</a></li>
-                    <li><a href="interview.html">Interviews</a></li>
-                    <li><a href="Trending.html">Trending</a></li>
-                    <li><a href="post.html">Media Post</a></li>
-                    <li><a href="polls.html">Aurora Polls</a></li>
-                    <li><a href="cookingchefs.htm">Aurora chefs</a></li>
-                    <li><a href="guesschar.htm">Aurora quest</a></li>
+            <li onclick="toggleSubmenu('topic5')" style="color:black;">Highlights▼
+                <ul class="submenu" id="topic5" style="color:black;">
+                    <li><a href="Highlight.html" style="color:black;">Highlights Page</a></li>
+                    <li><a href="gallery.html" style="color:black;">Gallery</a></li>
+                    <li><a href="articles.html" style="color:black;">Articles</a></li>
+                    <li><a href="interview.html" style="color:black;">Interviews</a></li>
+                    <li><a href="Trending.html" style="color:black;">Trending</a></li>
+                    <li><a href="post.html" style="color:black;">Media Post</a></li>
+                    <li><a href="polls.html" style="color:black;">Aurora Polls</a></li>
+                      <li><a href="cookingchefs.htm" style="color:black;">Aurora chefs</a></li>
+                     <li><a href="guesschar.htm" style="color:black;">Aurora quest</a></li>
                 </ul>
             </li>
 
-            <li onclick="toggleSubmenu('topic6')"  style="color: black;">User Profile ▼
-                <ul class="submenu"  id="topic6">
-                    <li><a href="userprofileuid.html"  >User Profile</a></li>
-                    <li><a href="bookedlist.html">BookList</a></li>
-                    <li><a href="wishlist.html">WishList</a></li>
+            <li onclick="toggleSubmenu('topic6')" style="color:black;">User Profile ▼
+                <ul class="submenu" id="topic6" style="color:black;">
+                    <li><a href="userprofileuid.html" style="color:black;">User Profile</a></li>
+                    <li><a href="bookedlist.html" style="color:black;">BookList</a></li>
+                    <li><a href="wishlist.html" style="color:black;"> WishList</a></li>
                 </ul>
             </li>
         </ul>
     </div>
   <script>
+
+
+
+            
+           
+
+    
         function toggleMenu() {
             const menu = document.getElementById('menu');
             const hamburger = document.querySelector('.hamburger');
