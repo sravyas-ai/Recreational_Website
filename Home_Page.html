@@ -14,6 +14,8 @@
             font-family: 'Playfair Display', serif;
             overflow-x: hidden;
             background-color: #f8e1e7;
+           background-image:url('https://i.pinimg.com/736x/7b/61/94/7b6194d414562c12ed510b737e71994f.jpg');
+background-size: cover;
         }
 
         .hero-image {
@@ -169,11 +171,10 @@
             color: #ff1493;
         }
 
-        /* New content styles */
         .page-content {
             position: relative;
             width: 100%;
-            padding: 20vh 0 40px;
+            padding: 40vh 0 60px;
             margin-top: -100px;
         }
 
@@ -187,6 +188,7 @@
             transform: translateY(40px);
             transition: opacity 0.8s ease, transform 0.8s ease;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
         }
 
         .content-box.visible {
@@ -195,7 +197,6 @@
         }
 
         .about-container {
-            max-width: 800px;
             margin: 0 auto;
             color: #333;
             line-height: 1.6;
@@ -216,6 +217,127 @@
         .about-container b {
             color: #ff1493;
         }
+        .features-container {
+            margin: 0 auto;
+            color: #333;
+            line-height: 1.6;
+            max-width: 1200px;
+            padding: 0 5%;
+            text-align: left;
+        }
+
+        .features-container h2 {
+            font-size: 28px;
+            color: #6a5acd;
+            margin-bottom: 20px;
+            text-align: left;
+            text-shadow: 0 0 5px rgba(106, 90, 205, 0.3);
+        }
+
+        .features-grid {
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .feature-section {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(5px);
+            border-radius: 15px;
+            padding: 25px;
+            transition: all 0.5s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .feature-section.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .feature-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .features-container h3 {
+            font-size: 22px;
+            color: #ff69b4;
+            margin: 0 0 15px;
+            padding-bottom: 8px;
+            position: relative;
+        }
+
+        .features-container h3:after {
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #6a5acd;
+            transition: width 0.3s ease;
+        }
+
+        .feature-section:hover h3:after {
+            width: 100%;
+        }
+
+        .features-container p {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .features-container ul {
+            font-size: 18px;
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+
+        .features-container li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .features-container li:hover {
+            transform: translateX(5px);
+            color: #6a5acd;
+        }
+
+        .features-container li:before {
+            position: absolute;
+            left: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .features-container li:hover:before {
+            transform: rotate(20deg);
+        }
+
+        .emoji-heading {
+            font-size: 24px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+
+        .feature-section:nth-child(1) { transition-delay: 0.1s; }
+        .feature-section:nth-child(2) { transition-delay: 0.2s; }
+        .feature-section:nth-child(3) { transition-delay: 0.3s; }
+        .feature-section:nth-child(4) { transition-delay: 0.4s; }
+        .feature-section:nth-child(5) { transition-delay: 0.5s; }
+        .feature-section:nth-child(6) { transition-delay: 0.6s; }
+
+        @media (max-width: 768px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .feature-section {
+                padding: 20px;
+            }
+        }
+
 
         footer {
             background: transparent;
@@ -432,7 +554,8 @@
             }
         });
 
-        const contentBox = document.getElementById('contentBox');
+        // Observe all content boxes for scroll animations
+        const contentBoxes = document.querySelectorAll('.content-box');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -445,7 +568,10 @@
             threshold: 0.1,
             rootMargin: '0px 0px -100px 0px'
         });
-        observer.observe(contentBox);
+        
+        contentBoxes.forEach(box => {
+            observer.observe(box);
+        });
 
         document.querySelector('.search-icon').onclick = expandSearch;
         document.getElementById('searchInput').oninput = filterDropdown;
@@ -455,7 +581,7 @@
 </script>
 
     <div class="header">
-        <h1>Aurora</h1>
+        <h1 style="text-align:center;">Aurora</h1>
         <div class="search-container" id="searchBox">
             <span class="search-icon" onclick="expandSearch()">🔍</span>
             <input type="text" class="search-input" id="searchInput" placeholder="Search..." oninput="filterDropdown()" onfocus="showDropdown()" onblur="hideDropdown()">
@@ -512,144 +638,75 @@
     <div class="page-content">
         <div class="content-box" id="contentBox">
             <div class="about-container">
-                <h2>✨ About Us – The Masters of Fictional Chaos 🎭</h2>
+                <h2 style="text-align:center;">✨ The Masters of Fictional Chaos 🎭</h2>
                 <p>Welcome to <b>Entertainment Channel</b>, the ultimate hub where <i>fictional characters</i> take center stage!  
-                Brought to you by four self-proclaimed digital wizards—<b>Ry Priyanka, RS Harini Mahalakshmi, B Sahasraa, and Sravya Surya</b>—this website is our <b>brilliant (or slightly chaotic)</b> group project at <b>Amrita Academy</b>.  
+                Brought to you by four self-proclaimed digital wizards—<b>Ry Priyanka, RS Harini Mahalakshmi, Sahasraa, and Sravya Surya</b>—this website is our <b>brilliant (or slightly chaotic)</b> group project at <b>Amrita Academy</b>.  
                 </p>
                 <p>We figured, why let <i>real people</i> have all the fun? Here, we celebrate <b>fictional legends</b>—from singing superheroes to cooking wizards, and even comedians who exist only in our imagination (but totally deserve their own Netflix special). Whether you want to book front-row seats to an <b>invisible concert</b>, cheer for a <b>cartoon football match</b>, or just laugh at our <i>questionable life choices</i>, you're in the right place! 🎤🔥</p>
                 <p>We poured <b>sweat, tears, and way too many late-night snacks</b> into this project. So, sit back, explore, and remember—<b>if you see a character you don't recognize, don't worry... neither do we! 😆</b></p>
             </div>
         </div>
-
-        <footer>
-            <p>&copy; 2025 Recreational Channel | All Rights Reserved</p>
-        </footer>
+<br><br><br>
+            <div class="features-container">
+                <h2>🎉</span>Unleash Your Inner Child with AuroraFic!</h2>
+                <p>Why should kids have all the fun? AuroraFic invites individuals of all ages—teens, adults, parents, grandparents, and beyond—to dive into the exciting world of fictional characters. Whether you're a fan of chefs, musicians, comedians, or influencers, our platform offers a playful escape with endless entertainment!</p>
+                <br><br>
+                <h3>Features You'll Love:</h3>
+                <ul>
+                    <li><b>📰 Posts</b> – Engaging content from fans like you!</li>
+                    <li><b>🎤 Interviews</b> – Exclusive chats with your favorite characters.</li>
+                    <li><b>🍳 Recipes</b> – Whip up dishes inspired by fictional chefs.</li>
+                    <li><b>🔄 Latest Updates</b> – Stay in the loop with brand-new character news.</li>
+                    <li><b>⏰ Timelines</b> – Track what your favorites are up to in real time.</li>
+                    <li><b>📖 Articles</b> – Deep dives into character lore and fun facts.</li>
+                    <li><b>🖼️ Albums</b> – Browse galleries of iconic moments.</li>
+                    <li><b>🍿 Juicy Gossip</b> – The latest scandals and rumors (shh!).</li>
+                    <li><b>🗳️ Interactive Polls</b> – Vote and compare opinions with other fans.</li>
+                    <li><b>🧠 Brain-Teasers</b> – Tricky questions about your beloved characters.</li>
+                    <li><b>🤖 Fun Chatbot</b> – Play and chat with an AI buddy!</li>
+                </ul>
+                <br><br>
+                <h3>How It Works:</h3>
+                <p>All interviews, posts, recipes, and articles are created by fans like you! Share your ideas with us on Instagram @AuroraFic, and we'll feature them (anonymously!) to make the experience fun for everyone. Rest assured—your submissions are confidential and only visible to our developers.</p>
+                <br><br>
+                <h3>Explore Our Pages:</h3>
+                <ul>
+                    <li><b>🌐 Latest News</b> - All the freshest updates in one place.</li>
+                    <li><b>🎭 Artists</b> - Dive into subcategories featuring your favorite personalities:
+                        <ul>
+                            <li><b>Chef</b> – Meet culinary geniuses from fiction.</li>
+                            <li><b>Music</b> – Get the scoop on iconic singers and bands.</li>
+                            <li><b>Comedy</b> – Laugh along with legendary jesters.</li>
+                            <li><b>Others</b> – From influencers to movie stars, we've got them all!</li>
+                        </ul>
+                    </li>	
+                    <li><b>📅 Schedule</b> - Check out your favorite characters' daily routines.</li>
+                    <li><b>🌟 Highlights</b> - Discover fun facts, photos, and more across 8 sub-sections:
+                        <ul>
+                            <li><b>Gallery</b> – Stunning visuals of various artists.</li>
+                            <li><b>Articles</b> – In-depth reads on fictional icons.</li>
+                            <li><b>Interviews</b> – Candid chats with characters.</li>
+                            <li><b>Trending</b> – Hot gossip and scandals.</li>
+                            <li><b>Media Posts</b> – Verified social updates.</li>
+                            <li><b>Aurora Polls</b> – Vote for the best in fun matchups!</li>
+                            <li><b>Aurora Chefs</b> – Cook up fictional recipes.</li>
+                            <li><b>Aurora Quest</b> – A guessing game—can you name the character?</li>
+                        </ul>
+                    </li>
+                    <li><b>👤 User Profile</b> - Your personal hub for logins, saved items, and wishlists—now sleeker and easier to navigate!</li>
+                </ul>
+                <br><br>
+                <h3>Ready to Join the Fun?</h3>
+                <p>Step into a world where fiction meets reality, and everyone gets to be a kid again. 🚀</p><br>
+            </div>
+        <footer style="text-align: center; padding: 10px;">
+    <div style="margin-bottom: 10px;">
+        <span style="margin-right: 20px;">📷 @AuroraFic</span>
+        <span>✉ AuroraFic@gmail.com</span>
     </div>
+    <p>&copy; 2025 Recreational Channel | All Rights Reserved</p>
+</footer>
 
-    <script>
-        // Improved dropdown functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            // Search functionality
-            function expandSearch() {
-                var searchBox = document.getElementById("searchBox");
-                var searchInput = document.getElementById("searchInput");
-                searchBox.classList.toggle("expanded");
-                if (searchBox.classList.contains("expanded")) {
-                    searchInput.focus();
-                }
-            }
-
-            function showDropdown() {
-                document.getElementById("dropdown-menu").classList.add("show");
-            }
-
-            function hideDropdown() {
-                setTimeout(() => {
-                    if (!document.querySelector(".dropdown-content:hover")) {
-                        document.getElementById("dropdown-menu").classList.remove("show");
-                    }
-                }, 200);
-            }
-
-            function filterDropdown() {
-                let input = document.getElementById("searchInput").value.toLowerCase();
-                let dropdown = document.getElementById("dropdown-menu");
-                let items = dropdown.getElementsByTagName("a");
-
-                let found = false;
-                for (let i = 0; i < items.length; i++) {
-                    let text = items[i].innerText.toLowerCase();
-                    if (text.includes(input)) {
-                        items[i].style.display = "block";
-                        found = true;
-                        // Show all parent menus of matching items
-                        let parent = items[i].closest('.submenu');
-                        while (parent) {
-                            parent.classList.add('show');
-                            parent.previousElementSibling.classList.add('open');
-                            parent = parent.parentElement.closest('.submenu');
-                        }
-                    } else {
-                        items[i].style.display = "none";
-                    }
-                }
-
-                if (found) {
-                    dropdown.classList.add('show');
-                } else {
-                    dropdown.classList.remove('show');
-                }
-            }
-
-            // Improved submenu handling
-            const hasSubmenu = document.querySelectorAll('.has-submenu');
-            
-            hasSubmenu.forEach(item => {
-                const link = item.querySelector('a');
-                const submenu = item.querySelector('.submenu');
-                
-                // Click handler for parent items
-                link.addEventListener('click', function(e) {
-                    // Only prevent default if there's a submenu
-                    if (submenu) {
-                        e.preventDefault();
-                        item.classList.toggle('open');
-                        submenu.classList.toggle('show');
-                        
-                        // Close other open submenus at the same level
-                        const parentUl = item.parentElement;
-                        const siblings = parentUl.querySelectorAll('.has-submenu');
-                        siblings.forEach(sib => {
-                            if (sib !== item) {
-                                sib.classList.remove('open');
-                                sib.querySelector('.submenu').classList.remove('show');
-                            }
-                        });
-                    }
-                });
-                
-                // Mouse enter handler
-                item.addEventListener('mouseenter', function() {
-                    item.classList.add('open');
-                    submenu.classList.add('show');
-                });
-                
-                // Mouse leave handler
-                item.addEventListener('mouseleave', function() {
-                    item.classList.remove('open');
-                    submenu.classList.remove('show');
-                });
-            });
-
-            // Close dropdown when clicking outside
-            document.addEventListener('click', function(e) {
-                if (!e.target.closest('.search-container') && !e.target.closest('.dropdown-content')) {
-                    document.getElementById('dropdown-menu').classList.remove('show');
-                }
-            });
-
-            // Scroll animation for content box
-            const contentBox = document.getElementById('contentBox');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    } else {
-                        entry.target.classList.remove('visible');
-                    }
-                });
-            }, { 
-                threshold: 0.1,
-                rootMargin: '0px 0px -100px 0px'
-            });
-            observer.observe(contentBox);
-
-            // Assign event handlers
-            document.querySelector('.search-icon').onclick = expandSearch;
-            document.getElementById('searchInput').oninput = filterDropdown;
-            document.getElementById('searchInput').onfocus = showDropdown;
-            document.getElementById('searchInput').onblur = hideDropdown;
-        });
-    </script>
+    </div>
 </body>
 </html>
