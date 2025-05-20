@@ -103,9 +103,227 @@
                 width: 90%;
             }
         }
+      
+        /* Chatbot Styles  */
+        .chatbot-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: white;
+            display: none;
+            z-index: 9999;
+        }
+        
+        .chatbot-container iframe {
+            width: 100%;
+            height: calc(100% - 40px);
+            border: none;
+            margin-top: 40px;
+        }
+        
+        .chatbot-handle {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: linear-gradient(rgba(30, 30, 100, 0.8), rgba(10, 10, 60, 0.8));
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 15px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 20px;
+            z-index: 10000;
+        }
+        
+        .chatbot-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: #6a5acd;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 10000;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .chatbot-toggle:hover {
+            background: #7b68ee;
+            transform: scale(1.1);
+        }
+        
+        .chatbot-close {
+            cursor: pointer;
+            font-size: 20px;
+            margin-left: 10px;
+        }
+
     </style>
 </head>
 <body>
+
+<div class="chatbot-container" id="chatbotWidget">
+    <div class="chatbot-handle" id="chatbotHandle">
+        <span>Aurora Chatbot</span>
+        <span class="chatbot-close" id="chatbotClose">×</span>
+    </div>
+    <iframe src="chatbot.html" id="chatbotIframe"></iframe>
+</div>
+
+<div class="chatbot-toggle" id="chatbotToggle">
+    💬
+</div>
+
+<script>
+    // Simplified chatbot functionality for fullscreen only
+    const chatbotWidget = document.getElementById('chatbotWidget');
+    const chatbotToggle = document.getElementById('chatbotToggle');
+    const chatbotClose = document.getElementById('chatbotClose');
+
+    // Toggle chatbot visibility
+    chatbotToggle.addEventListener('click', () => {
+        chatbotWidget.style.display = 'block';
+        document.body.style.overflow = 'hidden'; // Prevent scrolling when chatbot is open
+    });
+
+    // Close button
+    chatbotClose.addEventListener('click', () => {
+        chatbotWidget.style.display = 'none';
+        document.body.style.overflow = ''; // Re-enable scrolling
+    });
+
+    // Close when clicking outside the chatbot (on the overlay)
+    chatbotWidget.addEventListener('click', (e) => {
+        if (e.target === chatbotWidget) {
+            chatbotWidget.style.display = 'none';
+            document.body.style.overflow = ''; // Re-enable scrolling
+        }
+    });
+
+    // --- Dropdown/Search Functionality ---
+    document.addEventListener('DOMContentLoaded', function() {
+        function expandSearch() {
+            var searchBox = document.getElementById("searchBox");
+            var searchInput = document.getElementById("searchInput");
+            searchBox.classList.toggle("expanded");
+            if (searchBox.classList.contains("expanded")) {
+                searchInput.focus();
+            }
+        }
+
+        function showDropdown() {
+            document.getElementById("dropdown-menu").classList.add("show");
+        }
+
+        function hideDropdown() {
+            setTimeout(() => {
+                if (!document.querySelector(".dropdown-content:hover")) {
+                    document.getElementById("dropdown-menu").classList.remove("show");
+                }
+            }, 200);
+        }
+
+        function filterDropdown() {
+            let input = document.getElementById("searchInput").value.toLowerCase();
+            let dropdown = document.getElementById("dropdown-menu");
+            let items = dropdown.getElementsByTagName("a");
+
+            let found = false;
+            for (let i = 0; i < items.length; i++) {
+                let text = items[i].innerText.toLowerCase();
+                if (text.includes(input)) {
+                    items[i].style.display = "block";
+                    found = true;
+                    let parent = items[i].closest('.submenu');
+                    while (parent) {
+                        parent.classList.add('show');
+                        parent.previousElementSibling.classList.add('open');
+                        parent = parent.parentElement.closest('.submenu');
+                    }
+                } else {
+                    items[i].style.display = "none";
+                }
+            }
+
+            if (found) {
+                dropdown.classList.add('show');
+            } else {
+                dropdown.classList.remove('show');
+            }
+        }
+
+        const hasSubmenu = document.querySelectorAll('.has-submenu');
+        
+        hasSubmenu.forEach(item => {
+            const link = item.querySelector('a');
+            const submenu = item.querySelector('.submenu');
+            
+            link.addEventListener('click', function(e) {
+                if (submenu) {
+                    e.preventDefault();
+                    item.classList.toggle('open');
+                    submenu.classList.toggle('show');
+                    
+                    const parentUl = item.parentElement;
+                    const siblings = parentUl.querySelectorAll('.has-submenu');
+                    siblings.forEach(sib => {
+                        if (sib !== item) {
+                            sib.classList.remove('open');
+                            sib.querySelector('.submenu').classList.remove('show');
+                        }
+                    });
+                }
+            });
+            
+            item.addEventListener('mouseenter', function() {
+                item.classList.add('open');
+                submenu.classList.add('show');
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                item.classList.remove('open');
+                submenu.classList.remove('show');
+            });
+        });
+
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.search-container') && !e.target.closest('.dropdown-content')) {
+                document.getElementById('dropdown-menu').classList.remove('show');
+            }
+        });
+
+        const contentBox = document.getElementById('contentBox');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                } else {
+                    entry.target.classList.remove('visible');
+                }
+            });
+        }, { 
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        });
+        observer.observe(contentBox);
+
+        document.querySelector('.search-icon').onclick = expandSearch;
+        document.getElementById('searchInput').oninput = filterDropdown;
+        document.getElementById('searchInput').onfocus = showDropdown;
+        document.getElementById('searchInput').onblur = hideDropdown;
+    });
+</script>
 
     <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
 
