@@ -12,23 +12,40 @@
             margin: 0;
             padding: 0;
             font-family: 'Playfair Display', serif;
-            min-height: 100vh;
-            text-align: center;
-            background-image: url('https://i.pinimg.com/736x/65/94/b2/6594b2d478246610def7f2dc443feda0.jpg');
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: cover;
+            overflow-x: hidden;
+            background-color: #f8e1e7;
+        }
+
+        .hero-image {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .hero-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
         }
 
         h1 {
             position: absolute;
             left: 50%;
-            transform: translateX(-50%);
+            top: 50%;
+            transform: translate(-50%, -50%);
             font-family: 'Dancing Script', cursive;
             font-size: 60px;
             color: #ff1493;
             text-shadow: 0px 0px 10px rgba(255, 20, 147, 0.5);
             margin: 0;
+            width: 100%;
+            text-align: left;
+            padding-left: 50px;
         }
 
         .header {
@@ -41,7 +58,11 @@
             text-align: center;
             border-radius: 8px;
             box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
-            position: relative;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
         }
 
         .search-container {
@@ -55,7 +76,7 @@
             border: none;
             border-radius: 20px;
             outline: none;
-            transition: width 0.3s ease-in-out, background 0.3s ease-in-out;
+            transition: width 0.5s ease-in-out, background 0.5s ease-in-out;
             opacity: 0;
             color: #333;
         }
@@ -106,7 +127,14 @@
 
         .dropdown-content .submenu {
             display: none;
-            padding-left: 15px;
+            position: absolute;
+            left: 100%;
+            top: 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            width: 220px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            padding: 10px 0;
         }
 
         .dropdown-content .submenu.show {
@@ -115,11 +143,11 @@
 
         .dropdown-content li.has-submenu > a {
             position: relative;
-            padding-right: 20px;
+            padding-right: 25px;
         }
 
         .dropdown-content li.has-submenu > a:after {
-            content: "▼";
+            content: "▶";
             font-size: 0.7em;
             position: absolute;
             right: 10px;
@@ -127,56 +155,50 @@
             transform: translateY(-50%);
         }
 
-        .dropdown-content li.has-submenu.open > a:after {
-            content: "▲";
-        }
-
         .dropdown-content a {
             display: block;
             color: #333;
-            padding: 8px 15px;
+            padding: 10px 20px;
             text-decoration: none;
             transition: all 0.2s;
+            white-space: nowrap;
         }
 
         .dropdown-content a:hover {
-            background-color: rgba(255, 20, 147, 0.2);
+            background-color: rgba(255, 20, 147, 0.1);
             color: #ff1493;
         }
 
-        .content {
-            padding: 20px;
-            max-width: 800px;
-            margin: 20px auto 0;
+        /* New content styles */
+        .page-content {
+            position: relative;
+            width: 100%;
+            padding: 20vh 0 40px;
+            margin-top: -100px;
+        }
+
+        .content-box {
+            width: 100%;
+            padding: 40px 5%;
+            background-color: rgba(255, 182, 193, 0.85);
+            backdrop-filter: blur(8px);
+            text-align: left;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-box.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .about-container {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            font-family: 'Playfair Display', serif;
+            max-width: 800px;
+            margin: 0 auto;
             color: #333;
             line-height: 1.6;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .about-container::before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 20, 147, 0.1) 10%, transparent 70%);
-            animation: moveGlow 6s infinite linear;
-        }
-
-        @keyframes moveGlow {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
         }
 
         .about-container h2 {
@@ -197,10 +219,12 @@
 
         footer {
             background: transparent;
-            padding: 15px;
-            box-shadow:transparent;
-            margin-top: 20px;
+            padding: 15px 5%;
+            margin-top: 40px;
             color: #333;
+            text-align: center;
+            position: relative;
+            z-index: 1;
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
@@ -209,76 +233,115 @@
         footer p {
             margin: 0;
         }
+
+        /* Chatbot Styles  */
+        .chatbot-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: white;
+            display: none;
+            z-index: 9999;
+        }
+        
+        .chatbot-container iframe {
+            width: 100%;
+            height: calc(100% - 40px);
+            border: none;
+            margin-top: 40px;
+        }
+        
+        .chatbot-handle {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: linear-gradient(rgba(30, 30, 100, 0.8), rgba(10, 10, 60, 0.8));
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 15px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 20px;
+            z-index: 10000;
+        }
+        
+        .chatbot-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: #6a5acd;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 10000;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .chatbot-toggle:hover {
+            background: #7b68ee;
+            transform: scale(1.1);
+        }
+        
+        .chatbot-close {
+            cursor: pointer;
+            font-size: 20px;
+            margin-left: 10px;
+        }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>Aurora</h1>
-        <div class="search-container" id="searchBox">
-            <span class="search-icon" onclick="expandSearch()">🔍</span>
-            <input type="text" class="search-input" id="searchInput" placeholder="Search..." oninput="filterDropdown()" onfocus="showDropdown()" onblur="hideDropdown()">
-            <div id="dropdown-menu" class="dropdown-content">
-                <ul>
-                    <li><a href="Home_Page.html">Home Page</a></li>
-                    <li><a href="latestnews.html">Latest News</a></li>
-                    
-                    <li class="has-submenu" onclick="toggleSubmenu(event, this)">
-                        <a href="#">Artists</a>
-                        <ul class="submenu">
-                            <li><a href="artistic.html">Artistic Page</a></li>
-                            <li><a href="Chefs.html">Chef</a></li>
-                            <li><a href="music.html">Music</a></li>
-                            <li><a href="comedy.html">Comedy</a></li>
-                            <li><a href="other.html">Others</a></li>
-                        </ul>
-                    </li>
-                    
-                    <li><a href="schedule.html">Schedule</a></li>
-                    
-                    <li class="has-submenu" onclick="toggleSubmenu(event, this)">
-                        <a href="#">Highlights</a>
-                        <ul class="submenu">
-                            <li><a href="Highlight.html">Highlights Page</a></li>
-                            <li><a href="gallery.html">Gallery</a></li>
-                            <li><a href="articles.html">Articles</a></li>
-                            <li><a href="interview.html">Interviews</a></li>
-                            <li><a href="Trending.html">Trending</a></li>
-                            <li><a href="post.html">Media Post</a></li>
-                            <li><a href="polls.html">Aurora Polls</a></li>
-                            <li><a href="cookingchefs.htm">Aurora chefs</a></li>
-                            <li><a href="guesschar.htm">Aurora quest</a></li>
-                        </ul>
-                    </li>
-                    
-                    <li class="has-submenu" onclick="toggleSubmenu(event, this)">
-                        <a href="#">User Profile</a>
-                        <ul class="submenu">
-                            <li><a href="userprofileuid.html">User Profile</a></li>
-                            <li><a href="bookedlist.html">BookList</a></li>
-                            <li><a href="wishlist.html">WishList</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
+
+<div class="chatbot-container" id="chatbotWidget">
+    <div class="chatbot-handle" id="chatbotHandle">
+        <span>Aurora Chatbot</span>
+        <span class="chatbot-close" id="chatbotClose">×</span>
     </div>
+    <iframe src="chatbot.html" id="chatbotIframe"></iframe>
+</div>
 
-    <div class="content">
-        <div class="about-container">
-            <h2>✨ About Us – The Masters of Fictional Chaos 🎭</h2>
-            <p>Welcome to <b>Entertainment Channel</b>, the ultimate hub where <i>fictional characters</i> take center stage!  
-            Brought to you by four self-proclaimed digital wizards—<b>RY Priyanka, RS Harini Mahalakshmi, B Sahasraa, and Sravya Surya</b>—this website is our <b>brilliant (or slightly chaotic)</b> group project at <b>Amrita Academy</b>.  
-            </p>
-            <p>We figured, why let <i>real people</i> have all the fun? Here, we celebrate <b>fictional legends</b>—from singing superheroes to cooking wizards, and even comedians who exist only in our imagination (but totally deserve their own Netflix special). Whether you want to book front-row seats to an <b>invisible concert</b>, cheer for a <b>cartoon football match</b>, or just laugh at our <i>questionable life choices</i>, you're in the right place! 🎤🔥</p>
-            <p>We poured <b>sweat, tears, and way too many late-night snacks</b> into this project. So, sit back, explore, and remember—<b>if you see a character you don't recognize, don't worry... neither do we! 😆</b></p>
-        </div>
-    </div>
+<div class="chatbot-toggle" id="chatbotToggle">
+    💬
+</div>
 
-    <footer>
-        <p>&copy; 2025 Recreational Channel | All Rights Reserved</p>
-    </footer>
+<script>
+    // Simplified chatbot functionality for fullscreen only
+    const chatbotWidget = document.getElementById('chatbotWidget');
+    const chatbotToggle = document.getElementById('chatbotToggle');
+    const chatbotClose = document.getElementById('chatbotClose');
 
-    <script>
+    // Toggle chatbot visibility
+    chatbotToggle.addEventListener('click', () => {
+        chatbotWidget.style.display = 'block';
+        document.body.style.overflow = 'hidden'; // Prevent scrolling when chatbot is open
+    });
+
+    // Close button
+    chatbotClose.addEventListener('click', () => {
+        chatbotWidget.style.display = 'none';
+        document.body.style.overflow = ''; // Re-enable scrolling
+    });
+
+    // Close when clicking outside the chatbot (on the overlay)
+    chatbotWidget.addEventListener('click', (e) => {
+        if (e.target === chatbotWidget) {
+            chatbotWidget.style.display = 'none';
+            document.body.style.overflow = ''; // Re-enable scrolling
+        }
+    });
+
+    // --- Dropdown/Search Functionality ---
+    document.addEventListener('DOMContentLoaded', function() {
         function expandSearch() {
             var searchBox = document.getElementById("searchBox");
             var searchInput = document.getElementById("searchInput");
@@ -311,7 +374,6 @@
                 if (text.includes(input)) {
                     items[i].style.display = "block";
                     found = true;
-                    // Show parent menus
                     let parent = items[i].closest('.submenu');
                     while (parent) {
                         parent.classList.add('show');
@@ -330,35 +392,263 @@
             }
         }
 
-        function toggleSubmenu(event, element) {
-            event.preventDefault();
-            event.stopPropagation();
+        const hasSubmenu = document.querySelectorAll('.has-submenu');
+        
+        hasSubmenu.forEach(item => {
+            const link = item.querySelector('a');
+            const submenu = item.querySelector('.submenu');
             
-            // Toggle current submenu
-            const submenu = element.querySelector('.submenu');
-            submenu.classList.toggle('show');
-            element.classList.toggle('open');
-            
-            // Close other submenus at the same level
-            const parentUl = element.parentElement;
-            const siblings = parentUl.querySelectorAll('.has-submenu');
-            siblings.forEach(sib => {
-                if (sib !== element) {
-                    sib.querySelector('.submenu').classList.remove('show');
-                    sib.classList.remove('open');
+            link.addEventListener('click', function(e) {
+                if (submenu) {
+                    e.preventDefault();
+                    item.classList.toggle('open');
+                    submenu.classList.toggle('show');
+                    
+                    const parentUl = item.parentElement;
+                    const siblings = parentUl.querySelectorAll('.has-submenu');
+                    siblings.forEach(sib => {
+                        if (sib !== item) {
+                            sib.classList.remove('open');
+                            sib.querySelector('.submenu').classList.remove('show');
+                        }
+                    });
                 }
             });
-        }
-
-        // Keep dropdown open when hovering
-        document.querySelector('.dropdown-content').addEventListener('mouseenter', function() {
-            this.classList.add('show');
+            
+            item.addEventListener('mouseenter', function() {
+                item.classList.add('open');
+                submenu.classList.add('show');
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                item.classList.remove('open');
+                submenu.classList.remove('show');
+            });
         });
 
-        document.querySelector('.dropdown-content').addEventListener('mouseleave', function() {
-            if (!document.getElementById("searchInput").value) {
-                this.classList.remove('show');
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.search-container') && !e.target.closest('.dropdown-content')) {
+                document.getElementById('dropdown-menu').classList.remove('show');
             }
+        });
+
+        const contentBox = document.getElementById('contentBox');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                } else {
+                    entry.target.classList.remove('visible');
+                }
+            });
+        }, { 
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        });
+        observer.observe(contentBox);
+
+        document.querySelector('.search-icon').onclick = expandSearch;
+        document.getElementById('searchInput').oninput = filterDropdown;
+        document.getElementById('searchInput').onfocus = showDropdown;
+        document.getElementById('searchInput').onblur = hideDropdown;
+    });
+</script>
+
+    <div class="header">
+        <h1>Aurora</h1>
+        <div class="search-container" id="searchBox">
+            <span class="search-icon" onclick="expandSearch()">🔍</span>
+            <input type="text" class="search-input" id="searchInput" placeholder="Search..." oninput="filterDropdown()" onfocus="showDropdown()" onblur="hideDropdown()">
+            <div id="dropdown-menu" class="dropdown-content">
+                <ul>
+                    <li><a href="Home_Page.html">Home Page</a></li>
+                    <li><a href="latestnews.html">Latest News</a></li>
+                    
+                    <li class="has-submenu">
+                        <a href="#">Artists</a>
+                        <ul class="submenu">
+                            <li><a href="artistic.html">Artistic Page</a></li>
+                            <li><a href="Chefs.html">Chef</a></li>
+                            <li><a href="music.html">Music</a></li>
+                            <li><a href="comedy.html">Comedy</a></li>
+                            <li><a href="other.html">Others</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li><a href="schedule.html">Schedule</a></li>
+                    
+                    <li class="has-submenu">
+                        <a href="#">Highlights</a>
+                        <ul class="submenu">
+                            <li><a href="Highlight.html">Highlights Page</a></li>
+                            <li><a href="gallery.html">Gallery</a></li>
+                            <li><a href="articles.html">Articles</a></li>
+                            <li><a href="interview.html">Interviews</a></li>
+                            <li><a href="Trending.html">Trending</a></li>
+                            <li><a href="post.html">Media Post</a></li>
+                            <li><a href="polls.html">Aurora Polls</a></li>
+                            <li><a href="cookingchefs.htm">Aurora chefs</a></li>
+                            <li><a href="guesschar.htm">Aurora quest</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="has-submenu">
+                        <a href="#">User Profile</a>
+                        <ul class="submenu">
+                            <li><a href="userprofileuid.html">User Profile</a></li>
+                            <li><a href="bookedlist.html">BookList</a></li>
+                            <li><a href="wishlist.html">WishList</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="hero-image">
+        <img src='https://i.pinimg.com/736x/ba/8b/40/ba8b40d82ad1f342b3bd4a3bd20b0a1c.jpg' alt="Background">
+    </div>
+
+    <div class="page-content">
+        <div class="content-box" id="contentBox">
+            <div class="about-container">
+                <h2>✨ About Us – The Masters of Fictional Chaos 🎭</h2>
+                <p>Welcome to <b>Entertainment Channel</b>, the ultimate hub where <i>fictional characters</i> take center stage!  
+                Brought to you by four self-proclaimed digital wizards—<b>Ry Priyanka, RS Harini Mahalakshmi, Sahasraa, and Sravya Surya</b>—this website is our <b>brilliant (or slightly chaotic)</b> group project at <b>Amrita Academy</b>.  
+                </p>
+                <p>We figured, why let <i>real people</i> have all the fun? Here, we celebrate <b>fictional legends</b>—from singing superheroes to cooking wizards, and even comedians who exist only in our imagination (but totally deserve their own Netflix special). Whether you want to book front-row seats to an <b>invisible concert</b>, cheer for a <b>cartoon football match</b>, or just laugh at our <i>questionable life choices</i>, you're in the right place! 🎤🔥</p>
+                <p>We poured <b>sweat, tears, and way too many late-night snacks</b> into this project. So, sit back, explore, and remember—<b>if you see a character you don't recognize, don't worry... neither do we! 😆</b></p>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 Recreational Channel | All Rights Reserved</p>
+        </footer>
+    </div>
+
+    <script>
+        // Improved dropdown functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Search functionality
+            function expandSearch() {
+                var searchBox = document.getElementById("searchBox");
+                var searchInput = document.getElementById("searchInput");
+                searchBox.classList.toggle("expanded");
+                if (searchBox.classList.contains("expanded")) {
+                    searchInput.focus();
+                }
+            }
+
+            function showDropdown() {
+                document.getElementById("dropdown-menu").classList.add("show");
+            }
+
+            function hideDropdown() {
+                setTimeout(() => {
+                    if (!document.querySelector(".dropdown-content:hover")) {
+                        document.getElementById("dropdown-menu").classList.remove("show");
+                    }
+                }, 200);
+            }
+
+            function filterDropdown() {
+                let input = document.getElementById("searchInput").value.toLowerCase();
+                let dropdown = document.getElementById("dropdown-menu");
+                let items = dropdown.getElementsByTagName("a");
+
+                let found = false;
+                for (let i = 0; i < items.length; i++) {
+                    let text = items[i].innerText.toLowerCase();
+                    if (text.includes(input)) {
+                        items[i].style.display = "block";
+                        found = true;
+                        // Show all parent menus of matching items
+                        let parent = items[i].closest('.submenu');
+                        while (parent) {
+                            parent.classList.add('show');
+                            parent.previousElementSibling.classList.add('open');
+                            parent = parent.parentElement.closest('.submenu');
+                        }
+                    } else {
+                        items[i].style.display = "none";
+                    }
+                }
+
+                if (found) {
+                    dropdown.classList.add('show');
+                } else {
+                    dropdown.classList.remove('show');
+                }
+            }
+
+            // Improved submenu handling
+            const hasSubmenu = document.querySelectorAll('.has-submenu');
+            
+            hasSubmenu.forEach(item => {
+                const link = item.querySelector('a');
+                const submenu = item.querySelector('.submenu');
+                
+                // Click handler for parent items
+                link.addEventListener('click', function(e) {
+                    // Only prevent default if there's a submenu
+                    if (submenu) {
+                        e.preventDefault();
+                        item.classList.toggle('open');
+                        submenu.classList.toggle('show');
+                        
+                        // Close other open submenus at the same level
+                        const parentUl = item.parentElement;
+                        const siblings = parentUl.querySelectorAll('.has-submenu');
+                        siblings.forEach(sib => {
+                            if (sib !== item) {
+                                sib.classList.remove('open');
+                                sib.querySelector('.submenu').classList.remove('show');
+                            }
+                        });
+                    }
+                });
+                
+                // Mouse enter handler
+                item.addEventListener('mouseenter', function() {
+                    item.classList.add('open');
+                    submenu.classList.add('show');
+                });
+                
+                // Mouse leave handler
+                item.addEventListener('mouseleave', function() {
+                    item.classList.remove('open');
+                    submenu.classList.remove('show');
+                });
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.search-container') && !e.target.closest('.dropdown-content')) {
+                    document.getElementById('dropdown-menu').classList.remove('show');
+                }
+            });
+
+            // Scroll animation for content box
+            const contentBox = document.getElementById('contentBox');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    } else {
+                        entry.target.classList.remove('visible');
+                    }
+                });
+            }, { 
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            });
+            observer.observe(contentBox);
+
+            // Assign event handlers
+            document.querySelector('.search-icon').onclick = expandSearch;
+            document.getElementById('searchInput').oninput = filterDropdown;
+            document.getElementById('searchInput').onfocus = showDropdown;
+            document.getElementById('searchInput').onblur = hideDropdown;
         });
     </script>
 </body>
