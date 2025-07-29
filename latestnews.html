@@ -10,23 +10,28 @@
             text-align: center;
             margin: 0;
             padding: 0;
-		min-height: 100vh;
-            background: linear-gradient(to right, #6A5ACD, #483D8B);
+           
+            color: white; /
+            position: relative; 
+            overflow-x: hidden; 
         }
-	.footer {
-  background: transparent;
-  color: white;
-  text-align: center;
-  padding: 20px;
-}    
+        .footer {
+            background: transparent;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
         .section {
             margin: 20px auto;
             width: 90%;
             max-width: 1000px;
+            position: relative;
+            z-index: 1; 
         }
         h1 {
             text-align: left;
-	    font-family: 'Dancing Script',cursive;
+            font-family: 'Dancing Script',cursive;
+            color: #fcfcfc; /* Explicitly set heading color */
         }
         .grid-container {
             display: grid;
@@ -74,116 +79,97 @@
         .text-overlay a:hover {
             text-decoration: underline;
         }
-body {
-    font-family: 'Playfair Display',serif;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    color: white;
-background-image: url("https://i.pinimg.com/736x/b3/42/2d/b3422de3602815b3a912ac5ed7e64f82.jpg");
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      background-size: 100% 100%;
-
-}
-
-@keyframes swirlGradient {
-    0% { background-position: 0% 0%; }
-    25% { background-position: 100% 0%; }
-    50% { background-position: 100% 100%; }
-    75% { background-position: 0% 100%; }
-    100% { background-position: 0% 0%; }
-}
-	    .menu {
-    position: fixed;
-    top: 0;
-    left: -280px;
-    width: 280px;
-    height: 100%;
-    background-color: rgba(0, 0, 51, 0.75); /* Navy blue with 75% opacity */
-    color: white;
-    padding-top: 60px;
-    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.2);
-    transition: left 0.4s ease-in-out;
-    overflow-y: auto;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
-    z-index: 9999;
-}
-
-.menu ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.menu ul li {
-    padding: 15px 20px;
-    cursor: pointer;
-    font-size: 18px;
-    color: white;
-    transition: padding-left 0.2s ease, color 0.2s ease;
-}
-
-.menu ul li:hover {
-    color: #a8c7ff;
-    padding-left: 25px;
-}
 
 
-/* Submenu - same color scheme, no box effect */
-.submenu {
-    display: none;
-    padding-left: 20px;
-    background-color: transparent; /* Removed darker box */
-    transition: all 0.3s ease-in-out;
-}
 
-.submenu a {
-    display: block;
-    color: white;
-    text-decoration: none;
-    padding: 8px 0;
-    font-size: 16px;
-    transition: color 0.2s ease, padding-left 0.2s ease;
-}
+        /* Menu Styles */
+        .menu {
+            position: fixed;
+            top: 0;
+            left: -280px;
+            width: 280px;
+            height: 100%;
+            background-color: rgba(0, 0, 51, 0.75); /* Navy blue with 75% opacity */
+            color: white;
+            padding-top: 60px;
+            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.2);
+            transition: left 0.4s ease-in-out;
+            overflow-y: auto;
+            border-top-right-radius: 15px;
+            border-bottom-right-radius: 15px;
+            z-index: 9999;
+        }
 
-.submenu a:hover {
-    color: #a8c7ff;
-    padding-left: 10px;
-}
+        .menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
 
+        .menu ul li {
+            padding: 15px 20px;
+            cursor: pointer;
+            font-size: 18px;
+            color: white;
+            transition: padding-left 0.2s ease, color 0.2s ease;
+        }
 
-/* Hamburger Button - simple white/navy scheme */
-.hamburger {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    font-size: 35px;
-    cursor: pointer;
-    color: white; 
-    padding: 5px 10px;
-    border-radius: 5px;
-    transition: all 0.3s ease-in-out;
-    z-index: 10000;
-}
+        .menu ul li:hover {
+            color: #a8c7ff;
+            padding-left: 25px;
+        }
 
-.hamburger:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-}
+        /* Submenu - same color scheme, no box effect */
+        .submenu {
+            display: none;
+            padding-left: 20px;
+            background-color: transparent; 
+            transition: all 0.3s ease-in-out;
+        }
 
+        .submenu a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 8px 0;
+            font-size: 16px;
+            transition: color 0.2s ease, padding-left 0.2s ease;
+        }
 
-/* Active states */
-.menu.active {
-    left: 0;
-}
+        .submenu a:hover {
+            color: #a8c7ff;
+            padding-left: 10px;
+        }
 
-.hamburger.active {
-    transform: rotate(90deg);
-    background-color: rgba(0, 0, 77, 0.9);
-}
-	
-        /* Chatbot Styles  */
+        /* Hamburger Button - simple white/navy scheme */
+        .hamburger {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            font-size: 35px;
+            cursor: pointer;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+            z-index: 10000;
+        }
+
+        .hamburger:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+       
+        .menu.active {
+            left: 0;
+        }
+
+        .hamburger.active {
+            transform: rotate(90deg);
+            background-color: rgba(0, 0, 77, 0.9);
+        }
+
+      
         .chatbot-container {
             position: fixed;
             top: 0;
@@ -194,14 +180,14 @@ background-image: url("https://i.pinimg.com/736x/b3/42/2d/b3422de3602815b3a912ac
             display: none;
             z-index: 9999;
         }
-        
+
         .chatbot-container iframe {
             width: 100%;
             height: calc(100% - 40px);
             border: none;
             margin-top: 40px;
         }
-        
+
         .chatbot-handle {
             position: fixed;
             top: 0;
@@ -218,7 +204,7 @@ background-image: url("https://i.pinimg.com/736x/b3/42/2d/b3422de3602815b3a912ac
             font-size: 20px;
             z-index: 10000;
         }
-        
+
         .chatbot-toggle {
             position: fixed;
             bottom: 20px;
@@ -236,51 +222,25 @@ background-image: url("https://i.pinimg.com/736x/b3/42/2d/b3422de3602815b3a912ac
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
         }
-        
+
         .chatbot-toggle:hover {
             background: #7b68ee;
             transform: scale(1.1);
         }
-        
+
         .chatbot-close {
             cursor: pointer;
             font-size: 20px;
             margin-left: 10px;
         }
-	     body {
-            margin: 0;
-            padding: 0;
-            overflow: hidden; /* Important to prevent scrollbars */
-        }
-
-        .video-background {
-            position: fixed; /* Fixes the video to the viewport */
-            top: 0;
-            left: 0;
-            width: 100vw; /* 100% of viewport width */
-            height: 100vh; /* 100% of viewport height */
-            z-index: -1; /* Puts the video behind other content */
-            overflow: hidden; /* Hides any video overflow */
-        }
-
-        .video-background iframe {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translate(-50%, -50%); /* Centers the video */
-            object-fit: cover; /* Ensures video covers the area, potentially cropping */
-            pointer-events: none; /* Allows clicks to pass through */
-        }
-
-
     </style>
-	
+
 </head>
 <body>
+
+<div class="video-background">
+    <iframe src="https://www.youtube.com/embed/your-video-id?autoplay=1&loop=1&playlist=your-video-id&controls=0&mute=1&disablekb=1&showinfo=0&autohide=1&modestbranding=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>
 
 <div class="chatbot-container" id="chatbotWidget">
     <div class="chatbot-handle" id="chatbotHandle">
@@ -373,17 +333,17 @@ background-image: url("https://i.pinimg.com/736x/b3/42/2d/b3422de3602815b3a912ac
         }
 
         const hasSubmenu = document.querySelectorAll('.has-submenu');
-        
+
         hasSubmenu.forEach(item => {
             const link = item.querySelector('a');
             const submenu = item.querySelector('.submenu');
-            
+
             link.addEventListener('click', function(e) {
                 if (submenu) {
                     e.preventDefault();
                     item.classList.toggle('open');
                     submenu.classList.toggle('show');
-                    
+
                     const parentUl = item.parentElement;
                     const siblings = parentUl.querySelectorAll('.has-submenu');
                     siblings.forEach(sib => {
@@ -394,12 +354,12 @@ background-image: url("https://i.pinimg.com/736x/b3/42/2d/b3422de3602815b3a912ac
                     });
                 }
             });
-            
+
             item.addEventListener('mouseenter', function() {
                 item.classList.add('open');
                 submenu.classList.add('show');
             });
-            
+
             item.addEventListener('mouseleave', function() {
                 item.classList.remove('open');
                 submenu.classList.remove('show');
@@ -408,42 +368,41 @@ background-image: url("https://i.pinimg.com/736x/b3/42/2d/b3422de3602815b3a912ac
 
         document.addEventListener('click', function(e) {
             if (!e.target.closest('.search-container') && !e.target.closest('.dropdown-content')) {
-                document.getElementById('dropdown-menu').classList.remove('show');
+                document.getElementById('dropdown-menu').classList.remove('show'); 
             }
         });
 
-        const contentBox = document.getElementById('contentBox');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                } else {
-                    entry.target.classList.remove('visible');
-                }
-            });
-        }, { 
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        });
-        observer.observe(contentBox);
+        
+        // const contentBox = document.getElementById('contentBox');
+        // const observer = new IntersectionObserver((entries) => {
+        //     entries.forEach(entry => {
+        //         if (entry.isIntersecting) {
+        //             entry.target.classList.add('visible');
+        //         } else {
+        //             entry.target.classList.remove('visible');
+        //         }
+        //     });
+        // }, {
+        //     threshold: 0.1,
+        //     rootMargin: '0px 0px -100px 0px'
+        // });
+        // observer.observe(contentBox);
 
-        document.querySelector('.search-icon').onclick = expandSearch;
-        document.getElementById('searchInput').oninput = filterDropdown;
-        document.getElementById('searchInput').onfocus = showDropdown;
-        document.getElementById('searchInput').onblur = hideDropdown;
+        // document.querySelector('.search-icon').onclick = expandSearch; // These elements are not present
+        // document.getElementById('searchInput').oninput = filterDropdown; // These elements are not present
+        // document.getElementById('searchInput').onfocus = showDropdown; // These elements are not present
+        // document.getElementById('searchInput').onblur = hideDropdown; // These elements are not present
     });
 </script>
 
-  <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+    <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
     <div class="menu" id="menu">
         <ul>
-            <!-- Topic with no submenu -->
             <li onclick="toggleSubmenu('topic1')">
-                
-                    <a href="Home_Page.html"  style="color: white; text-decoration: none;" onmouseover="this.style.textDecoration='none';" onmouseout="this.style.textDecoration='none';" onfocus="this.style.textDecoration='none';" onblur="this.style.textDecoration='none';">Home Page</a>            </li>
-            <!-- Topic with submenu -->
+                <a href="Home_Page.html" style="color: white; text-decoration: none;" onmouseover="this.style.textDecoration='none';" onmouseout="this.style.textDecoration='none';" onfocus="this.style.textDecoration='none';" onblur="this.style.textDecoration='none';">Home Page</a>
+            </li>
             <li onclick="toggleSubmenu('topic2')">
-                    <a href="latestnews.html" style="color: white; text-decoration: none;" onmouseover="this.style.textDecoration='none';" onmouseout="this.style.textDecoration='none';" onfocus="this.style.textDecoration='none';" onblur="this.style.textDecoration='none';">Latest News</a> 
+                <a href="latestnews.html" style="color: white; text-decoration: none;" onmouseover="this.style.textDecoration='none';" onmouseout="this.style.textDecoration='none';" onfocus="this.style.textDecoration='none';" onblur="this.style.textDecoration='none';">Latest News</a>
             </li>
 
             <li onclick="toggleSubmenu('topic3')">Artists ▼
@@ -457,7 +416,7 @@ background-image: url("https://i.pinimg.com/736x/b3/42/2d/b3422de3602815b3a912ac
             </li>
 
             <li onclick="toggleSubmenu('topic4')">
-                   <a href="schedule.html" style="color: white; text-decoration: none;" onmouseover="this.style.textDecoration='none';" onmouseout="this.style.textDecoration='none';" onfocus="this.style.textDecoration='none';" onblur="this.style.textDecoration='none';">Schedule</a>               
+                <a href="schedule.html" style="color: white; text-decoration: none;" onmouseover="this.style.textDecoration='none';" onmouseout="this.style.textDecoration='none';" onfocus="this.style.textDecoration='none';" onblur="this.style.textDecoration='none';">Schedule</a>
             </li>
 
             <li onclick="toggleSubmenu('topic5')">Highlights▼
@@ -469,7 +428,7 @@ background-image: url("https://i.pinimg.com/736x/b3/42/2d/b3422de3602815b3a912ac
                     <li><a href="Trending.html">Trending</a></li>
                     <li><a href="post.html">Media Post</a></li>
                     <li><a href="polls.html">Aurora Polls</a></li>
-                      <li><a href="cookingchefs.htm">Aurora chefs</a></li>
+                     <li><a href="cookingchefs.htm">Aurora chefs</a></li>
                      <li><a href="guesschar.htm">Aurora quest</a></li>
                 </ul>
             </li>
@@ -483,7 +442,7 @@ background-image: url("https://i.pinimg.com/736x/b3/42/2d/b3422de3602815b3a912ac
             </li>
         </ul>
     </div>
-  <script>
+    <script>
         function toggleMenu() {
             const menu = document.getElementById('menu');
             const hamburger = document.querySelector('.hamburger');
@@ -499,6 +458,13 @@ background-image: url("https://i.pinimg.com/736x/b3/42/2d/b3422de3602815b3a912ac
 
         function toggleSubmenu(id) {
             const submenu = document.getElementById(id);
+            // Close all other submenus first
+            document.querySelectorAll('.submenu').forEach(sub => {
+                if (sub.id !== id) {
+                    sub.style.display = "none";
+                }
+            });
+
             if (submenu.style.display === "block") {
                 submenu.style.display = "none";
             } else {
@@ -507,15 +473,13 @@ background-image: url("https://i.pinimg.com/736x/b3/42/2d/b3422de3602815b3a912ac
         }
     </script>
 
-	
-
 
     <div class="section">
-        <h1 style="font-size:90px;color:#fcfcfc;text-align:center;"><b>Latest News!!!</b></h1>
+        <h1 style="font-size:90px;text-align:center;"><b>Latest News!!!</b></h1>
         <div class="grid-container">
             <div class="announcement">
                 <div class="image-container">
-                    <img src="https://media.istockphoto.com/id/1495041233/vector/hand-drawn-style-30-percent-off-discount-sale-promotion-label-illustration-vector.jpg?s=612x612&w=0&k=20&c=ETfRJbVFueWSFwjEw68Hi3aQqYvxI8KAxfFsx4Lla5U=" alt="30% Discount Sale">
+                    <img src="https://media.istockphoto.com/id/1495041233/vector/hand-drawn-style-30-percent-off-discount-sale-promotion-label-illustration-vector.jpg?s=612x612&w=0&k=20&c=ETrRJbVFueWSFwjEw68Hi3aQqYvxI8KAxfFsx4Lla5U=" alt="30% Discount Sale">
                 </div>
                 <div class="text-overlay">
                     <p style="color:black;"><b>30% DISCOUNT! New merchandise on offer! Hurry up now! Sale ends on Friday! </b></p>
@@ -545,7 +509,7 @@ background-image: url("https://i.pinimg.com/736x/b3/42/2d/b3422de3602815b3a912ac
                     <a href="https://sravyas-ai.github.io/Recreational_Website/articles.html#article13">"RIP, ACTION KAMEN!" Fans lament the loss of their childhood hero!!</a>
                 </div>
             </div>
-		<div class="announcement">
+            <div class="announcement">
                 <div class="image-container">
                     <img src="https://i.ytimg.com/vi/6bmZgzBu9pY/maxresdefault.jpg" alt="Tom and Jerry">
                 </div>
@@ -558,7 +522,7 @@ background-image: url("https://i.pinimg.com/736x/b3/42/2d/b3422de3602815b3a912ac
                     <img src="https://i.pinimg.com/736x/87/90/cb/8790cb968dcb3d8080366e32c9f2cf49.jpg" alt="Hera and Zeus">
                 </div>
                 <div class="text-overlay">
-                    <a href="https://sravyas-ai.github.io/Recreational_Website/articles.html#article7">Hera is all set for the <b><i>'DIVORCE OF THE MILLENIUM'</b></i> while Zeus looks more depressed than ever</a>
+                    <a href="https://sravyas-ai.github.io/Recreational_Website/articles.html#article7">Hera is all set for the <b><i>'DIVORCE OF THE MILLENIUM'</i></b> while Zeus looks more depressed than ever</a>
                 </div>
             </div>
         </div>
@@ -567,7 +531,7 @@ background-image: url("https://i.pinimg.com/736x/b3/42/2d/b3422de3602815b3a912ac
 <hr>
 
     <div class="section">
-        <h1 style="font-size:90px;color:#fcfcfc;text-align:center;"><b>Upcoming!!!</b></h1>
+        <h1 style="font-size:90px;text-align:center;"><b>Upcoming!!!</b></h1>
         <div class="grid-container">
             <div class="announcement">
                 <div class="image-container">
